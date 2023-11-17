@@ -8,12 +8,7 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 root.render(<App />);
 
-
-
-
-require('dotenv').config()
-
-const mysql = require('mysql2')
+//const mysql = require('mysql2')
 
 // Create the connection to the database
 const connection = mysql.createConnection(process.env.REACT_APP_API_KEY)
