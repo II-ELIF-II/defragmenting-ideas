@@ -5,7 +5,7 @@ export default function Home() {
         Header
       </header>
       <div className="flex flex-col md:flex-row flex-grow min-h-screen">
-        <div className="featured flex flex-col flex-grow md:w-6/12 md:h-screen mh-96 bg-neutral-900">
+        <div className="featured flex flex-col flex-grow md:w-6/12 md:h-screen mh-96 bg-neutral-900 transition-all duration-150 ease-in">
           <p className="text-lg px-2 py-1">EDITOR:</p>
           <form className="px-2 py-1 flex flex-col">
             <label htmlFor="atitle">Title:</label> <input id="atitle" type="text" className="text-neutral-950"></input>
@@ -13,7 +13,7 @@ export default function Home() {
             <label htmlFor="acontent">Content:</label> <input id="acontent" type="text" className="text-neutral-950"></input>
           </form>
         </div>
-        <div className="main flex flex-grow md:w-6/12 ">
+        <div className="main flex flex-grow md:w-6/12 transition-all duration-150 ease-in">
           <p className="text-lg px-2 py-1">PREVIEW:</p>
         </div>
       </div>

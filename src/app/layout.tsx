@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Defragmenting Ideas',
+  title: 'ELIFs Playground',
   description: '',
 }
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-neutral-950 text-neutral-50`}>{children}</body>
+      <body className={`${inter.className} bg-neutral-950 text-neutral-50`} style={{scrollBehavior:'smooth'}}>{children}</body>
     </html>
   )
 }

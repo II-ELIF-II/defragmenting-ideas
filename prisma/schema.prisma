@@ -12,16 +12,25 @@ datasource db {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(255)
-  thumbnail String   @db.VarChar(255)
-  content   String   @db.VarChar(1500)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int       @id @default(autoincrement())
+  title     String    @db.VarChar(255)
+  thumbnail String    @db.VarChar(255)
+  content   String    @db.VarChar(1500)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  PostTag   PostTag[]
 }
 
-model User {
-  id       Int     @id @default(autoincrement())
-  username String  @unique
-  password String?
+model Tag {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique
+  PostTag PostTag[]
+}
+
+model PostTag {
+  id     Int   @id @default(autoincrement())
+  Post   Post? @relation(fields: [postId], references: [id])
+  postId Int?
+  Tag    Tag?  @relation(fields: [tagId], references: [id])
+  tagId  Int?
 }
