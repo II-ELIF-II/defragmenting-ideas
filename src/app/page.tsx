@@ -42,11 +42,11 @@ export default async function Home() {
           <div key={featuredPost.id} className="w-full flex flex-col grow overflow-hidden">
             <div className="h-full z-0 stylizedRightPolygon">
               <div className="h-full animate-cameraMoves">
-                <img src={featuredPost.thumbnail} className="object-cover h-full z-0 translate-x-1/4 blur-sm hover:blur-none ease-in-out duration-300 scale-105 hover:scale-110 "></img>
+                <img src={featuredPost.thumbnail} className="object-cover h-full z-0 translate-x-1/4 blur-sm hover:blur-none ease-in-out duration-300 scale-105 hover:scale-110" alt="temp"></img>
               </div>
             </div>
             <div className="absolute flex flex-col h-full w-full md:w-1/2 justify-center pl-8 -mt-16">
-              <h2 className="text-5xl mb-4"><span className="text-6xl">M</span>Y NAME'S <span className="text-teal-400 font-semibold text-6xl">ELIF_ </span><span className="font-semibold text-6xl">!</span><br></br><span className="text-6xl">W</span>ELCOME TO MY <span className="font-semibold text-6xl">PLAYGROUND!</span></h2>
+              <h2 className="text-5xl mb-4"><span className="text-6xl">M</span>Y NAME&apos;S <span className="text-teal-400 font-semibold text-6xl">ELIF_ </span><span className="font-semibold text-6xl">!</span><br></br><span className="text-6xl">W</span>ELCOME TO MY <span className="font-semibold text-6xl">PLAYGROUND!</span></h2>
               <h3 className="text-4xl mb-8">Would you like to read my about latest work?</h3>
               <div className="ml-4">
                 <p className="text-3xl">{featuredPost.title}</p>
