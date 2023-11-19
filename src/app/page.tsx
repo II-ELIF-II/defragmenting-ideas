@@ -19,9 +19,9 @@ export default async function Home() {
 
   return (
     <>
-      <header className="h-screen bg-neutral-900 flex flex-col">
+      <header className="h-screen flex flex-col bg-gradient-to-br from-neutral-900 to-teal-950">
 
-        <div className="w-full flex flex-row justify-between h-14 items-center px-4">
+        <div className="w-full flex flex-row justify-between h-14 items-center px-4 z-10">
           <div className="flex flex-row text-lg space-x-4">
             <div className="h-6 w-6 grid grid-cols-2 gap-1 animate-logo">
               <div className="h-full w-full bg-teal-400"></div>
@@ -39,24 +39,29 @@ export default async function Home() {
         </div>
 
         {featuredPost.map(featuredPost => (
-          <div key={featuredPost.id} className="w-full flex flex-col grow overflow-hidden">
-            <div className="h-full z-0 stylizedRightPolygon">
-              <div className="h-full animate-cameraMoves">
-                <img src={featuredPost.thumbnail} className="object-cover h-full z-0 translate-x-1/4 blur-sm hover:blur-none ease-in-out duration-300 scale-105 hover:scale-110" alt="temp"></img>
+          <div key={featuredPost.id} className="group w-full flex flex-col grow overflow-hidden pointer-events-none z-10">
+            <div className="h-full z-0 stylizedRightPolygon overflow-hidden pointer-events-auto">
+              <div className="h-full animate-cameraMoves overflow-hidden">
+                <img src={featuredPost.thumbnail} className="object-cover h-full translate-x-1/4 blur-sm group-hover:blur-none ease-in-out duration-500 scale-105 group-hover:scale-110" alt="temp"></img>
               </div>
             </div>
-            <div className="absolute flex flex-col h-full w-full md:w-1/2 justify-center pl-8 -mt-16">
-              <h2 className="text-5xl mb-4"><span className="text-6xl">M</span>Y NAME&apos;S <span className="text-teal-400 font-semibold text-6xl">ELIF_ </span><span className="font-semibold text-6xl">!</span><br></br><span className="text-6xl">W</span>ELCOME TO MY <span className="font-semibold text-6xl">PLAYGROUND!</span></h2>
-              <h3 className="text-4xl mb-8">Would you like to read my about latest work?</h3>
-              <div className="ml-4">
-                <p className="text-3xl">{featuredPost.title}</p>
-                <p className="text-lg text-neutral-400">{featuredPost.createdAt.toLocaleTimeString()} {featuredPost.createdAt.toLocaleDateString()}</p>
-                <p className="text-2xl">{featuredPost.content}</p>
+            <div className="absolute flex flex-col h-full w-full md:w-1/2 justify-center pl-8 -mt-8">
+              <h2 className="text-5xl mb-16 first-letter:text-6xl">MY NAME&apos;S <span className="text-teal-400 font-semibold text-6xl">ELIF_ </span><span className="font-semibold text-6xl">!</span><br></br>WELCOME TO MY <span className="font-semibold text-6xl">PLAYGROUND!</span></h2>
+              <h3 className="text-4xl mb-4">
+                Check out my latest article:
+              </h3>
+              
+              <div className="flex flex-col ml-5 outline-1 outline-offset-4 outline-dashed outline-neutral-50 bgTransparent -mr-12 pointer-events-auto transition-all group-hover:bgTransparentLight ease-in-out duration-600">
+                <h1 className="text-2xl px-3 py-2 bgTransparent">{featuredPost.title}</h1>
+                <p className="text-xs text-neutral-400 px-3 mt-1">{featuredPost.createdAt.toLocaleTimeString()} {featuredPost.createdAt.toLocaleDateString()}</p>
+                <p className="text-xl mb-1 px-3 text-justify">{featuredPost.content}</p>
+                <button className="ml-auto mr-0 text-md px-3 py-2 text-right bg-teal-600 transition-all hover:px-6 hover:bg-teal-400 active:bg-teal-700">Read more &gt;</button>
               </div>
             </div>
           </div>
         ))}
 
+        <div className="absolute gridbg w-full h-full pointer-events-none z-0"></div>
       </header>
       <div className="flex flex-col flex-grow min-h-screen">
           <h1>Feed</h1>
@@ -71,7 +76,8 @@ export default async function Home() {
         </div>
       </div>
       <footer className="bg-neutral-800 h-40 border-t-2 border-teal-500">
-        Footer
+        Built using NextJS, ReactJS, Tailwind, Typescript, and Prisma.
+        Hosted on Netlify, and PlanetScale.
       </footer>
     </>
   )
