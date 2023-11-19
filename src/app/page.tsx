@@ -54,7 +54,7 @@ export default async function Home() {
               <div className="flex flex-col ml-5 outline-1 outline-offset-4 outline-dashed outline-neutral-50 bgTransparent -mr-12 pointer-events-auto transition-all group-hover:bgTransparentLight ease-in-out duration-600">
                 <h1 className="text-2xl px-3 py-2 bgTransparent">{featuredPost.title}</h1>
                 <p className="text-xs text-neutral-400 px-3 mt-1">{featuredPost.createdAt.toLocaleTimeString()} {featuredPost.createdAt.toLocaleDateString()}</p>
-                <p className="text-xl mb-1 px-3 text-justify">{featuredPost.content}</p>
+                <p className="text-xl mb-1 px-3 text-justify">{featuredPost.summary}</p>
                 <button className="ml-auto mr-0 text-md px-3 py-2 text-right bg-teal-600 transition-all hover:px-6 hover:bg-teal-400 active:bg-teal-700">Read more &gt;</button>
               </div>
             </div>
