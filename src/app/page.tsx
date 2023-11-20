@@ -25,7 +25,7 @@ export default async function Home() {
         <div className="absolute bg-gradient-to-br from-neutral-900 via-transparent to-teal-transparent w-full h-full pointer-events-none z-0"></div>
       </header>
 
-      <div className="h-screen flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800" id="section2">
+      <div className="min-h-screen flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800" id="section2">
 
         <div className="w-full flex flex-row justify-between h-14 items-center z-10">
           <h1 className="pl-8 uppercase">Feel free to <span className="text-teal-400 font-semibold">browse</span> my other works!</h1>
@@ -35,7 +35,12 @@ export default async function Home() {
           </div> */}
         </div>
 
-        <div className="glex grow grid grid-cols-3 grid-flow-row gap-5 px-8 py-2 z-10">
+        <div className="glex grid grid-cols-1 md:grid-cols-2 grid-flow-row gap-6 px-4 mb-3 md:px-8 py-2 z-10">
+          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
+          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
+          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
+          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
+          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
           {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
         </div>
 
@@ -63,7 +68,7 @@ export default async function Home() {
       </div>
 
       <footer className="h-screen flex flex-col bg-gradient-to-b from-neutral-900 to-teal-950" id="section3">
-        <div className="z-10">
+        {/* <div className="z-10">
           <div className="">
             <h1>About Me:</h1>
             <div>Test</div>
@@ -72,7 +77,7 @@ export default async function Home() {
             Built using NextJS, ReactJS, Tailwind, Typescript, and Prisma.
             Hosted on Netlify, and PlanetScale.
           </div>
-        </div>
+        </div> */}
 
         <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>
         <img src={bgImage[2]} className="absolute w-full h-full pointer-events-none opacity-5 object-cover z-0"></img>
