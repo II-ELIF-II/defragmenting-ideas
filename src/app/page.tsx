@@ -2,6 +2,7 @@ import { prisma } from '@/app/db'
 import { ArticleCardItem } from '@/components/ArticleCardItem'
 import { FeaturedItem } from '@/components/FeaturedItem'
 import { HeaderItem } from '@/components/HeaderItem'
+import { GenerateRandomInt } from '@/app/utilities'
 
 function getPosts()
 {
@@ -12,30 +13,34 @@ export default async function Home() {
   let posts = await getPosts()
 
   const featuredPost = posts[posts.length-1]
-
-  let bgImage = [posts[0].thumbnail, posts[0].thumbnail, posts[0].thumbnail]
+  
+  const bgImage = [posts[GenerateRandomInt(posts.length-1)].thumbnail, posts[GenerateRandomInt(posts.length-1)].thumbnail, posts[GenerateRandomInt(posts.length-1)].thumbnail]
 
   return (
     <>
-      <header className="h-screen flex flex-col bg-gradient-to-br from-neutral-900 to-teal-950 overflow-hidden" id="section1">
+      <header className="relative h-screen flex flex-col bg-gradient-to-br from-neutral-900 to-teal-950 overflow-hidden snap-center" id="section1">
         {<HeaderItem/>}
-        {<FeaturedItem id={featuredPost.id} title={featuredPost.title} thumbnail={featuredPost.thumbnail} summary={featuredPost.summary} createdAt={featuredPost.createdAt} updatedAt={featuredPost.updatedAt}/>}
+        {<FeaturedItem {...featuredPost}/>}
         <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>
+        <div className="absolute bg-topography w-full h-full pointer-events-none z-0"></div>
+        <div className="absolute bg-cross w-full h-full pointer-events-none z-0"></div>
         <img src={bgImage[0]} className="absolute w-full h-full pointer-events-none opacity-5 object-cover z-0"></img>
-        <div className="absolute bg-gradient-to-br from-neutral-900 via-transparent to-teal-transparent w-full h-full pointer-events-none z-0"></div>
+        <div className="absolute bg-gradient-to-br from-neutral-900 via-transparent to-teal-950 w-full h-full pointer-events-none z-0"></div>
       </header>
 
-      <div className="min-h-screen flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800" id="section2">
+      {/* {<ArticleModalItem/>} */}
+
+      <div className="relative min-h-screen flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800 snap-end" id="section2">
 
         <div className="w-full flex flex-row justify-between h-14 items-center z-10">
-          <h1 className="pl-8 uppercase">Feel free to <span className="text-teal-400 font-semibold">browse</span> my other works!</h1>
+          <h1 className="pl-8 uppercase"><span className="text-teal-400 font-semibold">&#47;&#47; </span>Feel free to <span className="text-teal-400 font-semibold">browse</span> my other works!</h1>
           {/* <div className="pr-8 pl-4 justify-between bg-transparent-neutral-950-1 h-14 items-center flex flex-col">
             <p>Looking for something specific?</p>
             <div>searchbarhere</div>
           </div> */}
         </div>
 
-        <div className="glex grid grid-cols-1 md:grid-cols-2 grid-flow-row gap-6 px-4 mb-3 md:px-8 py-2 z-10">
+        <div className="flex grid grid-cols-1 md:grid-cols-2 grid-flow-row gap-6 px-4 mb-3 md:px-8 py-2 z-10">
           {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
           {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
           {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
@@ -63,11 +68,13 @@ export default async function Home() {
         </div> */}
 
         <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>
+        <div className="absolute bg-topography w-full h-full pointer-events-none z-0"></div>
+        <div className="absolute bg-cross w-full h-full pointer-events-none z-0"></div>
         <img src={bgImage[1]} className="absolute w-full h-full pointer-events-none opacity-5 object-cover z-0"></img>
         <div className="absolute bg-gradient-to-br from-transparent to-neutral-900 w-full h-full pointer-events-none z-0"></div>
       </div>
 
-      <footer className="h-screen flex flex-col bg-gradient-to-b from-neutral-900 to-teal-950" id="section3">
+      <footer className="relative h-screen flex flex-col bg-gradient-to-b from-neutral-900 to-teal-950 snap-start" id="section3">
         {/* <div className="z-10">
           <div className="">
             <h1>About Me:</h1>
@@ -80,9 +87,15 @@ export default async function Home() {
         </div> */}
 
         <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>
+        <div className="absolute bg-topography w-full h-full pointer-events-none z-0"></div>
+        <div className="absolute bg-cross w-full h-full pointer-events-none z-0"></div>
         <img src={bgImage[2]} className="absolute w-full h-full pointer-events-none opacity-5 object-cover z-0"></img>
         <div className="absolute bg-gradient-to-b from-neutral-900 to-transparent w-full h-full pointer-events-none z-0"></div>
       </footer>
+
+      <div id="articleViewer" className="fixed flex justify-center top-0 h-screen w-screen bg-transparent-neutral-950-1 backdrop-blur-md z-50 lg:pt-24 overflow-hidden invisible">
+
+      </div>
     </>
   )
 }

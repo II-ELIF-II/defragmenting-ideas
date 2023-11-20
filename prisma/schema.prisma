@@ -34,4 +34,7 @@ model PostTag {
   postId Int?
   Tag    Tag?  @relation(fields: [tagId], references: [id])
   tagId  Int?
+
+  @@index([postId])
+  @@index([tagId])
 }
