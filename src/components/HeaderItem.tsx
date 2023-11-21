@@ -1,5 +1,5 @@
 export function HeaderItem() {
-  return (<div className="w-full flex flex-col md:flex-row justify-evenly md:justify-between md:h-14 h-24 items-center px-4 z-10 bg-transparent-neutral-950-1">
+  return (<div className="w-full flex flex-col md:flex-row justify-evenly md:justify-between h-24 md:h-14 items-center px-4 z-10 bg-neutral-950/40">
     <div className="flex flex-row text-lg space-x-4 animate-slideInLeft">
       <div className="h-6 w-6 grid grid-cols-2 gap-1 animate-logo">
         <div className="h-full w-full bg-teal-400"></div>

@@ -11,7 +11,7 @@ export function ArticleModalItem({id, title, thumbnail, content, createdAt, upda
       <div className="relative flex flex-col h-2/3 lg:h-1/2">
         <img id="articleViewerThumbnail" src={thumbnail} alt="article thumbnail" className="object-cover h-full grow"></img>
         <div className="absolute h-1/3 bottom-0 w-full bg-gradient-to-b from-transparent to-teal-950 opacity-90"></div>
-        <div className="absolute bottom-0 w-full px-6 py-4 backdrop-blur-sm bg-transparent-neutral-950-1 z-10">
+        <div className="absolute bottom-0 w-full px-6 py-4 backdrop-blur-sm bg-neutral-950/40 z-10">
           <h1 id="articleViewerTitle" className="text-xl md:text-2xl xl:text-3xl">{title}</h1>
           <p id="articleViewerDate" className="text-xs text-neutral-400 mt-1">Created on: {createdAt.toLocaleTimeString()} {createdAt.toLocaleDateString()}</p>
         </div>
