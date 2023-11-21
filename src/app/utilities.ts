@@ -10,3 +10,7 @@ export const GenerateUpdateTxt = (createdDate: Date, updateDate: Date) =>
   else
     return "Created on: " + createdDate.toLocaleTimeString() + createdDate.toLocaleDateString() + "\nUpdated on: " + updateDate.toLocaleTimeString() + updateDate.toLocaleDateString()
 }
+
+export const StopPropagation = (e: React.MouseEvent) => {
+  e.stopPropagation()
+}
