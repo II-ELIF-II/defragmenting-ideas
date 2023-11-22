@@ -1,36 +1,45 @@
 import { prisma } from '@/app/db'
+import { cookies } from 'next/headers'
+
+
+
+import { GenerateRandomInt } from '@/app/utilities'
+
 import { ArticleCardItem } from '@/components/ArticleCardItem'
 import { FeaturedItem } from '@/components/FeaturedItem'
 import { HeaderItem } from '@/components/HeaderItem'
 import { ArticleViewerItem } from '@/components/ArticleViewerItem'
 import { ArticleSearchItem } from '@/components/ArticleSearchItem'
-import { GenerateRandomInt } from '@/app/utilities'
+import { DigitalResumeItem } from '@/components/DigitalResumeItem'
+import { FooterItem } from '@/components/FooterItem'
 
-function getPosts()
+async function getPostsPage(p: number)
 {
-  return prisma.post.findMany()
+  return prisma.post.findMany({
+    skip: 4*p,
+    take: 4,
+  })
+}
+
+function getPostsSearch(p: number, key: string, tags: string)
+{
+  return prisma.post.findMany({
+    skip: 4*p,
+    take: 4,
+  })
 }
 
 export default async function Home() {
-  let posts = await getPosts()
+  let posts = await getPostsPage(0)
 
-  const featuredPost = posts[posts.length-1]
-  
-  const bgImage = [posts[GenerateRandomInt(posts.length-1)].thumbnail, posts[GenerateRandomInt(posts.length-1)].thumbnail]
+  //const cookieStore = cookies()
+  const featuredArticle = posts[posts.length-1]
 
   return (
     <>
-      {<ArticleViewerItem/>}
+      {<ArticleViewerItem {...featuredArticle}/>}
 
-      <header className="relative h-screen flex flex-col bg-gradient-to-br from-neutral-900 to-teal-950 overflow-hidden snap-start" id="section1">
-        {<HeaderItem/>}
-        {<FeaturedItem {...featuredPost}/>}
-        <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>
-        <div className="absolute bg-topography w-full h-full pointer-events-none z-0"></div>
-        <div className="absolute bg-cross w-full h-full pointer-events-none z-0"></div>
-        <img src={bgImage[0]} className="absolute w-full h-full pointer-events-none opacity-5 object-cover z-0"></img>
-        <div className="absolute bg-gradient-to-br from-neutral-900 via-transparent to-teal-950 w-full h-full pointer-events-none z-0"></div>
-      </header>
+      {<HeaderItem bgURL={posts[GenerateRandomInt(posts.length)].thumbnail} featured={featuredArticle}/>}
 
       <div className="relative min-h-screen h-fit flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800 snap-start" id="section2">
 
@@ -41,25 +50,12 @@ export default async function Home() {
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
           </button>
-          {/* <div className="flex grow flex-row h-14 items-center justify-center z-10">
-            <button className="text-md px-3 h-14 w-14 bg-teal-600 transition-all hover:bg-teal-400 active:bg-teal-700">&lt;</button>
-            <button className="text-md px-3 h-14 w-14 bg-teal-700 transition-all hover:bg-teal-400 active:bg-teal-700">1</button>
-            <button className="text-md px-3 h-14 w-14 bg-teal-600 transition-all hover:bg-teal-400 active:bg-teal-700">2</button>
-            <button className="text-md px-3 h-14 w-14 bg-teal-600 transition-all hover:bg-teal-400 active:bg-teal-700">3</button>
-            <button className="text-md px-3 h-14 w-14 bg-teal-600 transition-all hover:bg-teal-400 active:bg-teal-700">&gt;</button>
-          </div> */}
-          {/* <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div> */}
-          {/* <div className="absolute bg-topography w-full h-full pointer-events-none z-0"></div> */}
           <div className="absolute bg-cross w-full h-full pointer-events-none z-0"></div>
         </div>
 
-        {<ArticleSearchItem/>}
+        {/* {<ArticleSearchItem/>} */}
           
-        <div className="-mt-14 top-0 min-h-full flex grow flex-col lg:flex-row z-10">
-        {/* <div className="-mt-14 top-0 min-h-full flex grow grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 grid-flow-row z-10"> */}
-          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
-          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
-          {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
+        <div className="-mt-14 top-0 min-h-full flex grow flex-col-reverse lg:flex-row-reverse z-10">
           {posts.map(posts => (<ArticleCardItem key={posts.id} {...posts}/>))}
         </div>
         <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>
@@ -68,24 +64,7 @@ export default async function Home() {
         <div className="absolute bg-gradient-to-tl from-neutral-900 via-transparent to-neutral-800 w-full h-full pointer-events-none z-0"></div>
       </div>
 
-      <footer className="relative h-screen flex flex-col bg-gradient-to-b from-neutral-900 to-teal-950 snap-start" id="section3">
-        {/* <div className="z-10">
-          <div className="">
-            <h1>About Me:</h1>
-            <div>Test</div>
-          </div>
-          <div className="">
-            Built using NextJS, ReactJS, Tailwind, Typescript, and Prisma.
-            Hosted on Netlify, and PlanetScale.
-          </div>
-        </div> */}
-
-        <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>
-        <div className="absolute bg-topography w-full h-full pointer-events-none z-0"></div>
-        <div className="absolute bg-cross w-full h-full pointer-events-none z-0"></div>
-        <img src={bgImage[1]} className="absolute w-full h-full pointer-events-none opacity-5 object-cover z-0"></img>
-        <div className="absolute bg-gradient-to-b from-neutral-900 to-transparent w-full h-full pointer-events-none z-0"></div>
-      </footer>
+      <FooterItem bgURL={posts[GenerateRandomInt(posts.length)].thumbnail}/>
     </>
   )
 }

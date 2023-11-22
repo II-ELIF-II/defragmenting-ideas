@@ -11,9 +11,16 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'profile-picture': "url('https://avatars.githubusercontent.com/u/61645475?v=4')",
       },
       scale: {
         '200': '2.0',
+      },
+      spacing: {
+        '18': '4.5rem',
+      },
+      dropShadow: {
+        'xlCustom': '5px 10px 10px rgba(0, 0, 0, 0.6)',
       },
       keyframes: {
         fullLogo: {

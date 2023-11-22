@@ -15,7 +15,7 @@ export function FeaturedItem(article: ArticleProps) {
         <span className="text-teal-400 font-semibold">&#47;&#47;</span> Check out my latest work:
       </h3>
       
-      <div onClick={() => setArticleState(true, article)} className="cursor-pointer backdrop-blur-sm animate-slideInBottom flex flex-col ml-5 outline-1 pb-2 outline-offset-4 outline-dashed outline-neutral-50 bg-neutral-900/40 mr-5 lg:-mr-12 pointer-events-auto transition-all group-hover:bg-neutral-900/60 ease-in-out duration-600 group-hover:-translate-y-2 lg:group-hover:-translate-y-0 lg:group-hover:translate-x-2 group-hover:shadow-xl group-hover:shadow-neutral-950/50">
+      <div onClick={() => setArticleState(true, article)} className="cursor-pointer backdrop-blur-sm animate-slideInBottom flex flex-col ml-5 pb-2 outline-1 outline-offset-4 outline-dashed outline-neutral-50 bg-neutral-900/40 mr-5 lg:-mr-12 pointer-events-auto transition-all group-hover:bg-neutral-900/60 ease-in-out duration-600 group-hover:-translate-y-2 lg:group-hover:-translate-y-0 lg:group-hover:translate-x-2 group-hover:shadow-xl group-hover:shadow-neutral-950/50">
         <h1 className="text-md md:text-lg xl:text-xl px-3 py-2 bg-neutral-950/40"><span className="text-teal-400 font-semibold">&#92;&gt; </span>{article.title}</h1>
         <p className="text-xs text-neutral-400 px-3 my-1 whitespace-pre-wrap">{GenerateUpdateTxt(article.createdAt, article.updatedAt)}</p>
         <p className="text-sm md:text-md xl:text-lg mb-1 px-3 text-justify">{article.summary}</p>
