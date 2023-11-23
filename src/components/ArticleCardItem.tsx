@@ -2,8 +2,8 @@
 import { GenerateUpdateTxt } from "@/app/utilities";
 import { setArticleState } from "./ArticleViewerItem";
 
-export function ArticleCardItem(article: ArticleProps) {
-  return (<div onClick={() => setArticleState(true, article)} className="relative flex flex-col grow cursor-pointer group overflow-hidden h-screen lg:h-full snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 hover:shadow-xl hover:shadow-neutral-950/60">
+export default function ArticleCardItem(article: ArticleProps) {
+  return (<div onClick={() => setArticleState(true, article)} className="relative flex flex-col w-full cursor-pointer group overflow-hidden h-screen lg:h-full snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 hover:shadow-xl hover:shadow-neutral-950/60">
     
     <div className="h-screen group-hover:animate-cameraMoves ease-in-out duration-500">
       <img src={article.thumbnail} draggable="false" className="object-cover min-h-screen grow scale-105 group-hover:scale-125 ease-in-out duration-500"></img>

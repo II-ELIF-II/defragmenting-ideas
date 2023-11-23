@@ -1,8 +1,6 @@
 "use client"
 
-import { GenerateRandomInt } from "@/app/utilities"
-
-export function FooterItem(props: any) {
+export default function FooterItem(props: any) {
   return (<footer className="relative min-h-screen flex flex-col bg-gradient-to-b from-neutral-900 to-teal-950 snap-start" id="digitalResume">
     {/* {<DigitalResumeItem/>} */}
     <div className="absolute bg-grid w-full h-full pointer-events-none z-0"></div>

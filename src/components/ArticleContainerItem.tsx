@@ -1,6 +1,6 @@
 import { StopPropagation } from "@/app/utilities";
 
-export function ArticleContainerItem(articleDetails :ArticleProps) {
+export default function ArticleContainerItem(articleDetails :ArticleProps) {
   return (<div onClick={(e) => StopPropagation(e)} className="relative lg:mx-auto lg:my-24 w-[100vw] lg:w-[75vw] bg-neutral-200 h-fit z-10 outline-1 outline-offset-4 outline-dashed outline-neutral-50 shadow-2xl shadow-neutral-950/90">
     <div className="relative h-[60vh] w-full group overflow-hidden">
       <div className="h-full w-full overflow-hidden">
@@ -13,8 +13,8 @@ export function ArticleContainerItem(articleDetails :ArticleProps) {
         <p id="articleViewerDate" className="text-md text-neutral-400 mt-1 whitespace-pre-wrap"></p>
       </div>
       <button className="absolute top-0 right-0 text-md bg-teal-600 transition-all hover:bg-teal-400 active:bg-teal-700 flex items-center justify-center shadow-xl shadow-teal-950/50">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="p-2 w-14 h-14 ease-in-out duration-200 hover:rotate-180">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="p-2 w-14 h-14 ease-in-out duration-200 hover:rotate-180">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>

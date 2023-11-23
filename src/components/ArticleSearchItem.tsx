@@ -1,11 +1,11 @@
 "use client"
 
-export function ArticleSearchItem() {
+export default function ArticleSearchItem() {
   return (<div className="absolute top-0 right-0 mt-18 mx-4 z-20 lg:w-[30vw]">
     <div className="flex flex-col backdrop-blur-sm bg-neutral-900/40 outline-1 outline-offset-4 outline-dashed outline-neutral-50 transition-all ease-in-out duration-600 shadow-md shadow-neutral-900/50">
       <div className="flex items-center pl-2">
         <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
         </svg>
         <input type="text" id="searchText" placeholder="Search" className="bg-neutral-900 px-2 py-1 bg-transparent outline-0"></input>
       </div>

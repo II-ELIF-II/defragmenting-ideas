@@ -1,8 +1,10 @@
-import { FeaturedItem } from "./FeaturedItem";
-import { HeaderLogoItem } from "./HeaderLogoItem";
-import { HeaderURLItem } from "./HeaderURLItem";
+"use client"
 
-export function HeaderItem(props: any) {
+import FeaturedItem from "./HeaderFeaturedItem";
+import HeaderLogoItem from "./HeaderLogoItem";
+import HeaderURLItem from "./HeaderURLItem";
+
+export default function HeaderItem(props: any) {
   return (<header className="relative h-screen flex flex-col bg-gradient-to-br from-neutral-900 to-teal-950 overflow-hidden snap-start" id="section1">
     <div className="w-full flex flex-col md:flex-row justify-evenly md:justify-between h-24 md:h-14 items-center px-4 z-10 bg-neutral-950/40">
       <HeaderLogoItem/>

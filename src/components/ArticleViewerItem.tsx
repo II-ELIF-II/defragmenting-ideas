@@ -1,6 +1,6 @@
 "use client"
+import { prisma } from "@/app/db"
 import { GenerateUpdateTxt, StopPropagation } from "@/app/utilities"
-import React, { useState } from "react"
 
 export function setArticleState(setting: boolean, article?: ArticleProps)
 {
@@ -27,8 +27,17 @@ export function setArticleState(setting: boolean, article?: ArticleProps)
   }
 }
 
-export function ArticleViewerItem(article: ArticleProps) {
-  return (<div onClick={() => setArticleState(false)} id="articleViewerMain" className="fixed flex h-screen w-0 bg-neutral-950/40 backdrop-blur-md ease-in-out duration-500 z-50 overflow-hidden">
+async function GetArticle(key: number)
+{
+  return prisma.post.findUnique({
+    where: {
+      id: key,
+    }
+  })
+}
+
+export function ArticleViewerItem(articleID: ArticleProps) {
+  return (<div onClick={() => setArticleState(false)} id="articleViewerMain" className="fixed top-0 flex h-screen w-0 bg-neutral-950/40 backdrop-blur-md ease-in-out duration-500 z-50 overflow-hidden">
     <div id="articleViewerWindow" className="relative w-full h-full overflow-y-auto overflow-x-hidden">
       <div onClick={(e) => StopPropagation(e)} className="relative lg:mx-auto lg:my-24 w-[100vw] lg:w-[75vw] bg-neutral-200 h-fit z-10 outline-1 outline-offset-4 outline-dashed outline-neutral-50 shadow-2xl shadow-neutral-950/90">
         <div className="relative h-[60vh] w-full group overflow-hidden">
@@ -38,12 +47,12 @@ export function ArticleViewerItem(article: ArticleProps) {
           <div className="absolute h-2/3 group-hover:h-1/3 bottom-0 w-full bg-gradient-to-b from-transparent to-teal-950 opacity-90 group-hover:opacity-50 ease-in-out duration-500"></div>
           <div className="absolute h-1/5 group-hover:h-1/6 top-0 w-full bg-gradient-to-t from-transparent to-teal-950 opacity-90 group-hover:opacity-50 ease-in-out duration-500"></div>
           <div className="absolute bottom-0 w-full bg-neutral-950/40 px-3 py-1">
-            <h1 className="text-2xl md:text-2xl lg:text-3xl"><span className="text-teal-400 font-semibold">&#92;&gt; </span><span id="articleViewerTitle">{article.title}</span></h1>
+            <h1 className="text-2xl md:text-2xl lg:text-3xl"><span className="text-teal-400 font-semibold">&#92;&gt; </span><span id="articleViewerTitle">{articleID.title}</span></h1>
             <p id="articleViewerDate" className="text-md text-neutral-400 mt-1 whitespace-pre-wrap"></p>
           </div>
           <button onClick={() => setArticleState(false)} className="absolute top-0 right-0 text-md bg-teal-600 transition-all hover:bg-teal-400 active:bg-teal-700 flex items-center justify-center shadow-xl shadow-teal-950/50">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="p-2 w-14 h-14 ease-in-out duration-200 hover:rotate-180">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="p-2 w-14 h-14 ease-in-out duration-200 hover:rotate-180">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>

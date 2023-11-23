@@ -1,30 +1,25 @@
 import { prisma } from '@/app/db'
 import { cookies } from 'next/headers'
 
-
-
 import { GenerateRandomInt } from '@/app/utilities'
 
-import { ArticleCardItem } from '@/components/ArticleCardItem'
-import { FeaturedItem } from '@/components/FeaturedItem'
-import { HeaderItem } from '@/components/HeaderItem'
+import ArticleCardItem from '@/components/ArticleCardItem'
+import HeaderItem from '@/components/HeaderItem'
 import { ArticleViewerItem } from '@/components/ArticleViewerItem'
-import { ArticleSearchItem } from '@/components/ArticleSearchItem'
-import { DigitalResumeItem } from '@/components/DigitalResumeItem'
-import { FooterItem } from '@/components/FooterItem'
+import FooterItem from '@/components/FooterItem'
 
-async function getPostsPage(p: number)
+async function getPostsPage(page: number)
 {
   return prisma.post.findMany({
-    skip: 4*p,
+    skip: 4*page,
     take: 4,
   })
 }
 
-function getPostsSearch(p: number, key: string, tags: string)
+async function getPostsSearch(page: number, key: string, tags: string)
 {
   return prisma.post.findMany({
-    skip: 4*p,
+    skip: 4*page,
     take: 4,
   })
 }
@@ -38,16 +33,14 @@ export default async function Home() {
   return (
     <>
       {<ArticleViewerItem {...featuredArticle}/>}
-
       {<HeaderItem bgURL={posts[GenerateRandomInt(posts.length)].thumbnail} featured={featuredArticle}/>}
 
       <div className="relative min-h-screen h-fit flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800 snap-start" id="section2">
-
         <div className="sticky top-0 w-full flex flex-row justify-between h-14 items-center z-10 bg-neutral-950/40 z-20 backdrop-blur-sm border-b-2 border-teal-400">
           <h1 className="pl-4 pr-4 animate-slideInLeft uppercase"><span className="text-teal-400 font-semibold">&#47;&#47; </span>Feel free to <span className="text-teal-400 font-semibold">browse</span> my other works!</h1>
           <button className="ml-auto mr-4 text-md p-2 bg-teal-600 transition-all hover:bg-teal-400 active:bg-teal-700 flex items-center justify-center rounded">Search
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-1">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
           </button>
           <div className="absolute bg-cross w-full h-full pointer-events-none z-0"></div>
