@@ -9,8 +9,6 @@ export const GET = async (req: any) => {
 
   const POST_PER_PAGE = 4;
 
-  console.log(query)
-
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany({

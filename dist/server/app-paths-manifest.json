@@ -1,12 +1,12 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/onlineCV/page": "app/onlineCV/page.js",
-  "/page": "app/page.js",
-  "/post/[slug]/page": "app/post/[slug]/page.js",
-  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
-  "/api/postsSum/route": "app/api/postsSum/route.js",
-  "/post/page": "app/post/page.js",
+  "/admin/page": "app/admin/page.js",
   "/api/access/route": "app/api/access/route.js",
-  "/admin/page": "app/admin/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/onlineCV/page": "app/onlineCV/page.js",
+  "/post/[slug]/page": "app/post/[slug]/page.js",
+  "/post/page": "app/post/page.js",
+  "/api/postsSum/route": "app/api/postsSum/route.js",
+  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js"
 }

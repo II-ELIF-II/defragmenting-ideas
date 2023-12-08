@@ -1,5 +1,6 @@
 "use client";
 
+import { urlQueryParamAssembler } from "@/app/utilities";
 import postSearchResultsParams from "@/types/postSearchResultsParams";
 import { useRouter } from "next/navigation";
 
@@ -11,16 +12,6 @@ const PaginatorComp = (params: postSearchResultsParams) => {
 
   const buttonNextAndPrevClass = "h-[4vh] px-2 flex justify-center items-center border-teal-400 disabled:border-neutral-50/10 text-teal-400 disabled:text-neutral-50/10 hover:bg-teal-700/30 disabled:hover:bg-neutral-700/30 ease-in-out duration-500"
   const buttonPageClass = "h-[4vh] px-4 flex justify-center items-center border-t border-neutral-50/10 disabled:border-teal-400 disabled:text-teal-400 hover:bg-teal-700/30 ease-in-out duration-500";
-
-  // Function: Assembles the paginators routing URLs.
-  // Purpose: To keep the URL clean with minimal paramaters as possible.
-  const urlQueryParamAssembler = ({page, query} : {page: Number, query: String}) => {
-    let url = "?page=" + page.toString();
-    if(query != "")
-      url += ("&query=" + query);
-    
-    return url;
-  };
 
   //Function: Builds an array of integers from A to B.
   //Purpose: Determines what and how many page buttons to display.
@@ -50,7 +41,7 @@ const PaginatorComp = (params: postSearchResultsParams) => {
 
   return(
     <div className="relative w-full h-[6vh] flex justify-center items-center">
-      <div className="flex justify-center items-center z-10">
+      <div className="flex justify-center items-center z-10 animate-slideInBottom">
         
         <button disabled={disablePrev} onClick={() => router.push(urlQueryParamAssembler({page: 1, query: params.query}), {scroll: false})} className={buttonNextAndPrevClass + " border-t"}>
           <p className="flex justify-center items-center">

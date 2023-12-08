@@ -30,7 +30,7 @@ const BodyComp = async(searchParams: postSearchParams) => {
   return (
     <div id="PostList" className="relative min-h-screen h-fit flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800 snap-start overflow-y-clip">
       <CardBarComp {...postSearchResultsParams}/>
-      <ul className="flex grow flex-col lg:flex-row h-full -mt-[12vh] lg:-mt-[6vh] z-10 overflow-hidden">
+      <ul className="flex grow flex-col lg:flex-row h-full -mt-[12vh] lg:-mt-[6vh] z-10 overflow-hidden ">
         {posts.map((post: PostSummaryProp) => (<CardComp key={post.id} {...post}/>))}
       </ul>
       <PaginatorComp {...postSearchResultsParams}/>
