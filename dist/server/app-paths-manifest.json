@@ -1,6 +1,12 @@
 {
   "/_not-found": "app/_not-found.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/access/page": "app/access/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/post/[slug]/page": "app/post/[slug]/page.js",
+  "/post/page": "app/post/page.js",
+  "/onlineCV/page": "app/onlineCV/page.js",
+  "/api/access/route": "app/api/access/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
+  "/api/postsSum/route": "app/api/postsSum/route.js"
 }

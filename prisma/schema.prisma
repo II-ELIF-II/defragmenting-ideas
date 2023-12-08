@@ -12,11 +12,11 @@ datasource db {
 }
 
 model Post {
-  id        Int       @id @default(autoincrement())
-  title     String    @db.VarChar(255)
+  id        String    @id @default(cuid())
+  title     String    @db.VarChar(81)
   thumbnail String    @db.VarChar(255)
   summary   String    @db.VarChar(255)
-  content   String    @db.VarChar(1500)
+  content   String    @db.VarChar(2000)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   PostTag   PostTag[]
@@ -29,10 +29,10 @@ model Tag {
 }
 
 model PostTag {
-  id     Int   @id @default(autoincrement())
-  Post   Post? @relation(fields: [postId], references: [id])
-  postId Int?
-  Tag    Tag?  @relation(fields: [tagId], references: [id])
+  id     Int     @id @default(autoincrement())
+  Post   Post?   @relation(fields: [postId], references: [id])
+  postId String?
+  Tag    Tag?    @relation(fields: [tagId], references: [id])
   tagId  Int?
 
   @@index([postId])

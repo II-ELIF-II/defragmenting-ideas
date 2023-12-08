@@ -1,1 +1,1 @@
-{"/_not-found":"/_not-found","/favicon.ico/route":"/favicon.ico","/access/page":"/access","/page":"/"}
+{"/_not-found":"/_not-found","/favicon.ico/route":"/favicon.ico","/page":"/","/post/[slug]/page":"/post/[slug]","/post/page":"/post","/onlineCV/page":"/onlineCV","/api/access/route":"/api/access","/admin/page":"/admin","/api/postSumFeatured/route":"/api/postSumFeatured","/api/postsSum/route":"/api/postsSum"}
