@@ -5,8 +5,11 @@ export const GET = async (req: any) => {
 
   const {searchParams} = new URL(req.url);
   const page = Number(searchParams.get("page"));
+  const query = String(searchParams.get("query"));
 
   const POST_PER_PAGE = 4;
+
+  console.log(query)
 
   try {
     const [posts, count] = await prisma.$transaction([
@@ -24,9 +27,20 @@ export const GET = async (req: any) => {
         },
         orderBy: {
           createdAt: 'desc',
+        },
+        where: {
+          title: {
+            contains: query
+          }
         }
       }),
-      prisma.post.count(),
+      prisma.post.count({
+        where: {
+          title: {
+            contains: query
+          }
+        }
+      }),
     ]);
 
     const pages = Math.ceil(count / 4);

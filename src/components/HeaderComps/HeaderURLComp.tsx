@@ -1,12 +1,13 @@
-import headerURLParams from "@/types/headerURLParams"
+import headerURLParams from "@/types/headerURLParams";
+import Link from 'next/link';
 
 const HeaderURLComp = (HeaderURL: headerURLParams) => {
   return(
-    <a href={HeaderURL.href} target={HeaderURL.target} className="flex flex-col group h-full justify-center">
+    <Link href={HeaderURL.href} target={HeaderURL.target} className="flex flex-col group h-full justify-center">
       <p className="group-hover:text-teal-400 ease-in-out duration-500">{HeaderURL.label}</p>
       <div className="h-0.5 w-0 group-hover:w-full bg-teal-400 ease-in-out duration-500"></div>
-    </a>
-  )
-}
+    </Link>
+  );
+};
 
-export default HeaderURLComp
+export default HeaderURLComp;
