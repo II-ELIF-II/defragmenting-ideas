@@ -1,10 +1,15 @@
+"use client";
+
 import TagComp from "./TagComp";
+import { useRouter } from "next/navigation";
 
 const CardComp = (post: PostSummaryProp) => {
-  const creationDate = new Date(post.createdAt);
+  const router = useRouter();
 
+  const creationDate = new Date(post.createdAt);
+  
   return(
-    <li className="relative flex flex-col grow w-full min-h-screen lg:min-h-full animate-slideInRight origin-top-right cursor-pointer group overflow-hidden snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 hover:shadow-2xl hover:shadow-neutral-950/100">
+    <li onClick={() => router.push(`post/${post.id}`)} className="relative flex flex-col grow w-full min-h-screen lg:min-h-full animate-slideInRight origin-top-right cursor-pointer group overflow-hidden snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 hover:shadow-2xl hover:shadow-neutral-950/100">
       <div className="h-full group-hover:animate-cameraMoves ease-in-out duration-500">
         <img src={post.thumbnail} alt="TEMP" draggable="false" className="object-cover h-screen lg:h-full grow scale-105 group-hover:scale-125 grayscale-[70%] group-hover:grayscale-0 ease-in-out duration-500"></img>
       </div>

@@ -4,9 +4,13 @@ import HeaderComp from '@/components/HeaderComp';
 import postSearchParams from '@/types/postSearchParams';
 
 const Home = async(Params : any) => {
+  const {params, searchParams} = Params;
+
+  // const postID = searchParams.id || "";
+
   const postSearchParameters = {
-    page: parseInt(Params.searchParams.page) || 1,
-    query: Params.searchParams.query || "",
+    page: parseInt(searchParams.page) || 1,
+    query: searchParams.query || "",
   } as postSearchParams;
 
   return (
