@@ -12,8 +12,8 @@ const AdminMain = () => {
 
   //Soft check if user is admin
   if(!session?.user?.isAdmin && status !== "loading") {
-    signOut();
-    router.replace("/");
+    // signOut();
+    router.replace("/admin");
   }
 
   if(status != "loading")
