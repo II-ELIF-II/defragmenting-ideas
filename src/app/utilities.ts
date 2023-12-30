@@ -2,15 +2,6 @@ export const StopPropagation = (e: React.MouseEvent) => {
   e.stopPropagation()
 };
 
-export const getCacheSetting = () => {
-  let cacheSetting =
-    process.env.NODE_ENV === "development"
-      ? "no-store"
-      : "default";
-
-  return cacheSetting;
-}
-
 export const getEnvironment = () => {
   let url =
     process.env.NODE_ENV === "development"

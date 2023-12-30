@@ -20,7 +20,7 @@ const authOptions = {
         if (!email || !password || email === "" || password === "") {
           return null;
         }
-        
+
         //Try to get the user
         const user = await prisma.user.findUnique({
           where: {
@@ -44,6 +44,9 @@ const authOptions = {
       },
     }),
   ],
+  pages: {
+    signIn: "/login",
+  },
   session: {
     strategy: "jwt",
   },
@@ -60,8 +63,8 @@ const authOptions = {
       //Pass-on from User {userID, isAdmin} to token
       if (user) {
         return {
-          ...token,
           id: user.id,
+          ...token,
           isAdmin: user.isAdmin,
         }
       }
@@ -74,8 +77,8 @@ const authOptions = {
       return {
         ...session,
         user: {
-          ...session.user,
           id: token.id,
+          ...session.user,
           isAdmin: token.isAdmin,
         }
       }

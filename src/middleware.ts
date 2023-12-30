@@ -1,17 +1,26 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
-export default async function middleware(req: NextRequest) {
-  const path = req.nextUrl.pathname;
-  const session = !!req.cookies.get("next-auth.session-token")
-
-  if (!session && path !=="/admin") {
-    return NextResponse.redirect(new URL(`/admin?callbackUrl=${path}`, req.url));
+export default withAuth(
+  function middleware (req) {
+    console.log(req.nextauth);
+    if (req.nextUrl.pathname === "/login/admin" && !req.nextauth.token?.isAdmin)
+    {
+      return new NextResponse("not authorized");
+    }
+  },
+  {
+    callbacks: {
+      authorized: (params) => {
+        let { token } = params;
+        return !!token;
+      },
+    },
   }
-  return NextResponse.next();
-};
+);
 
-// export const config = {
-//   matcher: [
-//     '/admin/main',
-//   ],
-// };
+export const config = {
+  matcher: [
+    "/login/admin"
+  ],
+};
