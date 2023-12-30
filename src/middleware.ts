@@ -2,8 +2,10 @@ import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 
 export default withAuth(
-  function middleware (req) {
-    console.log(req.nextauth);
+  async function middleware (req) {
+    // console.log(req.nextauth);
+  
+    //Check if user has admin access
     if (req.nextUrl.pathname === "/login/admin" && !req.nextauth.token?.isAdmin)
     {
       return new NextResponse("not authorized");

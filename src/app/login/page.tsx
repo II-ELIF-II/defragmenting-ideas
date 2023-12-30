@@ -2,11 +2,11 @@
 
 import BackgroundComp from "@/components/MiscComps/BackgroundComp";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import loginCredsParams from "@/types/loginCredsParams";
 
-const Admin = () => {
+const Login = () => {
 
   const [loginData, setLoginData] = useState<loginCredsParams>({
     email:"",
@@ -16,10 +16,10 @@ const Admin = () => {
   const [error, setError] = useState("");
 
   const router = useRouter();
+  const { data: session, status } = useSession();
 
   const handleLoginSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       const res = await signIn('credentials', {
         ...loginData,
@@ -32,12 +32,19 @@ const Admin = () => {
         return;
       }
 
-      router.replace("/login/admin")
+      router.replace("/login/admin");
     } catch (e)
     {
-      console.log(e)
+      console.log(e);
     }
   };
+
+  //Check if user is already logged
+  if(session)
+  {
+    if(session.user.isAdmin)
+      router.replace("/login/admin");
+  }
 
   return (
     <div className="flex flex-col min-h-screen min-w-screen">
@@ -62,4 +69,4 @@ const Admin = () => {
     </div>
   )
 }
-export default Admin
+export default Login
