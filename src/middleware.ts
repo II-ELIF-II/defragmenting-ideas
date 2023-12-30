@@ -10,8 +10,8 @@ export default async function middleware(req: NextRequest) {
   return NextResponse.next();
 };
 
-export const config = {
-  matcher: [
-    '/admin/main',
-  ],
-};
+// export const config = {
+//   matcher: [
+//     '/admin/main',
+//   ],
+// };
