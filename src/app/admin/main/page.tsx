@@ -19,9 +19,9 @@ const AdminMain = () => {
     }
   }
 
-  useEffect(() => {
-    checkAdminStatus();
-  },[checkAdminStatus])
+  // useEffect(() => {
+  //   checkAdminStatus();
+  // },[checkAdminStatus])
 
   
 
