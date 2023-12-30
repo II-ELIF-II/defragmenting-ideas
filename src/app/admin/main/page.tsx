@@ -3,6 +3,7 @@
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const AdminMain = () => {
 
@@ -10,11 +11,19 @@ const AdminMain = () => {
 
   const { data: session, status } = useSession();
 
-  //Soft check if user is admin
-  if(!session?.user?.isAdmin && status !== "loading") {
-    // signOut();
-    router.replace("/admin");
+  const checkAdminStatus = () => {
+    //Soft check if user is admin
+    if(!session?.user?.isAdmin && status !== "loading") {
+      // signOut();
+      router.replace("/admin");
+    }
   }
+
+  useEffect(() => {
+    checkAdminStatus();
+  },[checkAdminStatus])
+
+  
 
   if(status != "loading")
     console.log(session)

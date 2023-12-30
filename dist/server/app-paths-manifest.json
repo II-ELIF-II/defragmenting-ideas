@@ -1,7 +1,7 @@
 {
   "/page": "app/page.js",
-  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
-  "/api/postsSum/route": "app/api/postsSum/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/admin/page": "app/admin/page.js"
+  "/post/[id]/page": "app/post/[id]/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/main/page": "app/admin/main/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }
