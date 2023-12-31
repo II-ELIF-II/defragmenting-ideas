@@ -6,7 +6,6 @@ import PostDateComp from "@/components/PostComps/PostDateComp";
 import PostSummaryComp from "@/components/PostComps/PostSummaryComp";
 import postParams from "@/types/postParams";
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 
 export async function generateMetadata(Params: any) {
   const {params, searchParams} = Params;
