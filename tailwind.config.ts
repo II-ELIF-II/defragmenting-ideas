@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -16,12 +16,22 @@ const config: Config = {
       scale: {
         '200': '2.0',
       },
+      height: {
+        '116': '28rem',
+        '128': '32rem',
+        '144': '36rem',
+        '160': '40rem',
+      },
       spacing: {
         '18': '4.5rem',
       },
       dropShadow: {
         'lgCustom': '5px 10px 10px rgba(0, 0, 0, 0.4)',
         'xlCustom': '5px 10px 10px rgba(0, 0, 0, 0.6)',
+        glow: [
+          "0 0px 20px rgba(13, 148, 136, 0.35)",
+          "0 0px 65px rgba(13, 148, 136, 0.2)"
+        ]
       },
       keyframes: {
         fullLogo: {
@@ -61,6 +71,16 @@ const config: Config = {
           '0%': {transform: 'translateY(-100%)', opacity: '0'},
           '100%': {transform: 'translateY(0%)', opacity: '1'}
         },
+        slideInFromTopWithRotation: {
+          '0%': {
+            transform: 'translateY(-100%) rotateZ(120deg)', 
+            opacity: '0'
+          },
+          '100%': {
+            transform: 'translateY(0%) rotateZ(0deg)', 
+            opacity: '1'
+          }
+        },
         slideInFromBottom: {
           '0%': {transform: 'translateY(100%)', opacity: '0'},
           '100%': {transform: 'translateY(0%)', opacity: '1'}
@@ -73,10 +93,12 @@ const config: Config = {
         slideInLeft: 'slideInFromLeft 1.5s ease-in-out',
         slideInRight: 'slideInFromRight 1.5s ease-in-out',
         slideInTop: 'slideInFromTop 1.5s ease-in-out',
+        slideInTopWithRotation: 'slideInFromTopWithRotation 1.5s cubic-bezier(0,.71,.14,1)',
         slideInBottom: 'slideInFromBottom 1.5s ease-in-out',
       }
     },
   },
   plugins: [],
 }
-export default config
+
+export default config;

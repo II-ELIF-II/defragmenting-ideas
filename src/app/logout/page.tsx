@@ -19,7 +19,7 @@ const Logout = () => {
     {
       router.replace("/login");
     }
-  },[])
+  },[session, router])
   
 
   return (

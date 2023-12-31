@@ -1,7 +1,7 @@
 interface postSearchResultsParams {
-  page: Number,
-  pages: Number,
-  query: String,
+  page: number,
+  pages: number,
+  query: string,
 }
 
 export default postSearchResultsParams

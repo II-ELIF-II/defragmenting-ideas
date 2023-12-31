@@ -11,7 +11,7 @@ const CardComp = (post: PostSummaryProp) => {
   return(
     <li onClick={() => router.push(`post/${post.id}`)} className="relative flex flex-col grow w-full min-h-screen lg:min-h-full animate-slideInRight origin-top-right cursor-pointer group overflow-hidden snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 hover:shadow-2xl hover:shadow-neutral-950/100">
       <div className="h-full group-hover:animate-cameraMoves ease-in-out duration-500">
-        <img src={post.thumbnail} alt="TEMP" draggable="false" className="object-cover h-screen lg:h-full grow scale-105 group-hover:scale-125 grayscale-[70%] group-hover:grayscale-0 ease-in-out duration-500"></img>
+        <img src={post.thumbnail} alt="TEMP" draggable="false" className="object-cover h-screen lg:h-full grow scale-105 group-hover:scale-125 grayscale-[70%] group-hover:grayscale-0 ease-in-out duration-500"/>
       </div>
       <div className="absolute h-2/3 group-hover:h-1/3 bottom-0 w-full bg-gradient-to-b from-transparent to-teal-950 opacity-90 group-hover:opacity-50 ease-in-out duration-500 pointer-events-none"></div>
       <div className="absolute h-1/5 group-hover:h-1/6 top-0 w-full bg-gradient-to-t from-transparent to-teal-950 opacity-90 group-hover:opacity-50 ease-in-out duration-500 pointer-events-none"></div>
