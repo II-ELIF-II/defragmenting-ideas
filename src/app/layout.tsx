@@ -2,43 +2,13 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { AuthProvider } from '@/components/ProviderComp'
-import { getEnvironment } from './utilities'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export async function generateMetadata(Params: any) {
-  const {params, searchParams} = Params;
-
-  const getFeaturedSummary = async() => {
-    const res = await fetch(getEnvironment().concat("/api/postSumFeatured"),{
-      cache: "no-store",
-    });
-  
-    if(!res.ok){
-      throw new Error("Failed")
-    }
-  
-    return res.json()
-  };
-
-  const [Post] = await getFeaturedSummary();
-
-  return {
-    icons: {
-      icon: '/favicon.ico'
-    },
-    title: "ELIFS PLAYGROUND",
-    description: "",
-    openGraph: {
-      images: Post.thumbnail,
-    },
-  };
-};
-
-// export const metadata: Metadata = {
-//   title: 'ELIFS PLAYGROUND',
-//   description: '',
-// }
+export const metadata: Metadata = {
+  title: 'ELIFS PLAYGROUND',
+  description: 'A little corner in the internet for me to post and share my coding adventures and misadventures!',
+}
 
 export default function RootLayout({
   children,
