@@ -31,11 +31,9 @@ export async function generateMetadata(Params: any) {
     title: "ELIFS PLAYGROUND | " + Post.title,
     description: Post.summary,
     publishedTime: Post.createdAt,
-    images: [
-      {
-        url: Post.thumbnail
-      }
-    ],
+    openGraph: {
+      images: Post.thumbnail,
+    },
   };
 };
 
