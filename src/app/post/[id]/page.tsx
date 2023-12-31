@@ -1,12 +1,14 @@
-import { getEnvironment, isDevEnvironment, displayDateAsString, getTimezone, displayTimeAsString } from "@/app/utilities";
+import { getEnvironment, isDevEnvironment} from "@/app/utilities";
 import TagComp from "@/components/BodyComps/TagComp";
 import HeaderComp from "@/components/HeaderComps/HeaderBarComp";
 import BackgroundComp from "@/components/MiscComps/BackgroundComp";
 import PostDateComp from "@/components/PostComps/PostDateComp";
 import PostSummaryComp from "@/components/PostComps/PostSummaryComp";
 import postParams from "@/types/postParams";
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-const Post = async(Params : any) => {
+export async function generateMetadata(Params: any) {
   const {params, searchParams} = Params;
 
   const getPost = async(id: string) => {
@@ -21,6 +23,33 @@ const Post = async(Params : any) => {
   };
 
   const Post = (await getPost(params.id))[0] as postParams;
+
+  return {
+    title: "ELIFS PLAYGROUND | " + Post.title,
+    description: Post.summary,
+    images: [Post.thumbnail],
+  }
+}
+
+const Post = async(Params : any) => {
+  const {params, searchParams} = Params;
+  
+  const getPost = async(id: string) => {
+    const res = await fetch(getEnvironment().concat(`/api/getPost/?id=${id}`),{
+      cache: "no-store",
+    });
+  
+    if(!res.ok){
+      throw new Error("Failed");
+    }
+    return res.json();
+  };
+
+  const Post = (await getPost(params.id))[0] as postParams;
+
+  if(!Post)
+    return notFound();
+
   const DateCreation = new Date(Post.createdAt);
   const DateUpdate = new Date(Post.updatedAt);
   const Updated = (Post.createdAt !== Post.updatedAt);
@@ -31,7 +60,7 @@ const Post = async(Params : any) => {
       <div className="flex w-screen min-h-screen">
         <HeaderComp/>
         <div className="animate-slideInTopWithRotation flex flex-col items-center w-screen min-h-screen my-5">
-          <div className="bg-neutral-950 w-full max-w-7xl border border-solid border-teal-600 drop-shadow-glow ">
+          <div className="bg-neutral-950 w-full max-w-7xl border border-solid border-teal-600 drop-shadow-glow pb-16">
             <div className="relative flex w-full group h-144 overflow-hidden">
               <img src={Post.thumbnail} alt="TEMP" draggable="false" className="object-cover h-screen lg:h-full grow ease-in-out duration-500"/>
               <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-b to-neutral-950 from-transparent pointer-events-none"/>

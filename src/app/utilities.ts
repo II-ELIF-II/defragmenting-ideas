@@ -41,9 +41,9 @@ export const displayTimeAsString = (dateTime: Date) =>{
   let time = "";
 
   if (dateTime.getHours() > 12)
-    time = (dateTime.getHours() - 12) + ":" + dateTime.getMinutes() + " PM"; 
+    time = (dateTime.getHours() - 12).toLocaleString('en-US', {minimumIntegerDigits: 2}) + ":" + dateTime.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2}) + " PM"; 
   else
-    time = dateTime.getHours() + ":" + dateTime.getMinutes() + " AM"; 
+    time = dateTime.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2}) + ":" + dateTime.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2}) + " AM"; 
 
   return time;
 }
@@ -63,7 +63,7 @@ export const displayDateAsString = (dateTime: Date) => {
     if (j === 3 && k !== 13) {
       return i + "rd";
     }
-    return i + "th";
+    return i.toLocaleString('en-US', {minimumIntegerDigits: 2}) + "th";
   }
 
   return (months[dateTime.getMonth()] + " " + getOrdinalSuffix(dateTime.getDate()) + " " + dateTime.getFullYear());

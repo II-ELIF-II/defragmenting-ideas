@@ -6,7 +6,7 @@ import { AuthProvider } from '@/components/ProviderComp'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ELIFs Playground',
+  title: 'ELIFS PLAYGROUND',
   description: '',
 }
 
