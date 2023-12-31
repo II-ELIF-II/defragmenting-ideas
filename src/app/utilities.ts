@@ -23,6 +23,10 @@ export const urlQueryParamAssembler = ({page, query} : {page: Number, query: Str
   return url;
 };
 
+export const createPostUrl = (id: string) => {
+  return `/post?id=${id}`;
+};
+
 export const scrollToElement = (elementID: string) => {
   if (typeof window !== "undefined") {
     let element = document.getElementById(elementID)?.offsetTop as number;

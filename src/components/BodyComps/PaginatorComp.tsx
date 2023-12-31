@@ -81,7 +81,6 @@ const PaginatorComp = (params: postSearchResultsParams) => {
           </p>
         </button>
       </div>
-      <div className="absolute bg-grid w-full h-full"></div>
       <div className="absolute bg-gradient-to-t from-neutral-900 via-neutral-900/50 to-neutral-950/50 w-full h-full"></div>
     </div>
   );

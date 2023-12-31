@@ -34,6 +34,7 @@ const BodyComp = async(searchParams: postSearchParams) => {
         {posts.map((post: PostSummaryProp) => (<CardComp key={post.id} {...post}/>))}
       </ul>
       <PaginatorComp {...postSearchResultsParams}/>
+      <div className="absolute bg-grid w-full h-full"></div>
     </div>
   );
 };
