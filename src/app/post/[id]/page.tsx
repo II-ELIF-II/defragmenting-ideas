@@ -25,11 +25,19 @@ export async function generateMetadata(Params: any) {
   const Post = (await getPost(params.id))[0] as postParams;
 
   return {
+    icons: {
+      icon: '/favicon.ico'
+    },
     title: "ELIFS PLAYGROUND | " + Post.title,
     description: Post.summary,
-    images: [Post.thumbnail],
-  }
-}
+    publishedTime: Post.createdAt,
+    images: [
+      {
+        url: Post.thumbnail
+      }
+    ],
+  };
+};
 
 const Post = async(Params : any) => {
   const {params, searchParams} = Params;

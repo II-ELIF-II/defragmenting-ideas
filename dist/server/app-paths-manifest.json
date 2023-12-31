@@ -1,9 +1,6 @@
 {
-  "/not-found": "app/not-found.js",
-  "/post/[id]/page": "app/post/[id]/page.js",
   "/page": "app/page.js",
-  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
   "/api/postsSum/route": "app/api/postsSum/route.js",
-  "/api/getPost/route": "app/api/getPost/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
+  "/post/[id]/page": "app/post/[id]/page.js"
 }
