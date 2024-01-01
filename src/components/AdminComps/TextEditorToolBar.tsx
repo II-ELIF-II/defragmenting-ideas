@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useCallback } from "react";
-
 const TextEditorToolBar = ({editor}: {editor: any}) => {
 
   if (!editor) {
     return null;
   }
 
-  const setLink = useCallback(() => {
+  const setLink = () => {
     const previousUrl = editor.getAttributes('link').href
     const url = window.prompt('URL', previousUrl)
 
@@ -26,7 +24,7 @@ const TextEditorToolBar = ({editor}: {editor: any}) => {
 
     // update link
     editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
-  }, [editor])
+  };
 
   const addImage = () => {
     const url = window.prompt('URL')
