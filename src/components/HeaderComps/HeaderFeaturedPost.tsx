@@ -1,5 +1,4 @@
 import { getEnvironment } from "@/app/utilities";
-import TagComp from "../BodyComps/TagComp";
 import FeaturedThumbnailComp from "./FeaturedComps/FeaturedThumbnailComp";
 import FeaturedCardComp from "./FeaturedComps/FeaturedCardComp";
 
@@ -9,10 +8,10 @@ const getFeaturedSummary = async() => {
   });
 
   if(!res.ok){
-    throw new Error("Failed")
+    throw new Error("Failed");
   }
 
-  return res.json()
+  return res.json();
 };
 
 const HeaderFeaturedPost = async() => {

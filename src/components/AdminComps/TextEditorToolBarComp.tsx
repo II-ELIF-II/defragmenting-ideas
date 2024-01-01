@@ -1,6 +1,6 @@
 "use client";
 
-const TextEditorToolBar = ({editor}: {editor: any}) => {
+const TextEditorToolBarComp = ({editor}: {editor: any}) => {
 
   if (!editor) {
     return null;
@@ -35,7 +35,7 @@ const TextEditorToolBar = ({editor}: {editor: any}) => {
   }
 
   return(
-    <div className='flex bg-neutral-800/60'>
+    <div className='py-2 flex flex-wrap bg-neutral-800/60'>
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleBold().run()}
@@ -144,4 +144,4 @@ const TextEditorToolBar = ({editor}: {editor: any}) => {
   );
 };
 
-export default TextEditorToolBar;
+export default TextEditorToolBarComp;

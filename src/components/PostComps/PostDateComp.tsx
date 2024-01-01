@@ -7,13 +7,13 @@ const PostDateComp = ({cDate, uDate}: {cDate: Date, uDate: Date}) => {
   const Updated = (cDate.toISOString() !== uDate.toISOString());
 
   return(
-    <div className="flex flex-row gap-3 text-sm mt-3">
+    <div className="flex flex-col md:flex-row gap-3 text-sm mt-3">
       <div>
         <p className="text-teal-400">Created on:</p>
         <p className="">{displayTimeAsString(cDate) + " | " + displayDateAsString(cDate)}</p>
       </div>
       {Updated && (
-        <div className="border-l border-solid border-teal-400 pl-3">
+        <div className="md:border-l border-solid border-teal-400 md:pl-3">
           <p className="text-teal-400">Updated on:</p>
           <p className="">{displayTimeAsString(uDate) + " | " + displayDateAsString(uDate)}</p>
         </div>
