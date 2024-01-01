@@ -1,16 +1,16 @@
 {
   "/_not-found": "app/_not-found.js",
   "/api/access/route": "app/api/access/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/login/admin/page": "app/login/admin/page.js",
   "/login/admin/editorPost/page": "app/login/admin/editorPost/page.js",
-  "/logout/page": "app/logout/page.js",
   "/login/page": "app/login/page.js",
   "/page": "app/page.js",
+  "/logout/page": "app/logout/page.js",
   "/onlineCV/page": "app/onlineCV/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/post/page": "app/post/page.js",
-  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
   "/api/getPost/route": "app/api/getPost/route.js",
+  "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
   "/api/postsSum/route": "app/api/postsSum/route.js"
 }

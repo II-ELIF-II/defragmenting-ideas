@@ -23,7 +23,7 @@ const CardBarComp = (params: postSearchResultsParams) => {
   };
 
   return(
-    <div className="sticky top-0 w-full flex flex-col md:flex-row justify-evenly md:justify-between h-[12vh] lg:h-[6vh] items-center px-4 z-20 bg-neutral-950/60 backdrop-blur pointer-events-auto">
+    <div className="sticky top-0 w-full flex flex-col md:flex-row justify-evenly md:justify-between h-[12vh] lg:h-[6vh] items-center px-4 z-20 bg-neutral-950/80 md:bg-neutral-950/60 md:backdrop-blur pointer-events-auto">
       <h1 className="text-sm lg:text-md animate-slideInLeft uppercase"><span className="text-teal-400 font-semibold">&#47;&#47; </span>Feel free to <span className="text-teal-400 font-semibold">browse</span> my other works!</h1>
       <form onSubmit={handleQuerySubmit} className="group relative flex flex-row w-full lg:w-[40%] lg:max-w-lg animate-slideInRight">
         <input type="text" placeholder="Looking for something?" value={queryData} maxLength={81} onChange={handleQueryChange} autoComplete="off" className="w-3/4 py-1 px-2 bg-neutral-950/50 outline-none focus:bg-teal-700/50  ease-in-out duration-500"/>

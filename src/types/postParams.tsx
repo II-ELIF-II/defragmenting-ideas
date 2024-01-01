@@ -4,8 +4,8 @@ interface postParams {
   thumbnail: string,
   summary: string,
   content: string,
-  createdAt: string,
-  updatedAt: string,
+  createdAt: Date,
+  updatedAt: Date,
 }
 
 export default postParams

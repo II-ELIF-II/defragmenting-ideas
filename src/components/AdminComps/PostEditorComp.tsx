@@ -90,8 +90,8 @@ namespace HelloWorld
   return(
     <>
       <div className="flex flex-col items-center pt-[12vh] md:pt-[6vh]">
-        <div className="flex justify-center w-full max-w-7xl mx-5 my-5 bg-neutral-950 border border-solid border-teal-600 drop-shadow-glow">
-          <form className="w-4/6 mx-2">
+        <div className="flex justify-center w-full max-w-7xl mx-5 my-5 bg-neutral-950 md:border border-solid border-teal-600 md:drop-shadow-glow">
+          <form className="w-full md:w-4/6">
             {newPost.id && <div className="px-2 py-1 bg-red-500">
               Currently editing post Id: {newPost.id}
             </div>}
@@ -100,20 +100,20 @@ namespace HelloWorld
             </div>}
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60">Title</p>
-              <input required type="text" placeholder="Input Title Here" value={newPost.title} onChange={(e) => setNewPost({...newPost, title: e.target.value})} className="px-2 py-1 bg-transparent text-sm focus:outline-none"/>
+              <input required type="text" placeholder="Input Title Here" value={newPost.title} onChange={(e) => setNewPost({...newPost, title: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none"/>
             </div>
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60">Thumbnail URL</p>
-              <input required type="url" placeholder="Input Thumbnail URL Here" value={newPost.thumbnail} onChange={(e) => setNewPost({...newPost, thumbnail: e.target.value})} className="px-2 py-1 bg-transparent text-sm focus:outline-none"/>
+              <input required type="url" placeholder="Input Thumbnail URL Here" value={newPost.thumbnail} onChange={(e) => setNewPost({...newPost, thumbnail: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none"/>
             </div>
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60">Summary</p>
-              <ReactTextareaAutosize required minRows={3} placeholder="Input Summary Here" value={newPost.summary} onChange={(e) => setNewPost({...newPost, summary: e.target.value})} className="px-2 py-1 bg-transparent text-sm focus:outline-none"/>
+              <ReactTextareaAutosize required minRows={3} placeholder="Input Summary Here" value={newPost.summary} onChange={(e) => setNewPost({...newPost, summary: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none"/>
             </div>
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60">Content</p>
               <TextEditorToolBarComp editor={editor}/>
-              <EditorContent required editor={editor} className="py-1"/>
+              <EditorContent required editor={editor} className="px-4 md:px-0 py-1 whitespace-pre-wrap"/>
             </div>
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60">Tags</p>

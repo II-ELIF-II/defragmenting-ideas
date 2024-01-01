@@ -6,13 +6,26 @@ import PostDateComp from "./PostDateComp";
 import PostSummaryComp from "./PostSummaryComp";
 import postParams from "@/types/postParams";
 
-import hljs from 'highlight.js';
+// Languages supported for highlighting
+import hljs from 'highlight.js/lib/core';
+import xml from 'highlight.js/lib/languages/xml';
+hljs.registerLanguage('xml', xml);
+import css from 'highlight.js/lib/languages/css';
+hljs.registerLanguage('css', css);
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('javascript', javascript);
+import typescript from 'highlight.js/lib/languages/typescript';
+hljs.registerLanguage('typescript', typescript);
+import csharp from 'highlight.js/lib/languages/csharp';
+hljs.registerLanguage('csharp', csharp);
+import c from 'highlight.js/lib/languages/c';
+hljs.registerLanguage('c', c);
+import cpp from 'highlight.js/lib/languages/cpp';
+hljs.registerLanguage('cpp', cpp);
+
 import { useEffect } from "react";
 
 const PostDisplayComp = ({Post}: {Post: postParams}) => {
-
-  const DateCreation = new Date(Post.createdAt);
-  const DateUpdate = new Date(Post.updatedAt);
 
   useEffect(() => {
     hljs.highlightAll();
@@ -28,10 +41,10 @@ const PostDisplayComp = ({Post}: {Post: postParams}) => {
       <div className="flex flex-col w-full items-center pt-3">
         <div className="flex justify-center w-full">
           <div className="w-full md:w-4/6 px-4 md:px-0 mx-2 my-1 z-10">
-            <div className="w-fit bg-neutral-950/40 backdrop-blur-sm text-3xl px-3 py-2 -mt-18 font-semibold border-l-8 border-teal-500">
+            <div className="w-fit bg-neutral-950/40 md:backdrop-blur-sm text-xl md:text-3xl px-3 py-2 -mt-18 font-semibold border-l-8 border-teal-500">
               <span className="text-teal-400 font-semibold">&#92;&gt; </span>{Post.title}
             </div>
-            <PostDateComp cDate={DateCreation} uDate={DateUpdate}/>
+            <PostDateComp cDate={Post.createdAt} uDate={Post.updatedAt}/>
             <div className="flex flex-wrap gap-2 mt-3">
               <TagComp/>
               <TagComp/>

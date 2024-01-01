@@ -8,7 +8,7 @@ import headerURLParams from "@/types/headerURLParams"
 const HeaderBarComp = () => {
   const headerURLs: headerURLParams[] = [
     {href: "https://github.com/II-ELIF-II", target: "_blank", label: "Github"},
-    {href: "https://github.com/II-ELIF-II", target: "_blank", label: "Twitter"},
+    {href: "https://bsky.app/profile/iielifii.bsky.social", target: "_blank", label: "Bluesky"},
     {href: "https://www.linkedin.com/in/clarence-jacob-agcaoili-80b157239/", target: "_blank", label: "LinkedIn"},
     {href: "#", target: "_self", label: "About Me"},
   ];

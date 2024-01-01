@@ -3,7 +3,6 @@ import PostEditorComp from "@/components/AdminComps/PostEditorComp";
 import HeaderBarComp from "@/components/HeaderComps/HeaderBarComp";
 import BackgroundComp from "@/components/MiscComps/BackgroundComp";
 import postParams from "@/types/postParams";
-import { useSession } from "next-auth/react";
 
 
 // import hljs from 'highlight.js';
@@ -29,12 +28,15 @@ const EditorPost = async(Params: any) => {
     thumbnail: "",
     summary: "",
     content: "",
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    createdAt: new Date(),
+    updatedAt: new Date(),
   } as postParams;
 
-  if(searchParams.id)
+  if(searchParams.id){
     Post = (await getPost(searchParams.id))[0] as postParams;
+    Post.createdAt = new Date(Post.createdAt);
+    Post.updatedAt = new Date(Post.updatedAt);
+  }
  
   // const { data: session, status } = useSession();
 

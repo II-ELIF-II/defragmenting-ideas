@@ -24,6 +24,7 @@ export async function generateMetadata(Params: any) {
   };
 
   const Post = (await getPost(searchParams.id))[0] as postParams;
+  Post.createdAt = new Date(Post.createdAt);
 
   return {
     metadataBase: new URL(getEnvironment()),
@@ -62,13 +63,16 @@ const Post = async(Params: any) => {
 
   const Post = (await getPost(searchParams.id))[0] as postParams;
 
+  Post.createdAt = new Date(Post.createdAt);
+  Post.updatedAt = new Date(Post.updatedAt);
+
   if(!Post)
     return notFound();
 
   return (
     <div className="absolute top-0 flex w-screen min-h-screen overflow-y-hidden">
       <HeaderComp/>
-      <div className="animate-slideInTop md:animate-slideInTopWithRotation flex flex-col items-center w-screen min-h-screen mt-5 md:mb-5">
+      <div className="animate-slideInTop md:animate-slideInTopWithRotation flex flex-col items-center w-screen min-h-screen md:mt-5 md:mb-5">
         <PostDisplayComp Post={Post}/>
       </div>
       <BackgroundComp bgURL = {"https://i.imgur.com/yMPmdyO.jpg"}/>
