@@ -61,7 +61,7 @@ const Login = () => {
             <p className="text-xs mt-1 text-red-500">{error}</p>  
           )}
 
-          <input type="submit" id="submit" name="submit" value="Authorize" className="text-sm mt-2 py-1 px-2 text-md bg-teal-600 transition-all ease-in-out duration-600 hover:bg-teal-400 active:bg-teal-700"/>
+          <input type="submit" id="submit" name="submit" value="Authorize" className="cursor-pointer text-sm mt-2 py-1 px-2 text-md bg-teal-600 transition-all ease-in-out duration-600 hover:bg-teal-400 active:bg-teal-700"/>
 
         </form>
       </div>

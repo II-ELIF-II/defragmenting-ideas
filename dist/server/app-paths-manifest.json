@@ -1,8 +1,12 @@
 {
-  "/page": "app/page.js",
   "/post/page": "app/post/page.js",
+  "/login/admin/editorPost/page": "app/login/admin/editorPost/page.js",
+  "/login/page": "app/login/page.js",
+  "/login/admin/page": "app/login/admin/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/api/getPost/route": "app/api/getPost/route.js",
+  "/page": "app/page.js",
   "/api/postSumFeatured/route": "app/api/postSumFeatured/route.js",
-  "/api/postsSum/route": "app/api/postsSum/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/api/postsSum/route": "app/api/postsSum/route.js"
 }

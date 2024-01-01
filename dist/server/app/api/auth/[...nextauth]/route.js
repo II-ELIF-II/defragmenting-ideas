@@ -33,7 +33,7 @@ module.exports = require("next/dist/compiled/next-server/app-route.runtime.dev.j
 
 /***/ }),
 
-/***/ "../../client/components/action-async-storage.external":
+/***/ "./action-async-storage.external":
 /*!**********************************************************************************!*\
   !*** external "next/dist\\client\\components\\action-async-storage.external.js" ***!
   \**********************************************************************************/
@@ -43,7 +43,7 @@ module.exports = require("next/dist\\client\\components\\action-async-storage.ex
 
 /***/ }),
 
-/***/ "../../client/components/request-async-storage.external":
+/***/ "./request-async-storage.external?0211":
 /*!***********************************************************************************!*\
   !*** external "next/dist\\client\\components\\request-async-storage.external.js" ***!
   \***********************************************************************************/
@@ -53,7 +53,7 @@ module.exports = require("next/dist\\client\\components\\request-async-storage.e
 
 /***/ }),
 
-/***/ "../../client/components/static-generation-async-storage.external":
+/***/ "./static-generation-async-storage.external?137c":
 /*!*********************************************************************************************!*\
   !*** external "next/dist\\client\\components\\static-generation-async-storage.external.js" ***!
   \*********************************************************************************************/

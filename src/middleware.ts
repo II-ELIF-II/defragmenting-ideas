@@ -10,6 +10,11 @@ export default withAuth(
     {
       return new NextResponse("not authorized");
     }
+
+    if (req.nextUrl.pathname === "/login/admin/editorPost" && !req.nextauth.token?.isAdmin)
+    {
+      return new NextResponse("not authorized");
+    }
   },
   {
     callbacks: {
@@ -23,6 +28,7 @@ export default withAuth(
 
 export const config = {
   matcher: [
-    "/login/admin"
+    "/login/admin",
+    "/login/admin/editorPost"
   ],
 };
