@@ -1,6 +1,6 @@
-1:HL["/_next/static/css/c096778567a1fb65.css","style",{"crossOrigin":""}]
-0:["gKmgXbWL6bYy108FtdwDj",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/c096778567a1fb65.css","precedence":"next","crossOrigin":""}]],"$L3"]]]]
-4:I[9137,["749","static/chunks/749-c7b90c4ffc91c942.js","185","static/chunks/app/layout-9954f4a24ec73576.js"],"AuthProvider"]
+1:HL["/_next/static/css/6fef52dcd75b97cb.css","style",{"crossOrigin":""}]
+0:["YoJcMgpgxooeV2B5IEtEA",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6fef52dcd75b97cb.css","precedence":"next","crossOrigin":""}]],"$L3"]]]]
+4:I[9137,["749","static/chunks/749-c7b90c4ffc91c942.js","185","static/chunks/app/layout-575860b3d728be90.js"],"AuthProvider"]
 5:I[6954,[],""]
 6:I[7264,[],""]
 8:{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"}

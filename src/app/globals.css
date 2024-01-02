@@ -5,16 +5,33 @@
 @layer base {
 
   main pre, form pre {
-    border-top: 10px solid theme('colors.neutral.800 / 70%');
     background: theme('colors.neutral.800 / 40%');
 
     margin-top: 0.375rem;
     margin-bottom: 0.375rem;
 
-    padding: 0.5rem;
-    user-select: text;
+    padding-bottom: 0.5rem;
 
+    cursor: text;
+    user-select: text;
     overflow-y: auto;
+  }
+
+  main code, form code {
+    padding: 0rem 0.5rem;
+    font-size: theme('fontSize.xs');
+  }
+
+  main pre:before, form pre:before {
+    color: theme('colors.neutral.50 / 50%');
+    background: theme('colors.neutral.50 / 5%');
+    font-family: 'Inter';
+
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.5rem;
+
+    content: 'Code:';
+    display: block;
   }
 
   main mark, form mark {
@@ -43,29 +60,37 @@
   }
 
   main blockquote, form blockquote {
+    background: theme('colors.neutral.800 / 40%');
+    border-left: 10px solid theme('colors.neutral.800 / 70%');
+    quotes: "\201C""\201D""\2018""\2019";
+
     margin-top: 0.375rem;
     margin-bottom: 0.375rem;
 
     padding: 0.5rem;
 
-    background: theme('colors.neutral.800 / 40%');
-    border-left: 10px solid theme('colors.neutral.800 / 70%');
-    quotes: "\201C""\201D""\2018""\2019";
+    user-select: text;
   }
 
   main blockquote:before, form blockquote:before {
     color: theme('colors.neutral.50 / 50%');
     border: 1px solid theme('colors.neutral.600 / 60%');
     background: theme('colors.neutral.50 / 5%');
+
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+
     content: 'Quote:';
   }
 
   main blockquote p, form blockquote p {
     margin-top: 0.2rem;
+  }
+
+  main img, form img {
+    pointer-events: none;
   }
 
   /* Text Highlighting */

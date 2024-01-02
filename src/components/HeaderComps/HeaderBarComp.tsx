@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import HeaderLogoComp from "./HeaderLogoComp"
 import HeaderURLComp from "./HeaderURLComp"
-import headerURLParams from "@/types/headerURLParams"
+import headerURLParams from "@/types/header/headerURLParams"
 
 const HeaderBarComp = () => {
   const headerURLs: headerURLParams[] = [

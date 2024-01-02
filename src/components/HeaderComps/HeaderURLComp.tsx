@@ -1,4 +1,4 @@
-import headerURLParams from "@/types/headerURLParams";
+import headerURLParams from "@/types/header/headerURLParams";
 import Link from 'next/link';
 
 const HeaderURLComp = (HeaderURL: headerURLParams) => {

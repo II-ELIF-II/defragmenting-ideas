@@ -119,7 +119,7 @@ namespace HelloWorld
               <p className="px-2 py-1 bg-neutral-700/60">Tags</p>
             </div>
             <div className="flex flex-col">
-              <input type="submit" value="SUBMIT" className="cursor-pointer text-xl mt-2 py-1 px-2 text-md bg-teal-600 transition-all ease-in-out duration-600 hover:bg-teal-400 active:bg-teal-700"/>
+              <input type="submit" value={newPost.id ? 'UPDATE' : 'SUBMIT'} className="cursor-pointer text-xl mt-2 py-1 px-2 text-md bg-teal-600 transition-all ease-in-out duration-600 hover:bg-teal-400 active:bg-teal-700"/>
             </div>
           </form>
         </div>

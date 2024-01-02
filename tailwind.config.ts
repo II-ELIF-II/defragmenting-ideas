@@ -31,6 +31,10 @@ const config: Config = {
         glow: [
           "0 0px 20px rgba(13, 148, 136, 0.35)",
           "0 0px 65px rgba(13, 148, 136, 0.2)"
+        ],
+        glowOrange: [
+          "0 0px 20px rgba(249, 115, 22, 0.35)",
+          "0 0px 65px rgba(249, 115, 22, 0.2)"
         ]
       },
       keyframes: {
