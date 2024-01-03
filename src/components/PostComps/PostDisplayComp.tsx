@@ -23,14 +23,19 @@ hljs.registerLanguage('c', c);
 import cpp from 'highlight.js/lib/languages/cpp';
 hljs.registerLanguage('cpp', cpp);
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation';
+
 import tagParams from "@/types/tagParams";
 
 const PostDisplayComp = ({Post}: {Post: postParams}) => {
 
+  const pathname = usePathname();
+
   useEffect(() => {
-    hljs.highlightAll();
-  },[]);
+    if(pathname === `/post`)
+      hljs.initHighlighting();
+  },[pathname]);
 
   return(
     <div className="bg-neutral-950 w-full max-w-7xl md:border border-solid border-teal-600 md:drop-shadow-glow pb-16">
@@ -51,9 +56,9 @@ const PostDisplayComp = ({Post}: {Post: postParams}) => {
             </div>
             <PostSummaryComp summary={Post.summary}/>
             {/* Note: Find a better way to do this */}
-            <main className="animate-slideInBottom text-justify" dangerouslySetInnerHTML={{__html: Post.content}}/>
+            {<main id="mainContent" className="animate-slideInBottom text-justify overflow-hidden pb-2" dangerouslySetInnerHTML={{__html: Post.content}}/>}
             {isDevEnvironment() && (
-              <pre className="overflow-y-auto select-text">{JSON.stringify(Post, null, 2)}</pre>
+              <pre className="overflow-y-auto select-text">{pathname} {JSON.stringify(Post, null, 2)}</pre>
             )}
           </div>
         </div>

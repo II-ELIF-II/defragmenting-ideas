@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import TagComp from "../MiscComps/TagComp";
 import { useSession } from "next-auth/react";
 import tagParams from "@/types/tagParams";
+import TagManagerTagComp from "./TagManagerTagComp";
 
 const TagManagerComp = ({tagResults}: {tagResults: tagParams[]}) => {
 
@@ -26,7 +26,33 @@ const TagManagerComp = ({tagResults}: {tagResults: tagParams[]}) => {
     });
 
     router.refresh();
-  }
+  };
+
+  const handleUpdateTag = async (tag: tagParams) => {
+    let again = false;
+
+    const payload = {
+      userId: session?.user.id,
+      tagId: tag.id,
+      tagName: "",
+    }
+
+    do {
+      payload.tagName = (prompt(`Enter tag name ${again && "(Invalid Input)"}:`, `${tag.name}`)) as string;
+      again = true;
+    }
+    while(payload.tagName.length > 25 || payload.tagName === "")
+
+    await fetch('/api/admin/updateTag', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    router.refresh();
+  };
 
   return(
     <div className="flex flex-col justify-between">
@@ -39,7 +65,7 @@ const TagManagerComp = ({tagResults}: {tagResults: tagParams[]}) => {
           </span> 
           <p className="pl-1 pr-2">Create Tag</p>
         </button>
-        {tagResults.map((tag: tagParams) => (<TagComp key={tag.id} tag={tag}/>))}
+        {tagResults.map((tag: tagParams) => (<TagManagerTagComp key={tag.id} tag={tag} tagUpdateHandler={handleUpdateTag}/>))}
       </div>
     </div>
   );

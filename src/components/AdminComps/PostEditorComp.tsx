@@ -1,25 +1,47 @@
 "use client";
 
-import TextEditorToolBarComp from "@/components/AdminComps/TextEditorToolBarComp";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 
-import StarterKit from '@tiptap/starter-kit';
-import Image from '@tiptap/extension-image';
-import Highlight from '@tiptap/extension-highlight';
-import Underline from '@tiptap/extension-underline';
-import Link from '@tiptap/extension-link';
-import CharacterCount from '@tiptap/extension-character-count';
+// Tiptap Rich Text Editor Extensions
+import Document from '@tiptap/extension-document';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
 
-import { useState } from "react";
+import Dropcursor from '@tiptap/extension-dropcursor';
+import Gapcursor from '@tiptap/extension-gapcursor';
+import History from '@tiptap/extension-history';
+
+import Bold from '@tiptap/extension-bold';
+import Italic from '@tiptap/extension-italic';
+import Underline from '@tiptap/extension-underline';
+import Strike from '@tiptap/extension-strike';
+import Highlight from '@tiptap/extension-highlight';
+
+import ListItem from '@tiptap/extension-list-item';
+import BulletList from '@tiptap/extension-bullet-list';
+import OrderedList from '@tiptap/extension-ordered-list';
+
+import Blockquote from '@tiptap/extension-blockquote';
+import Link from '@tiptap/extension-link';
+import Image from '@tiptap/extension-image';
+
+import HorizontalRule from '@tiptap/extension-horizontal-rule';
+
+import Code from '@tiptap/extension-code';
+import CodeBlock from '@tiptap/extension-code-block';
+
+import CharacterCount from '@tiptap/extension-character-count';
 
 import ReactTextareaAutosize from "react-textarea-autosize";
 
 import postParams from "@/types/postParams";
-import PostDisplayComp from "../PostComps/PostDisplayComp";
 import tagParams from "@/types/tagParams";
+import TextEditorToolBarComp from "@/components/AdminComps/TextEditorToolBarComp";
+import PostDisplayComp from "../PostComps/PostDisplayComp";
 import AdminTagComp from "./AdminTagComp";
 
+import { useState } from "react";
 // import hljs from 'highlight.js';
 
 const PostEditorComp = ({setPost, tags}: {setPost: postParams, tags: tagParams[]}) => {
@@ -38,17 +60,16 @@ const PostEditorComp = ({setPost, tags}: {setPost: postParams, tags: tagParams[]
   let editorContent = `<p>
   That’s a boring paragraph followed by a fenced code block:
 </p>
-<pre><code>using System;
-
-namespace HelloWorld
+<pre><code>for (var i=1; i <= 20; i++)
 {
-  class Program
-  {
-    static void Main(string[] args)
-    {
-      Console.WriteLine("Hello World!");    
-    }
-  }
+if (i % 15 == 0)
+console.log("FizzBuzz");
+else if (i % 3 == 0)
+console.log("Fizz");
+else if (i % 5 == 0)
+console.log("Buzz");
+else
+console.log(i);
 }</code></pre>
 <p>
   Press Command/Ctrl + Enter to leave the fenced code block and continue typing in boring paragraphs.
@@ -63,20 +84,29 @@ namespace HelloWorld
   const sizeContentLimit = 8000;
 
   const editor = useEditor({
+    editorProps: {
+      attributes: {
+        class: 'focus:outline-none',
+      },
+    },
     extensions: [
-      StarterKit,
-      Underline,
-      Link,
-      Image,
-      Highlight,
+      Document, Paragraph, Text,
+      Dropcursor, Gapcursor, History,
+      Bold, Italic, Underline, Strike, Highlight,
+      ListItem, BulletList, OrderedList, 
+      Blockquote, Link, Image, HorizontalRule,
       CharacterCount.configure({
         limit: editorLimit,
       }),
+      Code, CodeBlock
     ],
     content: editorContent,
-    autofocus: true,
+    autofocus: false,
     editable: true,
-    injectCSS: false,
+    injectCSS: true,
+    parseOptions: {
+      preserveWhitespace: 'full',
+    },
     onCreate({ editor }) {
       setNewPost({...newPost, content: editor.getHTML()});
     },
@@ -93,7 +123,7 @@ namespace HelloWorld
     <>
       <div className="flex flex-col items-center pt-[12vh] md:pt-[6vh]">
         <div className="flex justify-center w-full max-w-7xl mx-5 my-5 bg-neutral-950 md:border border-solid border-teal-600 md:drop-shadow-glow">
-          <form className="w-full md:w-4/6">
+          <form className="w-full md:w-4/6 overflow-hidden">
             {newPost.id && <div className="px-2 py-1 bg-red-500">
               Currently editing post Id: {newPost.id}
             </div>}
