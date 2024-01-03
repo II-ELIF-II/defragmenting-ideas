@@ -13,7 +13,7 @@ const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :post
         match = true;
     });
     return match;
-  }
+  };
 
   const RemoveFromTagArray = () => {
     let index = -1;
@@ -23,7 +23,7 @@ const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :post
     });
     if (index !== -1)
       newPost.tags.splice(index, 1);
-  }
+  };
 
   return(
     <label className="group flex place-items-center rounded overflow-hidden text-sm cursor-pointer">

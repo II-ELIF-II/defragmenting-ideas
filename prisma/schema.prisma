@@ -16,7 +16,7 @@ model Post {
   title     String    @db.VarChar(81)
   thumbnail String    @db.VarChar(255)
   summary   String    @db.VarChar(255)
-  content   String    @db.VarChar(2000)
+  content   String    @db.VarChar(8000)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   PostTag   PostTag[]

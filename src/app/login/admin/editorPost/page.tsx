@@ -24,8 +24,8 @@ const EditorPost = async(Params: any) => {
     tags: new Array<tagParams>,
   } as postParams;
 
-  const {post, postTags} = await getPost(searchParams.id);
   const tags = await getTags() as tagParams[];
+  const {post, tags: postTags} = await getPost(searchParams.id);
 
   if(searchParams.id){
     Post = post;
@@ -39,7 +39,7 @@ const EditorPost = async(Params: any) => {
   return (
     <div className="min-h-screen w-screen flex flex-col">
       <HeaderBarComp/>
-      <PostEditorComp setPost={Post} tagResults={tags}/>
+      <PostEditorComp setPost={Post} tags={tags}/>
       <BackgroundComp useImage={false}/>
     </div>
   );
