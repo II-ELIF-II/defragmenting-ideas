@@ -1,3 +1,5 @@
+import tagParams from "./tagParams";
+
 interface postParams {
   id: string,
   title: string,
@@ -6,6 +8,7 @@ interface postParams {
   content: string,
   createdAt: Date,
   updatedAt: Date,
+  tags: Array<tagParams>,
 }
 
 export default postParams

@@ -1,7 +1,7 @@
 "use client";
 
 import { isDevEnvironment } from "@/app/utilities";
-import TagComp from "../BodyComps/TagComp";
+import TagComp from "../MiscComps/TagComp";
 import PostDateComp from "./PostDateComp";
 import PostSummaryComp from "./PostSummaryComp";
 import postParams from "@/types/postParams";
@@ -24,6 +24,7 @@ import cpp from 'highlight.js/lib/languages/cpp';
 hljs.registerLanguage('cpp', cpp);
 
 import { useEffect } from "react";
+import tagParams from "@/types/tagParams";
 
 const PostDisplayComp = ({Post}: {Post: postParams}) => {
 
@@ -46,9 +47,7 @@ const PostDisplayComp = ({Post}: {Post: postParams}) => {
             </div>
             <PostDateComp cDate={Post.createdAt} uDate={Post.updatedAt}/>
             <div className="flex flex-wrap gap-2 mt-3">
-              <TagComp/>
-              <TagComp/>
-              <TagComp/>
+              {Post.tags.map((tag: tagParams) => (<TagComp key={tag.id} tag={tag}/>))}
             </div>
             <PostSummaryComp summary={Post.summary}/>
             {/* Note: Find a better way to do this */}

@@ -11,6 +11,7 @@ const Home = async(Params : any) => {
   const postSearchParameters = {
     page: parseInt(searchParams.page) || 1,
     query: searchParams.query || "",
+    tags: searchParams.tags || Array<number>,
   } as postSearchParams;
 
   return (

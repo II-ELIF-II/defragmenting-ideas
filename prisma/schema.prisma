@@ -23,9 +23,10 @@ model Post {
 }
 
 model Tag {
-  id      Int       @id @default(autoincrement())
-  name    String    @unique @db.VarChar(25)
-  PostTag PostTag[]
+  id        Int       @id @default(autoincrement())
+  name      String    @unique @db.VarChar(25)
+  createdAt DateTime  @default(now())
+  PostTag   PostTag[]
 }
 
 model PostTag {

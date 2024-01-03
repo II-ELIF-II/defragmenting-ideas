@@ -1,8 +1,10 @@
-import { getEnvironment } from "@/app/utilities";
 import PostEditorComp from "@/components/AdminComps/PostEditorComp";
 import HeaderBarComp from "@/components/HeaderComps/HeaderBarComp";
 import BackgroundComp from "@/components/MiscComps/BackgroundComp";
+import { getPost } from "@/lib/getPost";
+import { getTags } from "@/lib/getTags";
 import postParams from "@/types/postParams";
+import tagParams from "@/types/tagParams";
 
 
 // import hljs from 'highlight.js';
@@ -10,17 +12,6 @@ import postParams from "@/types/postParams";
 
 const EditorPost = async(Params: any) => {
   const {params, searchParams} = Params;
-
-  const getPost = async(id: string) => {
-    const res = await fetch(getEnvironment().concat(`/api/getPost?id=${id}`),{
-      cache: "no-store",
-    });
-  
-    if(!res.ok){
-      throw new Error("Failed");
-    }
-    return res.json();
-  };
 
   let Post = {
     id: "",
@@ -30,12 +21,17 @@ const EditorPost = async(Params: any) => {
     content: "",
     createdAt: new Date(),
     updatedAt: new Date(),
+    tags: new Array<tagParams>,
   } as postParams;
 
+  const {post, postTags} = await getPost(searchParams.id);
+  const tags = await getTags() as tagParams[];
+
   if(searchParams.id){
-    Post = (await getPost(searchParams.id))[0] as postParams;
+    Post = post;
     Post.createdAt = new Date(Post.createdAt);
     Post.updatedAt = new Date(Post.updatedAt);
+    Post.tags = postTags;
   }
  
   // const { data: session, status } = useSession();
@@ -43,7 +39,7 @@ const EditorPost = async(Params: any) => {
   return (
     <div className="min-h-screen w-screen flex flex-col">
       <HeaderBarComp/>
-      <PostEditorComp setPost={Post}/>
+      <PostEditorComp setPost={Post} tagResults={tags}/>
       <BackgroundComp useImage={false}/>
     </div>
   );

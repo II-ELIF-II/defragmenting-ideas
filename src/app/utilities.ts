@@ -15,7 +15,7 @@ export const isDevEnvironment = () => {
   return process.env.NODE_ENV === "development";
 }
 
-export const urlQueryParamAssembler = ({page, query} : {page: Number, query: String}) => {
+export const urlQueryParamAssembler = ({page, query} : {page: number, query: string}) => {
   let url = "?page=" + page.toString();
   if(query != "")
     url += ("&query=" + query);

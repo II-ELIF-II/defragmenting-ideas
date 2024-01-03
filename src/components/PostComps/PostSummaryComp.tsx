@@ -15,7 +15,7 @@ const PostSummaryComp = ({summary}: {summary: string}) => {
 
   return(
     <label className="animate-slideInBottom flex flex-col mx-1.5 my-5 outline-1 outline-offset-4 outline-dashed outline-neutral-50 bg-neutral-800/40 transition-all duration-500">
-      <input onClick={() => toggleSummary()} className="peer/showSummary absolute scale-0" type="checkbox" defaultChecked/>
+      <input onClick={() => toggleSummary()} type="checkbox" defaultChecked className="peer/showSummary absolute scale-0"/>
       <div className="block max-h-9 w-full overflow-hidden transition-all duration-500 peer-checked/showSummary:max-h-96">
         <div className="flex h-9 cursor-pointer justify-between items-center text-md md:text-lg xl:text-xl px-2 bg-neutral-800/60">
           <h3><span className="text-teal-400 font-semibold">&#92;&gt; </span>Summary</h3>

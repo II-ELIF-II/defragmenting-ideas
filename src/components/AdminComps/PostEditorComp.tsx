@@ -7,7 +7,6 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Highlight from '@tiptap/extension-highlight';
-import CodeBlock from '@tiptap/extension-code-block';
 import Underline from '@tiptap/extension-underline';
 import Link from '@tiptap/extension-link';
 
@@ -17,10 +16,12 @@ import ReactTextareaAutosize from "react-textarea-autosize";
 
 import postParams from "@/types/postParams";
 import PostDisplayComp from "../PostComps/PostDisplayComp";
+import tagParams from "@/types/tagParams";
+import AdminTagComp from "./AdminTagComp";
 
 // import hljs from 'highlight.js';
 
-const PostEditorComp = ({setPost}: {setPost: postParams}) => {
+const PostEditorComp = ({setPost, tagResults}: {setPost: postParams, tagResults: tagParams[]}) => {
   
   const [newPost, setNewPost] = useState({
     id: setPost.id || "",
@@ -30,6 +31,7 @@ const PostEditorComp = ({setPost}: {setPost: postParams}) => {
     content: setPost.content ||  "",
     createdAt: setPost.createdAt ||  "",
     updatedAt: setPost.updatedAt ||  "",
+    tags: setPost.tags || new Array<tagParams>,
   } as postParams);
 
   let editorContent = `<p>
@@ -62,10 +64,7 @@ namespace HelloWorld
       Underline,
       Link,
       Image,
-      Highlight,
-      CodeBlock.configure({
-        exitOnArrowDown: true,
-      }),
+      Highlight
     ],
     content: editorContent,
     autofocus: true,
@@ -82,10 +81,6 @@ namespace HelloWorld
   if (!editor) {
     return null;
   }
-
-  const handleSubmitPost = () => {
-
-  };
 
   return(
     <>
@@ -116,7 +111,10 @@ namespace HelloWorld
               <EditorContent required editor={editor} className="px-4 md:px-0 py-1 whitespace-pre-wrap"/>
             </div>
             <div className="flex flex-col">
-              <p className="px-2 py-1 bg-neutral-700/60">Tags</p>
+              <p className="px-2 py-1 bg-neutral-700/60">Tags &#91; 3 Max &#93;</p>
+              <div className="grid grid-cols-5 gap-3 p-2">
+              {tagResults.map((tag: tagParams) => (<AdminTagComp key={tag.id} tag={tag} newPost={newPost} setNewPost={setNewPost}/>))}
+            </div>
             </div>
             <div className="flex flex-col">
               <input type="submit" value={newPost.id ? 'UPDATE' : 'SUBMIT'} className="cursor-pointer text-xl mt-2 py-1 px-2 text-md bg-teal-600 transition-all ease-in-out duration-600 hover:bg-teal-400 active:bg-teal-700"/>

@@ -60,7 +60,7 @@ const PaginatorComp = (params: postSearchResultsParams) => {
         </button>
 
         {pages.map((page: Number) => (
-          <button key={Number(page)} disabled={params.page==page} onClick={() => router.push(urlQueryParamAssembler({page: page, query: params.query}), {scroll: false})} className={buttonPageClass}>
+          <button key={Number(page)} disabled={params.page==page} onClick={() => router.push(urlQueryParamAssembler({page: Number(page), query: params.query}), {scroll: false})} className={buttonPageClass}>
             <p>{page.toString()}</p>
           </button>
         ))}
