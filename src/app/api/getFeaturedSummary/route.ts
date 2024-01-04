@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const featured = await prisma.post.findMany({
+    const [featured] = await prisma.post.findMany({
       take: 1,
       select: {
         id: true,
@@ -12,7 +12,17 @@ export const GET = async () => {
         summary: true,
         content: false,
         createdAt: true,
-        updatedAt: true
+        updatedAt: true,
+        PostTag: {
+          select: {
+            Tag: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+        },
       },
       orderBy: {
         createdAt: 'desc',

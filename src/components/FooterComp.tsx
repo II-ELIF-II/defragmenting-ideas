@@ -3,7 +3,7 @@ import BackgroundComp from "./MiscComps/BackgroundComp"
 
 const FooterComp = () => {
   return (
-    <footer className="relative min-h-screen flex flex-col snap-start">
+    <footer className="relative min-h-screen flex flex-col">
       <div className="flex flex-col w-screen h-screen items-center justify-center z-10">
         <AboutMeComp/>
       </div>

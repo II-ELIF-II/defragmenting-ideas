@@ -8,7 +8,7 @@ interface postParams {
   content: string,
   createdAt: Date,
   updatedAt: Date,
-  tags: Array<tagParams>,
+  PostTag: Array<tagParams>,
 }
 
 export default postParams

@@ -2,7 +2,7 @@
 
 import adminPanelPostParams from "@/types/admin/adminPanelPostParams";
 import adminPanelPostsParams from "@/types/admin/adminPanelPostsParams";
-import PostCardComp from "./PostCardComp";
+import AdminPostCardComp from "./AdminPostCardComp";
 import { useRouter } from "next/navigation";
 
 const PostManagerComp = ({postResults, postQuery}: {postResults: adminPanelPostsParams, postQuery: string}) => {
@@ -54,7 +54,7 @@ const PostManagerComp = ({postResults, postQuery}: {postResults: adminPanelPosts
             </svg>
           </button>
 
-          {postResults.posts.map((post: adminPanelPostParams) => (<PostCardComp key={post.id} {...post}/>))}
+          {postResults.posts.map((post: adminPanelPostParams) => (<AdminPostCardComp key={post.id} {...post}/>))}
 
         </div>
       </div>

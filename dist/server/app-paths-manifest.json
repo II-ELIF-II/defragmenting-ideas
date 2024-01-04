@@ -1,6 +1,22 @@
 {
+  "/_not-found": "app/_not-found.js",
+  "/api/access/route": "app/api/access/route.js",
+  "/api/admin/createPost/route": "app/api/admin/createPost/route.js",
+  "/api/admin/createTag/route": "app/api/admin/createTag/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/admin/updateTag/route": "app/api/admin/updateTag/route.js",
   "/login/admin/editorPost/page": "app/login/admin/editorPost/page.js",
-  "/api/getTags/route": "app/api/getTags/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/login/admin/page": "app/login/admin/page.js",
+  "/onlineCV/page": "app/onlineCV/page.js",
+  "/login/page": "app/login/page.js",
+  "/post/page": "app/post/page.js",
+  "/page": "app/page.js",
+  "/logout/page": "app/logout/page.js",
+  "/api/admin/getMinPosts/route": "app/api/admin/getMinPosts/route.js",
+  "/api/getFeaturedSummary/route": "app/api/getFeaturedSummary/route.js",
   "/api/getPost/route": "app/api/getPost/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/api/getPostTags/route": "app/api/getPostTags/route.js",
+  "/api/getTags/route": "app/api/getTags/route.js",
+  "/api/getPostsSummary/route": "app/api/getPostsSummary/route.js"
 }

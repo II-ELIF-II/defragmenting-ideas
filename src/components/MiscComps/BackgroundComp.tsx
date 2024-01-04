@@ -1,4 +1,4 @@
-const BackgroundComp = ({bgURL, useImage = false}: any) => {
+const BackgroundComp = ({bgURL, useImage = false}: {bgURL?: string, useImage: boolean}) => {
   
   if (!useImage)
     return(
@@ -12,7 +12,7 @@ const BackgroundComp = ({bgURL, useImage = false}: any) => {
 
   return(
     <div className="absolute w-full h-full pointer-events-none -z-10">
-      <img src={bgURL} alt="TEMP" className="absolute w-full h-full opacity-10 object-cover"></img>
+      <img src={bgURL} loading="lazy" alt="TEMP" className="absolute w-full h-full opacity-10 object-cover"></img>
       <div className="absolute bg-grid w-full h-full"></div>
       <div className="absolute bg-topography w-full h-full"></div>
       <div className="absolute bg-plus w-full h-full"></div>

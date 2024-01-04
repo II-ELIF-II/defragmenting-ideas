@@ -1,7 +1,7 @@
 interface postSearchParams {
   page: number,
   query: string,
-  tags: Array<string>,
+  tag: number,
 }
 
 export default postSearchParams

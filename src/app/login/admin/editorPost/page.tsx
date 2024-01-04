@@ -21,7 +21,7 @@ const EditorPost = async(Params: any) => {
     content: "",
     createdAt: new Date(),
     updatedAt: new Date(),
-    tags: new Array<tagParams>,
+    PostTag: new Array<tagParams>,
   } as postParams;
 
   const tags = await getTags() as tagParams[];
@@ -31,7 +31,7 @@ const EditorPost = async(Params: any) => {
     Post = post;
     Post.createdAt = new Date(Post.createdAt);
     Post.updatedAt = new Date(Post.updatedAt);
-    Post.tags = postTags;
+    Post.PostTag = postTags;
   }
  
   // const { data: session, status } = useSession();

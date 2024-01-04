@@ -8,7 +8,7 @@ const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :post
 
   const checkInTagArray = () => {
     let match = false;
-    newPost.tags.forEach(ntag => {
+    newPost.PostTag.forEach(ntag => {
       if(ntag.id === tag.id)
         match = true;
     });
@@ -17,20 +17,20 @@ const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :post
 
   const RemoveFromTagArray = () => {
     let index = -1;
-    newPost.tags.forEach(ntag => {
+    newPost.PostTag.forEach(ntag => {
       if(ntag.id === tag.id)
-        index = newPost.tags.indexOf(ntag);
+        index = newPost.PostTag.indexOf(ntag);
     });
     if (index !== -1)
-      newPost.tags.splice(index, 1);
+      newPost.PostTag.splice(index, 1);
   };
 
   return(
     <label className="group flex place-items-center rounded overflow-hidden text-sm cursor-pointer">
       <input type="checkbox" className="peer/tag absolute scale-0" defaultChecked={checkInTagArray()} onChange={(e) => {
-        if (e.target.checked && !(newPost.tags.length > 2))
+        if (e.target.checked && !(newPost.PostTag.length > 2))
         {
-          newPost.tags.push(tag);
+          newPost.PostTag.push(tag);
           setNewPost({...newPost});
           return;
         }
@@ -38,7 +38,7 @@ const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :post
         RemoveFromTagArray();
         setNewPost({...newPost});
 
-        if (newPost.tags.length > 2)
+        if (newPost.PostTag.length > 2)
           e.target.checked = false;
 
       }}/>
@@ -48,7 +48,7 @@ const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :post
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" />
         </svg>
       </span> 
-      <p className="h-full w-full pl-1 pr-2 pt-1 bg-teal-600 group-hover:bg-teal-500 peer-checked/tag:bg-orange-600 ease-in-out duration-500">{tag.name}</p>
+      <p className="h-full w-full pl-2 pr-2 pt-1 bg-teal-600 group-hover:bg-teal-500 peer-checked/tag:bg-orange-600 ease-in-out duration-500">{tag.name}</p>
     </label>
   )
 };

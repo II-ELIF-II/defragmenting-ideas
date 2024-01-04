@@ -1,10 +1,11 @@
 import { prisma } from "@/app/db";
+import createTagsPayload from "@/types/payload/createTagPayload";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
 
   try {
-    const payload: any = await req.json();
+    const payload: createTagsPayload = await req.json();
 
     // return NextResponse.json(payload.userId)
 

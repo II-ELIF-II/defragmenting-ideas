@@ -6,12 +6,10 @@ import postSearchParams from '@/types/postSearchParams';
 const Home = async(Params : any) => {
   const {params, searchParams} = Params;
 
-  // const postID = searchParams.id || "";
-
   const postSearchParameters = {
     page: parseInt(searchParams.page) || 1,
     query: searchParams.query || "",
-    tags: searchParams.tags || Array<number>,
+    tag: searchParams.tag || 0,
   } as postSearchParams;
 
   return (

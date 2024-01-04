@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import tagParams from "@/types/tagParams";
 import TagManagerTagComp from "./TagManagerTagComp";
+import updateTagsPayload from "@/types/payload/updateTagsPayload";
+import createTagsPayload from "@/types/payload/createTagPayload";
 
 const TagManagerComp = ({tagResults}: {tagResults: tagParams[]}) => {
 
@@ -15,7 +17,7 @@ const TagManagerComp = ({tagResults}: {tagResults: tagParams[]}) => {
     const payload = {
       userId: session?.user.id,
       tagName: prompt("Enter tag name:", ""),
-    }
+    } as createTagsPayload;
 
     await fetch('/api/admin/createTag', {
       method: 'POST',
@@ -33,9 +35,9 @@ const TagManagerComp = ({tagResults}: {tagResults: tagParams[]}) => {
 
     const payload = {
       userId: session?.user.id,
-      tagId: tag.id,
+      tagId: Number(tag.id),
       tagName: "",
-    }
+    } as updateTagsPayload;
 
     do {
       payload.tagName = (prompt(`Enter tag name ${again && "(Invalid Input)"}:`, `${tag.name}`)) as string;

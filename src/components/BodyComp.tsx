@@ -5,22 +5,11 @@ import postSearchParams from "@/types/postSearchParams";
 import PaginatorComp from "./BodyComps/PaginatorComp";
 import postSearchResultsParams from "@/types/postSearchResultsParams";
 import postSummaryParams from "@/types/postSummaryParams";
-
-
-const getPosts = async(searchParams: postSearchParams) => {
-  const res = await fetch(getEnvironment().concat(`/api/getPostsSummary?page=${searchParams.page}&query=${searchParams.query}&tags=${searchParams.tags}`),{
-    cache: "no-store",
-  });
-
-  if(!res.ok){
-    throw new Error("Failed");
-  }
-  return res.json();
-};
+import { getPostsSummary } from "@/lib/getPostsSummary";
 
 const BodyComp = async(searchParams: postSearchParams) => {
 
-  let {page, pages, posts} = await getPosts(searchParams);
+  let {page, pages, posts}: {page: number, pages: number, posts: Array<postSummaryParams>} = await getPostsSummary(searchParams);
 
   const postSearchResultsParams = {
     page: Number(page), 
@@ -29,10 +18,10 @@ const BodyComp = async(searchParams: postSearchParams) => {
   } as postSearchResultsParams;
 
   return (
-    <div id="PostList" className="relative min-h-screen h-fit flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800 snap-start overflow-y-clip">
+    <div id="PostList" className="relative min-h-screen h-fit flex flex-col bg-gradient-to-tl from-neutral-900 to-neutral-800 overflow-y-clip">
       <CardBarComp {...postSearchResultsParams}/>
       <ul className="flex grow flex-col lg:flex-row h-full -mt-[12vh] lg:-mt-[6vh] z-10 overflow-hidden ">
-        {posts.map((post: postSummaryParams) => (<CardComp key={post.id} {...post}/>))}
+        {posts.map((post: postSummaryParams) => (<CardComp key={post.id} Post={post}/>))}
       </ul>
       <PaginatorComp {...postSearchResultsParams}/>
       <div className="absolute bg-grid w-full h-full"></div>

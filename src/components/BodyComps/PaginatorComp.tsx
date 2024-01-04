@@ -1,11 +1,12 @@
 "use client";
 
-import { urlQueryParamAssembler } from "@/app/utilities";
+import { urlParamHandler } from "@/app/utilities";
 import postSearchResultsParams from "@/types/postSearchResultsParams";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const PaginatorComp = (params: postSearchResultsParams) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   
   const disablePrev = Number(params.page) <= 1; 
   const disableNext = Number(params.page) >= Number(params.pages);
@@ -37,13 +38,15 @@ const PaginatorComp = (params: postSearchResultsParams) => {
   //Function: Redirects to first page if query is out of bounds.
   //Purpose: Minimize out of bounds params.
   if((params.page > params.pages) && params.pages != 0)
-    router.push(urlQueryParamAssembler({page: 1, query: params.query}), {scroll: false})
+    router.push(urlParamHandler({path: '?' + searchParams, param: 'page', value: 1}), {scroll: false});
 
+  
+    // urlParamHandler({path: '?' + searchParams, param: param, value: value});
   return(
     <div className="relative w-full h-[6vh] flex justify-center items-center">
       <div className="flex justify-center items-center z-10 animate-slideInBottom">
         
-        <button disabled={disablePrev} onClick={() => router.push(urlQueryParamAssembler({page: 1, query: params.query}), {scroll: false})} className={buttonNextAndPrevClass + " border-t"}>
+        <button disabled={disablePrev} onClick={() => router.push(urlParamHandler({path: '?' + searchParams, param: 'page', value: 1}), {scroll: false})} className={buttonNextAndPrevClass + " border-t"}>
           <p className="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
@@ -51,7 +54,7 @@ const PaginatorComp = (params: postSearchResultsParams) => {
           </p>
         </button>
 
-        <button disabled={disablePrev} onClick={() => router.push(urlQueryParamAssembler({page: Number(params.page) - 1, query: params.query}), {scroll: false})} className={buttonNextAndPrevClass + " border-t border-r"}>
+        <button disabled={disablePrev} onClick={() => router.push(urlParamHandler({path: '?' + searchParams, param: 'page', value: Number(params.page) - 1}), {scroll: false})} className={buttonNextAndPrevClass + " border-t border-r"}>
           <p className="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -60,12 +63,12 @@ const PaginatorComp = (params: postSearchResultsParams) => {
         </button>
 
         {pages.map((page: Number) => (
-          <button key={Number(page)} disabled={params.page==page} onClick={() => router.push(urlQueryParamAssembler({page: Number(page), query: params.query}), {scroll: false})} className={buttonPageClass}>
+          <button key={Number(page)} disabled={params.page==page} onClick={() => router.push(urlParamHandler({path: '?' + searchParams, param: 'page', value: Number(page)}), {scroll: false})} className={buttonPageClass}>
             <p>{page.toString()}</p>
           </button>
         ))}
 
-        <button disabled={disableNext} onClick={() => router.push(urlQueryParamAssembler({page: Number(params.page) + 1, query: params.query}), {scroll: false})} className={buttonNextAndPrevClass + " border-t border-l"}>
+        <button disabled={disableNext} onClick={() => router.push(urlParamHandler({path: '?' + searchParams, param: 'page', value: Number(params.page) + 1}), {scroll: false})} className={buttonNextAndPrevClass + " border-t border-l"}>
           <p className="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -73,7 +76,7 @@ const PaginatorComp = (params: postSearchResultsParams) => {
           </p>
         </button>
         
-        <button disabled={disableNext} onClick={() => router.push(urlQueryParamAssembler({page: params.pages, query: params.query}), {scroll: false})}className={buttonNextAndPrevClass + " border-t"}>
+        <button disabled={disableNext} onClick={() => router.push(urlParamHandler({path: '?' + searchParams, param: 'page', value: Number(params.pages) + 1}), {scroll: false})}className={buttonNextAndPrevClass + " border-t"}>
           <p className="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />

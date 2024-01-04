@@ -34,13 +34,13 @@ const PostDisplayComp = ({Post}: {Post: postParams}) => {
 
   useEffect(() => {
     if(pathname === `/post`)
-      hljs.initHighlighting();
+      hljs.highlightAll();
   },[pathname]);
 
   return(
     <div className="bg-neutral-950 w-full max-w-7xl md:border border-solid border-teal-600 md:drop-shadow-glow pb-16">
       <div className="relative flex w-full group h-144 overflow-hidden">
-        <img src={Post.thumbnail} alt="TEMP" draggable="false" className="object-cover h-screen lg:h-full grow ease-in-out duration-500"/>
+        <img src={Post.thumbnail} alt="TEMP" loading="lazy" draggable="false" className="object-cover h-screen lg:h-full grow ease-in-out duration-500"/>
         <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-b to-neutral-950 from-transparent pointer-events-none"/>
         <div className="absolute top-0 w-full h-1/3 bg-gradient-to-t to-teal-950/30 from-transparent pointer-events-none"/>
       </div>
@@ -52,7 +52,7 @@ const PostDisplayComp = ({Post}: {Post: postParams}) => {
             </div>
             <PostDateComp cDate={Post.createdAt} uDate={Post.updatedAt}/>
             <div className="flex flex-wrap gap-2 mt-3">
-              {Post.tags.map((tag: tagParams) => (<TagComp key={tag.id} tag={tag}/>))}
+              {Post.PostTag.map((tag: tagParams) => (<TagComp key={tag.id} tag={tag}/>))}
             </div>
             <PostSummaryComp summary={Post.summary}/>
             {/* Note: Find a better way to do this */}

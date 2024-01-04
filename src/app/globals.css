@@ -116,6 +116,11 @@
   main blockquote p, form blockquote p {
     margin-top: 0.2rem;
     padding-left: 1rem;
+    overflow-wrap: break-word;
+  }
+
+  main p {
+    overflow-wrap: break-word;
   }
 
   main img {

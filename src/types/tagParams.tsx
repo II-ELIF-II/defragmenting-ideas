@@ -1,5 +1,5 @@
 interface tagParams {
-  id: string,
+  id: number,
   name: string,
 }
 

@@ -1,16 +1,10 @@
-import { getEnvironment } from "@/app/utilities";
 import FeaturedThumbnailComp from "./FeaturedComps/FeaturedThumbnailComp";
 import FeaturedCardComp from "./FeaturedComps/FeaturedCardComp";
-import postParams from "@/types/postParams";
-import { getPostTags } from "@/lib/getPostTags";
-import { getFeaturedSummary } from "@/lib/getFeaturedSummary";
+import tagParams from "@/types/tagParams";
+import postSummaryParams from "@/types/postSummaryParams";
 
 
-const HeaderFeaturedPost = async() => {
-
-  const Post = (await getFeaturedSummary())[0] as postParams;
-  Post.createdAt = new Date(Post.createdAt);
-  Post.tags = await getPostTags(Post.id);
+const HeaderFeaturedPost = ({Post, Tags}: {Post: postSummaryParams, Tags: tagParams[]}) => {
 
   return(
     <div className="group w-full flex flex-col grow overflow-hidden pointer-events-none z-10">
@@ -20,7 +14,7 @@ const HeaderFeaturedPost = async() => {
         <h3 className="lg:mx-4 animate-slideInBottom text-2xl lg:text-4xl text-center lg:text-left mb-4">
           <span className="text-teal-400 font-semibold">&#47;&#47;</span> Check out my latest work:
         </h3>
-        <FeaturedCardComp post={Post}/>
+        <FeaturedCardComp Post={Post} Tags={Tags}/>
       </div>
     </div>
   );

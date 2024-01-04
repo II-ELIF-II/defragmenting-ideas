@@ -1,20 +1,18 @@
 import { prisma } from "@/app/db";
 import { NextResponse } from "next/server";
+import updateTagsPayload from "@/types/payload/updateTagsPayload";
 
 export async function POST(req: Request) {
 
   try {
-    const payload: any = await req.json();
-    const userId = payload.userId as string;
-    const tagName = payload.tagName as string;
-    const tagId = Number(payload.tagId);
+    const payload: updateTagsPayload = await req.json();
 
     // return NextResponse.json(payload)
 
-    if(!userId || !tagName || !tagId)
+    if(!payload.userId || !payload.tagName || !payload.tagId)
       return NextResponse.json({message: "Error!"}, {status: 401});
 
-    if(tagName.length > 25)
+    if(payload.tagName.length > 25)
       return NextResponse.json({message: "Error too long!"}, {status: 400});
 
     const submitter = await prisma.user.findFirst({
@@ -29,7 +27,7 @@ export async function POST(req: Request) {
         createdAt: false,
         updatedAt: false
       },
-      where: { id: userId}
+      where: { id: payload.userId}
     });
 
     if(!submitter)
@@ -39,10 +37,10 @@ export async function POST(req: Request) {
 
     await prisma.tag.update({
       where: {
-        id: tagId,
+        id: payload.tagId,
       },
       data: {
-        name: tagName,
+        name: payload.tagName,
       }
     });
     

@@ -15,13 +15,17 @@ export const isDevEnvironment = () => {
   return process.env.NODE_ENV === "development";
 }
 
-export const urlQueryParamAssembler = ({page, query} : {page: number, query: string}) => {
-  let url = "?page=" + page.toString();
-  if(query != "")
-    url += ("&query=" + query);
-  
-  return url;
-};
+export const urlParamHandler = ({path, param, value} : {path: string, param: string, value: any}) => {
+  let url = new URL(getEnvironment() + path);
+
+  if(url.searchParams.has(param))
+    url.searchParams.set(param, value);
+  else
+    url.searchParams.append(param, value);
+
+  // console.log(url)
+  return url.pathname + url.search;
+}
 
 export const createPostUrl = (id: string) => {
   return `/post?id=${id}`;

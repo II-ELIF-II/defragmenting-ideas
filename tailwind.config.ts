@@ -89,6 +89,13 @@ const config: Config = {
           '0%': {transform: 'translateY(100%)', opacity: '0'},
           '100%': {transform: 'translateY(0%)', opacity: '1'}
         },
+        windowOpen: {
+          '0%': {transform: 'scale(1%, 1%)', opacity: '0'},
+          '49%': {transform: 'scale(1%, 1%)', opacity: '0'},
+          '50%': {transform: 'scale(1%, 1%)', opacity: '1'},
+          '65%': {transform: 'scale(100%, 1%)', opacity: '1'},
+          '100%': {transform: 'scale(100%, 100%)', opacity: '1'},
+        },
       },
       animation: {
         logo: 'fullLogo 3s cubic-bezier(0.50,-0.5, 0.5, 1.5) infinite',
@@ -99,6 +106,7 @@ const config: Config = {
         slideInTop: 'slideInFromTop 1.5s ease-in-out',
         slideInTopWithRotation: 'slideInFromTopWithRotation 1.5s cubic-bezier(0,.71,.14,1)',
         slideInBottom: 'slideInFromBottom 1.5s ease-in-out',
+        windowOpen: 'windowOpen 1.5s ease-in-out',
       }
     },
   },
