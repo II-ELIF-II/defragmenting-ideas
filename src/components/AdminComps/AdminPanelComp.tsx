@@ -1,7 +1,6 @@
 "use client";
 
 import PostManagerComp from "@/components/AdminComps/PostManagerComp";
-import TagComp from "@/components/MiscComps/TagComp";
 import adminPanelPostsParams from "@/types/admin/adminPanelPostsParams";
 import { useState } from "react";
 import TagManagerComp from "./TagManagerComp";

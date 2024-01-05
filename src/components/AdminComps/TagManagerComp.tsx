@@ -41,6 +41,8 @@ const TagManagerComp = ({tagResults}: {tagResults: tagParams[]}) => {
 
     do {
       payload.tagName = (prompt(`Enter tag name ${again && "(Invalid Input)"}:`, `${tag.name}`)) as string;
+      if(!payload.tagName)
+        return;
       again = true;
     }
     while(payload.tagName.length > 25 || payload.tagName === "")

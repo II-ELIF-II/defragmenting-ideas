@@ -4,7 +4,8 @@ import tagParams from "@/types/tagParams";
 import postSummaryParams from "@/types/postSummaryParams";
 
 
-const HeaderFeaturedPost = ({Post, Tags}: {Post: postSummaryParams, Tags: tagParams[]}) => {
+const HeaderFeaturedPost = ({Post}: {Post: postSummaryParams}) => {
+  const Tags = Object.keys(Post.PostTag).map(index => { return Post.PostTag[Number(index)].Tag; }) as Array<tagParams>;
 
   return(
     <div className="group w-full flex flex-col grow overflow-hidden pointer-events-none z-10">

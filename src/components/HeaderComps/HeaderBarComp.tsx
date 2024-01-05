@@ -10,7 +10,7 @@ const HeaderBarComp = () => {
     {href: "https://github.com/II-ELIF-II", target: "_blank", label: "Github"},
     {href: "https://bsky.app/profile/iielifii.bsky.social", target: "_blank", label: "Bluesky"},
     {href: "https://www.linkedin.com/in/clarence-jacob-agcaoili-80b157239/", target: "_blank", label: "LinkedIn"},
-    {href: "#", target: "_self", label: "About Me"},
+    {href: "#PostList", target: "_self", label: "About Me"},
   ];
   
   const { data: session, status } = useSession();
@@ -21,7 +21,7 @@ const HeaderBarComp = () => {
       <div className="flex flex-row space-x-4 h-full animate-slideInRight">
         {headerURLs.map((link: headerURLParams) => (<HeaderURLComp key={link.label} {...link}/>))}
         {session?.user.isAdmin && (
-          <HeaderURLComp {...{href: "/login/admin", target: "_self", label: "Admin"}}/>
+          <HeaderURLComp {...{href: "/admin", target: "_self", label: "Admin"}}/>
         )}
         {session && (
           <HeaderURLComp {...{href: "/logout", target: "_self", label: "Logout"}}/>

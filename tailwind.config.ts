@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animationDelay: {
+        'm100': "-100ms",
+        'm200': "-200ms",
+        'm300': "-300ms",
+        'm400': "-400ms",
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
@@ -71,7 +77,7 @@ const config: Config = {
           '0%': {transform: 'translateX(100%)', opacity: '0'},
           '100%': {transform: 'translateX(0%)', opacity: '1'}
         },
-        slideInFromTop: {
+        slideInTop: {
           '0%': {transform: 'translateY(-100%)', opacity: '0'},
           '100%': {transform: 'translateY(0%)', opacity: '1'}
         },
@@ -103,14 +109,16 @@ const config: Config = {
         cameraMoves: 'cameraMovement 15s ease-in-out infinite',
         slideInLeft: 'slideInFromLeft 1.5s ease-in-out',
         slideInRight: 'slideInFromRight 1.5s ease-in-out',
-        slideInTop: 'slideInFromTop 1.5s ease-in-out',
+        slideInTop: 'slideInTop 1.5s ease-in-out',
         slideInTopWithRotation: 'slideInFromTopWithRotation 1.5s cubic-bezier(0,.71,.14,1)',
         slideInBottom: 'slideInFromBottom 1.5s ease-in-out',
-        windowOpen: 'windowOpen 1.5s ease-in-out',
+        openWindow: 'windowOpen 1.5s ease-in-out',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animation-delay"),
+  ],
 }
 
 export default config;

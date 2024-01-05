@@ -6,12 +6,12 @@ export default withAuth(
     // console.log(req.nextauth);
   
     //Check if user has admin access
-    if (req.nextUrl.pathname === "/login/admin" && !req.nextauth.token?.isAdmin)
+    if (req.nextUrl.pathname === "/admin" && !req.nextauth.token?.isAdmin)
     {
       return new NextResponse("not authorized");
     }
 
-    if (req.nextUrl.pathname === "/login/admin/editorPost" && !req.nextauth.token?.isAdmin)
+    if (req.nextUrl.pathname === "/admin/editorPost" && !req.nextauth.token?.isAdmin)
     {
       return new NextResponse("not authorized");
     }
@@ -28,7 +28,7 @@ export default withAuth(
 
 export const config = {
   matcher: [
-    "/login/admin",
-    "/login/admin/editorPost"
+    "/admin",
+    "/admin/editorPost"
   ],
 };

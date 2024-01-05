@@ -140,6 +140,20 @@
     margin: 15px 0;
   }
 
+  
+  /* #PostList li:nth-child(1) { 
+    animation-delay: 100ms; 
+  }
+  #PostList li:nth-child(2) { 
+    animation-delay: 200ms; 
+  }
+  #PostList li:nth-child(3) { 
+    animation-delay: 300ms; 
+  }
+  #PostList li:nth-child(4) { 
+    animation-delay: 400ms; 
+  } */
+
   /* Text Highlighting */
   pre {
     .hljs {

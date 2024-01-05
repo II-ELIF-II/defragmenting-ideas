@@ -1,1 +1,1 @@
-{"version":1,"functions":{"/api/admin/getMinPosts":{},"/api/getFeaturedSummary":{},"/api/getPostTags":{},"/api/getPost":{},"/api/getPostsSummary":{},"/api/getTags":{}}}
+{"version":1,"functions":{"/api/admin/getMinPosts":{},"/api/getPost":{},"/api/getFeaturedSummary":{},"/api/getPostsSummary":{},"/api/getTags":{}}}

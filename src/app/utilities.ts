@@ -23,7 +23,6 @@ export const urlParamHandler = ({path, param, value} : {path: string, param: str
   else
     url.searchParams.append(param, value);
 
-  // console.log(url)
   return url.pathname + url.search;
 }
 
@@ -31,18 +30,17 @@ export const createPostUrl = (id: string) => {
   return `/post?id=${id}`;
 };
 
+/**
+ * Scrolls to a target elementID
+ * Only usable on client side components
+ */
 export const scrollToElement = (elementID: string) => {
-  if (typeof window !== "undefined") {
-    let element = document.getElementById(elementID)?.offsetTop as number;
-
-    if (element != null)
-    {
-      window.scrollTo({
-        top: element,
-        behavior: 'smooth',
-      });
-    }
+  const elem = document.getElementById(elementID);
+  if (elem) {
+    elem.scrollIntoView({ behavior: "smooth" });
+    return;
   }
+  console.error('Cannot find element id: ' + elementID);
 }
 
 export const displayTimeAsString = (dateTime: Date) =>{

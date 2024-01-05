@@ -61,7 +61,7 @@ const Post = async(Params: any) => {
       <div className="animate-slideInTop md:animate-slideInTopWithRotation flex flex-col items-center w-screen min-h-screen md:mt-5 md:mb-5">
         <PostDisplayComp Post={post}/>
       </div>
-      <BackgroundComp bgURL = {post.thumbnail} useImage={true}/>
+      <BackgroundComp bgURL = {post.thumbnail}/>
     </div>
   )
 }

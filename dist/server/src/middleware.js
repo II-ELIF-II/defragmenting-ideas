@@ -1,7 +1,7 @@
 // runtime can't be in strict mode because a global variable is assign and maybe created.
 (self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[727],{
 
-/***/ 54:
+/***/ 36:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1529,10 +1529,10 @@ var middleware = __webpack_require__(422);
 /* harmony default export */ const src_middleware = ((0,middleware.withAuth)(async function middleware(req) {
     // console.log(req.nextauth);
     //Check if user has admin access
-    if (req.nextUrl.pathname === "/login/admin" && !req.nextauth.token?.isAdmin) {
+    if (req.nextUrl.pathname === "/admin" && !req.nextauth.token?.isAdmin) {
         return new spec_extension_response/* NextResponse */.x("not authorized");
     }
-    if (req.nextUrl.pathname === "/login/admin/editorPost" && !req.nextauth.token?.isAdmin) {
+    if (req.nextUrl.pathname === "/admin/editorPost" && !req.nextauth.token?.isAdmin) {
         return new spec_extension_response/* NextResponse */.x("not authorized");
     }
 }, {
@@ -1545,12 +1545,12 @@ var middleware = __webpack_require__(422);
 }));
 const config = {
     matcher: [
-        "/login/admin",
-        "/login/admin/editorPost"
+        "/admin",
+        "/admin/editorPost"
     ]
 };
 
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-middleware-loader.js?absolutePagePath=private-next-root-dir%2Fsrc%2Fmiddleware.ts&page=%2Fsrc%2Fmiddleware&rootDir=E%3A%5CWork%5CProjects%5Cdefragmenting-ideas&matchers=W3sicmVnZXhwIjoiXig%2FOlxcLyhfbmV4dFxcL2RhdGFcXC9bXi9dezEsfSkpP1xcL2xvZ2luXFwvYWRtaW4oLmpzb24pP1tcXC8jXFw%2FXT8kIiwib3JpZ2luYWxTb3VyY2UiOiIvbG9naW4vYWRtaW4ifSx7InJlZ2V4cCI6Il4oPzpcXC8oX25leHRcXC9kYXRhXFwvW14vXXsxLH0pKT9cXC9sb2dpblxcL2FkbWluXFwvZWRpdG9yUG9zdCguanNvbik%2FW1xcLyNcXD9dPyQiLCJvcmlnaW5hbFNvdXJjZSI6Ii9sb2dpbi9hZG1pbi9lZGl0b3JQb3N0In1d&preferredRegion=&middlewareConfig=eyJtYXRjaGVycyI6W3sicmVnZXhwIjoiXig%2FOlxcLyhfbmV4dFxcL2RhdGFcXC9bXi9dezEsfSkpP1xcL2xvZ2luXFwvYWRtaW4oLmpzb24pP1tcXC8jXFw%2FXT8kIiwib3JpZ2luYWxTb3VyY2UiOiIvbG9naW4vYWRtaW4ifSx7InJlZ2V4cCI6Il4oPzpcXC8oX25leHRcXC9kYXRhXFwvW14vXXsxLH0pKT9cXC9sb2dpblxcL2FkbWluXFwvZWRpdG9yUG9zdCguanNvbik%2FW1xcLyNcXD9dPyQiLCJvcmlnaW5hbFNvdXJjZSI6Ii9sb2dpbi9hZG1pbi9lZGl0b3JQb3N0In1dfQ%3D%3D!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-middleware-loader.js?absolutePagePath=private-next-root-dir%2Fsrc%2Fmiddleware.ts&page=%2Fsrc%2Fmiddleware&rootDir=E%3A%5CWork%5CProjects%5Cdefragmenting-ideas&matchers=W3sicmVnZXhwIjoiXig%2FOlxcLyhfbmV4dFxcL2RhdGFcXC9bXi9dezEsfSkpP1xcL2FkbWluKC5qc29uKT9bXFwvI1xcP10%2FJCIsIm9yaWdpbmFsU291cmNlIjoiL2FkbWluIn0seyJyZWdleHAiOiJeKD86XFwvKF9uZXh0XFwvZGF0YVxcL1teL117MSx9KSk%2FXFwvYWRtaW5cXC9lZGl0b3JQb3N0KC5qc29uKT9bXFwvI1xcP10%2FJCIsIm9yaWdpbmFsU291cmNlIjoiL2FkbWluL2VkaXRvclBvc3QifV0%3D&preferredRegion=&middlewareConfig=eyJtYXRjaGVycyI6W3sicmVnZXhwIjoiXig%2FOlxcLyhfbmV4dFxcL2RhdGFcXC9bXi9dezEsfSkpP1xcL2FkbWluKC5qc29uKT9bXFwvI1xcP10%2FJCIsIm9yaWdpbmFsU291cmNlIjoiL2FkbWluIn0seyJyZWdleHAiOiJeKD86XFwvKF9uZXh0XFwvZGF0YVxcL1teL117MSx9KSk%2FXFwvYWRtaW5cXC9lZGl0b3JQb3N0KC5qc29uKT9bXFwvI1xcP10%2FJCIsIm9yaWdpbmFsU291cmNlIjoiL2FkbWluL2VkaXRvclBvc3QifV19!
 
 
 // Import the userland code.
@@ -8198,7 +8198,7 @@ async function generate_secret_generateSecret(alg, options) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ var __webpack_exports__ = (__webpack_exec__(54));
+/******/ var __webpack_exports__ = (__webpack_exec__(36));
 /******/ (_ENTRIES = typeof _ENTRIES === "undefined" ? {} : _ENTRIES)["middleware_src/middleware"] = __webpack_exports__;
 /******/ }
 ]);

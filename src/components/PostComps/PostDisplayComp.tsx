@@ -51,8 +51,8 @@ const PostDisplayComp = ({Post}: {Post: postParams}) => {
               <span className="text-teal-400 font-semibold">&#92;&gt; </span>{Post.title}
             </div>
             <PostDateComp cDate={Post.createdAt} uDate={Post.updatedAt}/>
-            <div className="flex flex-wrap gap-2 mt-3">
-              {Post.PostTag.map((tag: tagParams) => (<TagComp key={tag.id} tag={tag}/>))}
+            <div className="flex flex-row-reverse flex-wrap justify-end gap-2 mt-3">
+              {Post.PostTag.map((Tag: tagParams) => (<TagComp key={Tag.id} Tag={Tag}/>))}
             </div>
             <PostSummaryComp summary={Post.summary}/>
             {/* Note: Find a better way to do this */}

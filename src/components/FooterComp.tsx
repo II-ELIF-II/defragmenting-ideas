@@ -7,7 +7,7 @@ const FooterComp = () => {
       <div className="flex flex-col w-screen h-screen items-center justify-center z-10">
         <AboutMeComp/>
       </div>
-      <BackgroundComp useImage={false}/>
+      <BackgroundComp />
     </footer>
   )
 }

@@ -13,12 +13,12 @@
       "page": "/",
       "matchers": [
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/login\\/admin(.json)?[\\/#\\?]?$",
-          "originalSource": "/login/admin"
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/admin(.json)?[\\/#\\?]?$",
+          "originalSource": "/admin"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/login\\/admin\\/editorPost(.json)?[\\/#\\?]?$",
-          "originalSource": "/login/admin/editorPost"
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/admin\\/editorPost(.json)?[\\/#\\?]?$",
+          "originalSource": "/admin/editorPost"
         }
       ],
       "wasm": [],
