@@ -1,11 +1,9 @@
 {
   "/page": "app/page.js",
-  "/not-found": "app/not-found.js",
-  "/post/page": "app/post/page.js",
-  "/api/getPost/route": "app/api/getPost/route.js",
   "/api/getFeaturedSummary/route": "app/api/getFeaturedSummary/route.js",
   "/api/getPostsSummary/route": "app/api/getPostsSummary/route.js",
   "/api/getTag/route": "app/api/getTag/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/getTags/route": "app/api/getTags/route.js"
+  "/api/getTags/route": "app/api/getTags/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }
