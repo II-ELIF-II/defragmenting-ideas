@@ -5,8 +5,8 @@ interface postSummaryParams {
   title: string;
   thumbnail: string;
   summary: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   PostTag: Array<postTagParams>;
 };
 

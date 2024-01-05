@@ -23,7 +23,7 @@ hljs.registerLanguage('c', c);
 import cpp from 'highlight.js/lib/languages/cpp';
 hljs.registerLanguage('cpp', cpp);
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePathname } from 'next/navigation';
 
 import tagParams from "@/types/tagParams";
@@ -52,10 +52,9 @@ const PostDisplayComp = ({Post}: {Post: postParams}) => {
             </div>
             <PostDateComp cDate={Post.createdAt} uDate={Post.updatedAt}/>
             <div className="flex flex-row-reverse flex-wrap justify-end gap-2 mt-3">
-              {Post.PostTag.map((Tag: tagParams) => (<TagComp key={Tag.id} Tag={Tag}/>))}
+              { Post.PostTag.map((Tag: tagParams) => (<TagComp key={Tag.id} Tag={Tag}/>)) }
             </div>
             <PostSummaryComp summary={Post.summary}/>
-            {/* Note: Find a better way to do this */}
             {<main id="mainContent" className="animate-slideInBottom text-justify overflow-hidden pb-2" dangerouslySetInnerHTML={{__html: Post.content}}/>}
             {isDevEnvironment() && (
               <pre className="overflow-y-auto select-text">{pathname} {JSON.stringify(Post, null, 2)}</pre>

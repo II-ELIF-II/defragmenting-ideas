@@ -15,7 +15,7 @@ const FeaturedCardComp = ({Post, Tags}: {Post: postSummaryParams, Tags: tagParam
       <div className="flex flex-wrap gap-2 mt-1 text-sm px-2 py-1 font-semibold">
         {Tags.map((Tag: tagParams) => (<TagComp key={Tag.id} Tag={Tag}/>))}
       </div>
-      <p className="text-xs text-neutral-400 px-3 my-1 whitespace-pre-wrap">{Post.createdAt.getUTCFullYear()}-{Post.createdAt.getUTCMonth() + 1}-{Post.createdAt.getUTCDate()}</p>
+      <p className="text-xs text-neutral-400 px-3 my-1 whitespace-pre-wrap">{new Date(Post.createdAt).getUTCFullYear()}-{new Date(Post.createdAt).getUTCMonth() + 1}-{new Date(Post.createdAt).getUTCDate()}</p>
       <p className="text-sm md:text-md xl:text-lg mb-1 px-3 text-justify indent-12">{Post.summary}</p>
       <p className="absolute bottom-0 right-0 text-sm uppercase mr-2 mb-1 opacity-20 text-neutral-400 font-extralight">ID&#58;&#92;&gt; {Post.id}</p>
     </div>

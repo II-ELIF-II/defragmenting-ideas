@@ -107,6 +107,21 @@ const config: Config = {
           '65%': {transform: 'scale(100%, 1%)', opacity: '1'},
           '100%': {transform: 'scale(100%, 100%)', opacity: '1'},
         },
+        windowClose: {
+          '0%': {transform: 'scale(100%, 100%)', opacity: '1'},
+          '25%': {transform: 'scale(100%, 1%)', opacity: '1'},
+          '50%': {transform: 'scale(1%, 1%)', opacity: '1'},
+          '51%': {transform: 'scale(1%, 1%)', opacity: '0'},
+          '100%': {transform: 'scale(1%, 1%)', opacity: '0'},
+        },
+        fadeIn: {
+          from: {opacity: '0'},
+          to: {opacity: '1'}
+        },
+        fadeOut: {
+          from: {opacity: '1'},
+          to: {opacity: '0'}
+        }
       },
       animation: {
         logo: 'fullLogo 3s cubic-bezier(0.50,-0.5, 0.5, 1.5) infinite',
@@ -117,7 +132,10 @@ const config: Config = {
         slideInTop: 'slideInTop 1.5s ease-in-out',
         slideInTopWithRotation: 'slideInFromTopWithRotation 1.5s cubic-bezier(0,.71,.14,1)',
         slideInBottom: 'slideInFromBottom 1.5s ease-in-out',
-        openWindow: 'windowOpen 1.5s ease-in-out',
+        openWindow: 'windowOpen 1s ease-in-out',
+        closeWindow: 'windowClose 1s ease-in-out',
+        fadeIn: 'fadeIn 1s ease-in-out',
+        fadeOut: 'fadeOut 1s ease-in-out',
       }
     },
   },

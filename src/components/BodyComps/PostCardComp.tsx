@@ -1,37 +1,48 @@
 "use client";
 
-import { createPostUrl } from "@/app/utilities";
+import PostCardGradientComp from "./PostCardComps/PostCardGradientComp";
+import PostCardSummaryComp from "./PostCardComps/PostCardSummaryComp";
+import PostCardHeaderComp from "./PostCardComps/PostCardHeaderComp";
+import PostCardBackground from "./PostCardComps/PostCardBackground";
 import TagComp from "../MiscComps/TagComp";
-import { useRouter } from "next/navigation";
+
 import postSummaryParams from "@/types/postSummaryParams";
+import postTagParams from "@/types/postTagParams";
 import tagParams from "@/types/tagParams";
 
-const PostCardComp = ({Post, Index}: {Post: postSummaryParams, Index: number}) => {
+import { createPostUrl } from "@/app/utilities";
+import { useRouter } from "next/navigation";
+
+const PostCardComp = ({Post, Index}: {Post?: postSummaryParams, Index: number}) => {
   const router = useRouter();
 
-  const creationDate = new Date(Post.createdAt);
-  const Tags = Object.keys(Post.PostTag).map(index => { return Post.PostTag[Number(index)].Tag; }) as Array<tagParams>;
-  const Delay = ['md:animation-delay-m400', 'md:animation-delay-m300', 'md:animation-delay-m200', 'md:animation-delay-m100'];
+  const post = {
+    id: Post?.id || 'ERR_R_404_ID_PARAM_MISSING',
+    title: Post?.title || 'ER_MISSING_TITLE',
+    thumbnail: Post?.thumbnail || '',
+    summary: Post?.summary || '',
+    createdAt: Post ? (new Date(Post?.createdAt).getUTCFullYear()) + '-' + (new Date(Post?.createdAt).getUTCMonth() + 1) + '-' + (new Date(Post?.createdAt).getUTCDate()) : 'ER_MISSING_DATE',
+    updatedAt: Post?.updatedAt || '',
+    PostTag: Post?.PostTag || new Array<postTagParams>,
+  } as postSummaryParams;
+
+  const tags = Object.keys(post.PostTag).map(index => { return post.PostTag[Number(index)].Tag; }) as Array<tagParams>;
+  const delay = ['md:animation-delay-m400', 'md:animation-delay-m300', 'md:animation-delay-m200', 'md:animation-delay-m100'];
+  const summaryStyle = "w-full h-fit text-md xl:text-lg px-3 pt-2 pb-4 text-justify indent-12 font-light";
+
   return(
-    <li onClick={() => router.push(createPostUrl(Post.id))} className={Delay[Index] + ` animate-slideInBottom md:animate-slideInTop relative flex flex-col grow w-full min-h-screen md:min-h-full origin-top-right cursor-pointer group overflow-hidden snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 md:hover:drop-shadow-glowSM`}>
-      <div className="absolute h-full group-hover:animate-cameraMoves ease-in-out duration-500">
-        <img src={Post.thumbnail} alt="TEMP" loading="lazy" draggable="false" className="object-cover h-screen md:h-full grow scale-110 group-hover:scale-125 grayscale-[70%] group-hover:grayscale-0 ease-in-out duration-500"/>
-      </div>
-      <div className="absolute h-2/3 group-hover:h-1/3 bottom-0 w-full bg-gradient-to-b from-transparent to-teal-950 opacity-90 group-hover:opacity-50 ease-in-out duration-500 pointer-events-none"></div>
-      <div className="absolute h-1/5 group-hover:h-1/6 top-0 w-full bg-gradient-to-t from-transparent to-teal-950 opacity-90 group-hover:opacity-50 ease-in-out duration-500 pointer-events-none"></div>
+    <li onClick={() => (Post ? router.push(createPostUrl(post.id)) : '')} className={ (Post ? 'cursor-pointer flex ' : 'cursor-default hidden md:flex ') + delay[Index] + ` animate-slideInBottom md:animate-slideInTop relative w-full min-h-screen md:min-h-full flex-col grow origin-top-right group overflow-hidden ease-in-out duration-500 [&>*]:ease-in-out [&>*]:duration-500 hover:z-10 md:hover:drop-shadow-glowSM`}>
+      <PostCardBackground TextURL={post.thumbnail}/>
+      <PostCardGradientComp/>
       <div className="relative grow flex flex-col top-0">
-        <div className="flex flex-col justify-around gap-3 mt-[12vh] lg:mt-[6vh]">
-          <div className="w-fit mt-3 bg-teal-500 px-2 py-1 text-xl font-semibold">{creationDate.getUTCFullYear()}-{creationDate.getUTCMonth() + 1}-{creationDate.getUTCDate()}</div>
-          <div className="w-fit text-3xl mr-8 px-3 py-2 bg-neutral-950/40 md:backdrop-blur-sm font-semibold border-l-8 border-teal-500"><span className="text-teal-400 font-semibold">&#92;&gt; </span>{Post.title}</div>
-        </div>
-        <div className="mt-auto h-fit bottom-0 flex flex-col w-full border-t-4 border-neutral-950/20">
+        <PostCardHeaderComp TextDate={post.createdAt} TextTitle={post.title}/>
+        <div className="mt-auto h-fit flex flex-col w-full border-t-4 border-neutral-950/20">
           <div className="flex flex-wrap gap-2 text-sm p-2 font-semibold bg-diagonal-stripes ease-in-out duration-500">
-            {Tags.map((Tag: tagParams) => (<TagComp key={Tag.id} Tag={Tag}/>))}
+            {tags.map((tag: tagParams) => (<TagComp key={tag.id} Tag={tag}/>))}
           </div>
-          <div className="bg-gradient-to-r from-neutral-950/40 to-neutral-950/60 md:backdrop-blur-sm md:group-hover:backdrop-blur-md ease-in-out duration-500">
-            <p className="w-full h-fit flex text-md xl:text-lg px-3 pt-2 pb-4 text-justify indent-12 font-light">{Post.summary}</p>
-            <p className="absolute bottom-0 right-0 text-sm uppercase mr-2 mb-1 opacity-20 text-neutral-400 font-extralight">ID&#58;&#92;&gt; {Post.id}</p>
-          </div>
+          <PostCardSummaryComp TextId={post.id}>
+            {Post ? <p className={summaryStyle}>{post.summary}</p> : <p className={summaryStyle}><span className="bg-teal-500 py-0.5 px-2 font-bold text-neutral-800 ">ERROR :</span> The parameters for this article could not be found, this article may have been corrupted, lost, or it simply does not exist. <br/>&zwnj;<br/>&zwnj;<br/>&zwnj;</p>}
+          </PostCardSummaryComp>
         </div>
       </div>
     </li>

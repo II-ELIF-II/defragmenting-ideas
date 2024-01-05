@@ -15,7 +15,7 @@ const Home = async(Params : any) => {
   return (
     <div className="min-w-screen min-h-screen h-fit">
       <HeaderComp/>
-      <BodyComp {...postSearchParameters}/>
+      <BodyComp searchParams={postSearchParameters}/>
       <FooterComp/>
     </div>
   );

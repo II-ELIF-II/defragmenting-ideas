@@ -16,9 +16,9 @@ const HeaderBarComp = () => {
   const { data: session, status } = useSession();
 
   return(
-    <div className="absolute w-full flex flex-col md:flex-row justify-evenly md:justify-between h-[12vh] md:h-[6vh] items-center px-4 z-20 bg-neutral-950/90 md:bg-neutral-950/60 md:backdrop-blur">
+    <div className="absolute w-full flex [&>*]:flex flex-col md:flex-row justify-evenly md:justify-between h-[12vh] md:h-[6vh] items-center px-4 z-20 bg-neutral-950/90 md:bg-neutral-950/60 md:backdrop-blur">
       <HeaderLogoComp/>
-      <div className="flex flex-row space-x-4 h-full animate-slideInRight">
+      <div className="flex-row space-x-4 h-full animate-slideInRight">
         {headerURLs.map((link: headerURLParams) => (<HeaderURLComp key={link.label} {...link}/>))}
         {session?.user.isAdmin && (
           <HeaderURLComp {...{href: "/admin", target: "_self", label: "Admin"}}/>

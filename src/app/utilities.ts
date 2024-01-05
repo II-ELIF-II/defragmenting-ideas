@@ -15,15 +15,29 @@ export const isDevEnvironment = () => {
   return process.env.NODE_ENV === "development";
 }
 
+export const sleep = (ms: number) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export const urlParamHandler = ({path, param, value} : {path: string, param: string, value: any}) => {
-  let url = new URL(getEnvironment() + path);
+  let newUrl = new URL(getEnvironment() + path);
 
-  if(url.searchParams.has(param))
-    url.searchParams.set(param, value);
+  if(newUrl.searchParams.has(param))
+    newUrl.searchParams.set(param, value);
   else
-    url.searchParams.append(param, value);
+    newUrl.searchParams.append(param, value);
 
-  return url.pathname + url.search;
+  return newUrl.pathname + newUrl.search;
+}
+
+export const urlParamRemove = ({path, param}: {path: string, param: string}) => {
+  let newUrl = new URL(getEnvironment() + path);
+  if(newUrl.searchParams.has(param))
+    newUrl.searchParams.delete(param)
+  else
+    console.error('URL does not contain a "' + param + '" parameter' );
+
+  return newUrl.pathname + newUrl.search;
 }
 
 export const createPostUrl = (id: string) => {

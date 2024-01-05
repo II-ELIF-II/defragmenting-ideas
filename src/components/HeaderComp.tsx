@@ -8,7 +8,6 @@ import postSummaryParams from "@/types/postSummaryParams";
 const HeaderComp = async() => {
 
   const Post = await getFeaturedSummary() as postSummaryParams;
-  Post.createdAt = new Date(Post.createdAt);
 
   return(
     <header id="primary" className="relative h-screen flex flex-col overflow-hidden">
@@ -17,6 +16,6 @@ const HeaderComp = async() => {
       <BackgroundComp bgURL={Post.thumbnail}/>
     </header>
   )
-}
+};
 
-export default HeaderComp
+export default HeaderComp;

@@ -34,7 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "dist/types/**/*.ts"
-, "src/app/api/auth/[...nextauth]/route.js", "src/components/AdminComps/CodeBlockComp.jsx"  ],
+, "src/app/api/auth/[...nextauth]/route.js", "src/components/AdminComps/CodeBlockComp.jsx", "src/components/MiscComps/CardComps"  ],
   "exclude": [
     "node_modules"
   ]

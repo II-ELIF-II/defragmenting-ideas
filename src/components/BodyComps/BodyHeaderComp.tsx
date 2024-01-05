@@ -2,24 +2,31 @@
 
 import postSearchResultsParams from "@/types/postSearchResultsParams";
 import { useRouter, useSearchParams } from "next/navigation";
-import { scrollToElement, urlParamHandler } from "@/app/utilities";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { scrollToElement, sleep, urlParamHandler, urlParamRemove } from "@/app/utilities";
+import { FormEvent, useEffect, useState } from "react";
+import tagParams from "@/types/tagParams";
+import SearchTagComp from "./SearchTagComp";
+import ModalCardComp from "../MiscComps/CardComps/ModalCardComp";
 
-const BodyHeaderComp = (params: postSearchResultsParams) => {
+const BodyHeaderComp = ({Params, Tag, Tags}: {Params: postSearchResultsParams, Tag: tagParams, Tags: Array<tagParams>}) => {
   
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  const [queryData, setQueryData] = useState(params.query.toString());
-
-  const handleQueryChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setQueryData(e.target.value.toString());
-  };
+  
+  const [queryData, setQueryData] = useState(Params.query.toString());
+  const [openSearchModal, setOpenSearchModal] = useState(false);
+  // const [viewAnimSearch, setViewAnimSearch] = useState(false);
+  const [tagData, setTagData] = useState(0);
 
   const handleQuerySubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(urlParamHandler({path: '?' + searchParams, param: 'query', value: queryData}), {scroll: false});
+    setOpenSearchModal(false);
+    let url = '?' + searchParams;
+    if(queryData != '') url = urlParamHandler({path: url, param: 'query', value: queryData});
+    if(queryData == '' && searchParams.has('query')) url = urlParamRemove({path: url, param: 'query'});
+    if(tagData != 0) url = urlParamHandler({path: url, param: 'tag', value: tagData});
+    if(tagData == 0 && searchParams.has('tag')) url = urlParamRemove({path: url, param: 'tag'});
+    router.push(url, {scroll: false});
   };
 
   useEffect(() => {
@@ -28,31 +35,37 @@ const BodyHeaderComp = (params: postSearchResultsParams) => {
   }, [searchParams]);
 
   return(
-    <div className="sticky md:absolute top-0 w-full flex flex-col md:flex-row justify-evenly md:justify-between h-[12vh] lg:h-[6vh] items-center px-4 z-20 bg-neutral-950/80 md:bg-neutral-950/60 md:backdrop-blur pointer-events-auto">
-      <h1 className="text-sm lg:text-md animate-slideInLeft uppercase"><span className="text-teal-400 font-semibold">&#47;&#47; </span>Feel free to <span className="text-teal-400 font-semibold">browse</span> my other works!</h1>
-      <form onSubmit={handleQuerySubmit} className="group relative flex flex-row w-full lg:w-[40%] lg:max-w-lg animate-slideInRight">
-        <input type="text" placeholder="Looking for something?" value={queryData} maxLength={81} onChange={handleQueryChange} className="w-3/4 py-1 px-2 bg-neutral-800/40 hover:bg-neutral-700/50 focus:bg-teal-700/50 outline-none ease-in-out duration-500"/>
-        <input type="submit" value="Search" className="w-1/4 py-1 px-2 text-md bg-teal-600 transition-all ease-in-out duration-600 hover:bg-teal-400 active:bg-teal-700"/>
-        {/* <div className="absolute top-full w-3/4 bg-neutral-950/95 overflow-hidden origin-top scale-y-0 group-hover:scale-y-100 group-focus-within:scale-y-100 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all ease-in-out duration-800">
-          <p className="text-sm py-0.5 pl-2 bg-neutral-950/60">Filter By</p>
-          <div className="flex flex-wrap items-center pl-2 pr-2 pb-1 mt-1">
-            <div className="flex items-center bg-teal-600 m-0.5 px-1 rounded h-6 text-sm"><p>Sample Tag</p></div>
-            <div className="flex items-center bg-teal-600 m-0.5 px-1 rounded h-6 text-sm"><p>Sample Tag</p></div>
-            <div className="flex items-center bg-teal-600 m-0.5 px-1 rounded h-6 text-sm"><p>Sample Tag</p></div>
-            <div className="flex items-center bg-teal-600 m-0.5 px-1 rounded h-6 text-sm"><p>Sample Tag</p></div>
-            <div className="flex items-center bg-teal-600 m-0.5 px-1 rounded h-6 text-sm"><p>Sample Tag</p></div>
-            <div className="flex items-center bg-teal-600 m-0.5 px-1 rounded h-6 text-sm"><p>Sample Tag</p></div>
+    <div className="sticky md:absolute top-0 w-full flex flex-col md:flex-row justify-evenly md:justify-between h-[12vh] lg:h-[6vh] items-center z-20 bg-neutral-950/80 md:bg-neutral-950/60 md:backdrop-blur pointer-events-auto">
+
+      <ModalCardComp TextMain="Search Directory" TextSide="Search" IsOpen={openSearchModal} setIsOpen={setOpenSearchModal}>
+        <p className="text-sm">Input Query: </p>
+
+        <form onSubmit={(e) => handleQuerySubmit(e)} className="flex flex-col md:flex-row [&>*]:py-1 [&>*]:ease-in-out [&>*]:duration-500">
+          <div className="w-full px-2 flex gap-2 bg-neutral-700/40 hover:bg-neutral-600/50 focus-within:bg-teal-700/50 focus-within:hover:bg-teal-700/50">
+            <input type="text" placeholder="Looking for something?" value={queryData} maxLength={81} onChange={(e) => setQueryData(e.target.value)} className="grow bg-transparent outline-none"/>
+            { queryData && <button type="button" onClick={() => setQueryData('')} className="rotate-0 hover:rotate-180">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button> }
           </div>
-          <p className="text-sm py-0.5 pl-2 bg-neutral-950/60">Recently Searched</p>
-          <ul className="flex flex-wrap grow items-center">
-            <SearchRecentComp/>
-            <SearchRecentComp/>
-            <SearchRecentComp/>
-            <SearchRecentComp/>
-            <SearchRecentComp/>
-          </ul>
-        </div> */}
-      </form>
+          <input type="submit" value="Search" className="px-8 bg-teal-600 hover:bg-teal-400 active:bg-teal-700 mt-2 md:mt-0"/>
+        </form>
+
+        <p className="text-sm">Tags: </p>
+        <div className="flex flex-wrap gap-2 max-h-56 overflow-x-auto">
+          <SearchTagComp Tag={{id: 0, name: 'None'}} SelectedTag={Tag} setTagData={setTagData}/>
+          { Tags.map((tTag: tagParams) => (<SearchTagComp key={tTag.id} Tag={tTag} SelectedTag={Tag} setTagData={setTagData}/>)) }
+        </div>
+      </ModalCardComp>
+
+      <h1 className="pl-4 text-sm lg:text-md animate-slideInLeft uppercase"><span className="text-teal-400 font-semibold">&#47;&#47; </span>Feel free to <span className="text-teal-400 font-semibold">browse</span> my other works!</h1>
+      <button type="button" onClick={() => setOpenSearchModal(true)} className="mr-2 py-1 px-4 flex justify-center items-center gap-2 text-md rounded bg-teal-600 hover:bg-teal-400 active:bg-teal-700 transition-all ease-in-out duration-600">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+        <p>Search</p>
+      </button>
     </div>
   );
 };
