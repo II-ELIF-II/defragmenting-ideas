@@ -105,14 +105,14 @@ const config: Config = {
           '49%': {transform: 'scale(1%, 1%)', opacity: '0'},
           '50%': {transform: 'scale(1%, 1%)', opacity: '1'},
           '65%': {transform: 'scale(100%, 1%)', opacity: '1'},
-          '100%': {transform: 'scale(100%, 100%)', opacity: '1'},
+          '100%': {transform: 'scale(100%, 100%)', opacity: '1'}
         },
         windowClose: {
           '0%': {transform: 'scale(100%, 100%)', opacity: '1'},
           '25%': {transform: 'scale(100%, 1%)', opacity: '1'},
           '50%': {transform: 'scale(1%, 1%)', opacity: '1'},
           '51%': {transform: 'scale(1%, 1%)', opacity: '0'},
-          '100%': {transform: 'scale(1%, 1%)', opacity: '0'},
+          '100%': {transform: 'scale(1%, 1%)', opacity: '0'}
         },
         fadeIn: {
           from: {opacity: '0'},
