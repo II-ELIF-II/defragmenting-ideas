@@ -17,7 +17,11 @@ export default function RootLayout({
 }) {
   
   return (
+    
     <html lang="en" className="scroll-smooth snap-y select-none relative">
+      <head>
+        <meta name="google-site-verification" content="oVN-kcUbuE64IE6k9hdfy0Z7YzbpvK-VnhBzzwEt0FM" />
+      </head>
       <body className={`${inter.className} bg-neutral-950 text-neutral-50 overflow-x-hidden relative`}>
         <AuthProvider>
           {children}
