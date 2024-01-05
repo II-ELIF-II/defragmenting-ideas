@@ -36,7 +36,7 @@ const PaginatorComp = ({Page, Pages}: {Page: number, Pages: number}) => {
 
   //Function: Redirects to first page if query is out of bounds.
   //Purpose: Minimize out of bounds params.
-  if((Page > Pages) && Pages != 0)
+  if((Page > Pages) && Page != 1)
     router.push(urlParamHandler({path: '?' + searchParams, param: 'page', value: 1}), {scroll: false});
 
   return(

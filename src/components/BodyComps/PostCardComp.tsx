@@ -11,9 +11,9 @@ const PostCardComp = ({Post, Index}: {Post: postSummaryParams, Index: number}) =
 
   const creationDate = new Date(Post.createdAt);
   const Tags = Object.keys(Post.PostTag).map(index => { return Post.PostTag[Number(index)].Tag; }) as Array<tagParams>;
-  const Delay = `-${(4 - Index) * 100}ms`;
+  const Delay = ['md:animation-delay-m400', 'md:animation-delay-m300', 'md:animation-delay-m200', 'md:animation-delay-m100'];
   return(
-    <li onClick={() => router.push(createPostUrl(Post.id))} className={`animate-slideInBottom md:animate-[slideInTop_1.5s_ease-in-out_${Delay}] relative flex flex-col grow w-full min-h-screen md:min-h-full origin-top-right cursor-pointer group overflow-hidden snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 md:hover:shadow-2xl md:hover:shadow-neutral-950/100`}>
+    <li onClick={() => router.push(createPostUrl(Post.id))} className={Delay[Index] + ` animate-slideInBottom md:animate-slideInTop relative flex flex-col grow w-full min-h-screen md:min-h-full origin-top-right cursor-pointer group overflow-hidden snap-center lg:snap-align-none ease-in-out duration-500 hover:z-10 md:hover:drop-shadow-glowSM`}>
       <div className="absolute h-full group-hover:animate-cameraMoves ease-in-out duration-500">
         <img src={Post.thumbnail} alt="TEMP" loading="lazy" draggable="false" className="object-cover h-screen md:h-full grow scale-110 group-hover:scale-125 grayscale-[70%] group-hover:grayscale-0 ease-in-out duration-500"/>
       </div>

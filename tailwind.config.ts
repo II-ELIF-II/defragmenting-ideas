@@ -7,12 +7,13 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    
     extend: {
       animationDelay: {
-        'm100': "-100ms",
-        'm200': "-200ms",
-        'm300': "-300ms",
-        'm400': "-400ms",
+        'm100': "-100ms !important",
+        'm200': "-200ms !important",
+        'm300': "-300ms !important",
+        'm400': "-400ms !important",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -34,6 +35,10 @@ const config: Config = {
       dropShadow: {
         'lgCustom': '5px 10px 10px rgba(0, 0, 0, 0.4)',
         'xlCustom': '5px 10px 10px rgba(0, 0, 0, 0.6)',
+        glowSM: [
+          "0 0px 10px rgba(13, 148, 136, 0.35)",
+          "0 0px 32px rgba(13, 148, 136, 0.2)"
+        ],
         glow: [
           "0 0px 20px rgba(13, 148, 136, 0.35)",
           "0 0px 65px rgba(13, 148, 136, 0.2)"
