@@ -33,20 +33,25 @@ import CharacterCount from '@tiptap/extension-character-count';
 
 import ReactTextareaAutosize from "react-textarea-autosize";
 
+import managePostPayload from "@/types/payload/managePostPayload";
 import postParams from "@/types/postParams";
 import tagParams from "@/types/tagParams";
+
 import PostEditorStaticToolBarComp from "@/components/AdminComps/PostEditorStaticToolBarComp";
+import PostEditorFloatingToolbarComp from "./PostEditorFloatingToolbarComp";
 import PostDisplayComp from "../PostComps/PostDisplayComp";
 import AdminTagComp from "./AdminTagComp";
 
+import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import PostEditorFloatingToolbarComp from "./PostEditorFloatingToolbarComp";
-// import hljs from 'highlight.js';
+import { managePost } from "@/lib/admin/postManagePost";
 
 const PostEditorComp = ({setPost, tags}: {setPost: postParams, tags: tagParams[]}) => {
   
   const router = useRouter();
+
+  const { data: session, status } = useSession();
 
   const [newPost, setNewPost] = useState({
     id: setPost.id,
@@ -121,12 +126,26 @@ console.log(i);
     return null;
   }
 
-  const handlePostSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handlePostManagement = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const payload = {
+      userId: session?.user.id,
+      id: newPost.id,
+      title: newPost.title,
+      thumbnail: newPost.thumbnail,
+      summary: newPost.summary,
+      content: newPost.content,
+      PostTag: newPost.PostTag,
+    } as managePostPayload;
+
     if (confirm('Are you sure you want to submit?'))
     { 
-      console.log('confirmed');
-      router.refresh();
+      managePost(payload);
+      if(!newPost.id)
+        router.push('/admin');
+      else
+        router.refresh();
     }
   }
 
@@ -134,7 +153,7 @@ console.log(i);
     <>
       <div className="flex flex-col items-center pt-[12vh] md:pt-[6vh]">
         <div className="flex justify-center w-full max-w-7xl mx-5 my-5 bg-neutral-950 md:border border-solid border-teal-600 md:drop-shadow-glow">
-          <form onSubmit={(e) => handlePostSubmit(e)} className="w-full md:w-4/6 overflow-hidden">
+          <form onSubmit={(e) => handlePostManagement(e)} className="w-full md:w-4/6 overflow-hidden">
             {newPost.id && <div className="px-2 py-1 bg-yellow-500/80">
               Currently editing post Id: {newPost.id}
             </div>}

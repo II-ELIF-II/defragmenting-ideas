@@ -40,7 +40,7 @@ const AdminPostCardComp = (post: adminPanelPostParams) => {
 
       <div className="relative flex flex-col justify-end h-full">
         <div className="w-fit bg-neutral-950/40 md:backdrop-blur-sm text-lg md:text-xl px-3 py-2 font-semibold border-l-8 border-teal-500">
-          <span className="text-teal-400 font-semibold">&#92;&gt; </span>{post.title}
+          <h4 className="pb-3"><span className="text-teal-400 font-semibold">&#92; &gt; </span>{post.title}</h4>
           <PostDateComp cDate={new Date(post.createdAt)} uDate={new Date(post.updatedAt)}/>
         </div>
       </div>
