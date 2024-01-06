@@ -35,6 +35,10 @@ const config: Config = {
       dropShadow: {
         'lgCustom': '5px 10px 10px rgba(0, 0, 0, 0.4)',
         'xlCustom': '5px 10px 10px rgba(0, 0, 0, 0.6)',
+        glowXS: [
+          "0 0px 5px rgba(13, 148, 136, 0.35)",
+          "0 0px 16px rgba(13, 148, 136, 0.2)"
+        ],
         glowSM: [
           "0 0px 10px rgba(13, 148, 136, 0.35)",
           "0 0px 32px rgba(13, 148, 136, 0.2)"

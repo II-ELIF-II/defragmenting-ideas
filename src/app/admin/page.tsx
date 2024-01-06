@@ -1,6 +1,6 @@
 import { getEnvironment } from "@/app/utilities";
 import AdminPanelComp from "@/components/AdminComps/AdminPanelComp";
-import HeaderBarComp from "@/components/HeaderComps/HeaderBarComp";
+import HeaderComp from "@/components/HeaderComp";
 import BackgroundComp from "@/components/MiscComps/BackgroundComp";
 import adminPanelPostsParams from "@/types/admin/adminPanelPostsParams";
 import tagParams from "@/types/tagParams";
@@ -42,7 +42,7 @@ const Admin = async(Params: any) => {
 
   return (
     <div className="min-h-screen min-w-screen flex flex-col">
-      <HeaderBarComp/>
+      <HeaderComp/>
       <AdminPanelComp postResults={postResults} postQuery={postParams.postQuery} tagResults={tagResults}/>
       <BackgroundComp/>
     </div>

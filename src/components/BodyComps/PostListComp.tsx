@@ -15,7 +15,7 @@ const PostListComp = ({Posts, Page, Pages}: {Posts: Array<postSummaryParams>, Pa
 
   return(
     <>
-      <ul className="flex flex-col lg:flex-row grow h-full -mt-[12vh] md:mt-0 z-10 overflow-hidden snap-start">
+      <ul className="flex flex-col md:flex-row grow h-full -mt-[12vh] md:mt-0 z-10 overflow-hidden snap-start">
         { (Posts.length != 0) ? Posts.map((post: postSummaryParams, index: number) => (<PostCardComp key={post.id} Post={post} Index={index}/>)) : <div className="md:absolute flex w-screen h-screen z-50 pointer-events-none"><ErrorCardComp ErrorMain={errorTitle} ErrorMessage={errorMessage}/></div> }
         { fillerCards }
       </ul>

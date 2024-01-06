@@ -1,7 +1,7 @@
 import FooterComp from '@/components/FooterComp';
 import BodyComp from '@/components/BodyComp';
-import HeaderComp from '@/components/HeaderComp';
 import postSearchParams from '@/types/postSearchParams';
+import HeaderComp from '@/components/HeaderComp';
 
 const Home = async(Params : any) => {
   const {params, searchParams} = Params;

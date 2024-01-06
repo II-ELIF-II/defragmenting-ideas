@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import loginCredsParams from "@/types/loginCredsParams";
-import HeaderBarComp from "@/components/HeaderComps/HeaderBarComp";
+import HeaderComp from "@/components/HeaderComp";
 import BasicCardComp from "@/components/MiscComps/CardComps/BasicCardComp";
 
 const Login = () => {
@@ -50,7 +50,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col min-h-screen min-w-screen">
-      <HeaderBarComp/>
+      <HeaderComp/>
       <BasicCardComp TextMain="User Authentication" TextSide="LOGIN">
         <form onSubmit={handleLoginSubmit} className="flex flex-col h-fit text-sm md:text-xl pt-2 text-justify">
           <div className="grid grid-cols-4 px-3 gap-y-2 items-center">

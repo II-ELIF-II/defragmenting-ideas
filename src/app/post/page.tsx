@@ -1,11 +1,16 @@
+import '../postEditor.css';
+
 import { getEnvironment } from "@/app/utilities";
-import BackgroundComp from "@/components/MiscComps/BackgroundComp";
-import PostDisplayComp from "@/components/PostComps/PostDisplayComp";
-import postParams from "@/types/postParams";
 import { notFound } from 'next/navigation';
 import { getPost } from "@/lib/getPost";
-import HeaderBarComp from "@/components/HeaderComps/HeaderBarComp";
+
+import PostDisplayComp from "@/components/PostComps/PostDisplayComp";
+import HeaderComp from "@/components/HeaderComp";
+import BackgroundComp from "@/components/MiscComps/BackgroundComp";
+
+import postParams from "@/types/postParams";
 import tagParams from "@/types/tagParams";
+import FooterComp from "@/components/FooterComp";
 
 export async function generateMetadata(Params: any) {
   const {params, searchParams} = Params;
@@ -56,11 +61,12 @@ const Post = async(Params: any) => {
     return notFound();
 
   return (
-    <div className="absolute top-0 flex w-screen min-h-screen overflow-x-hidden">
-      <HeaderBarComp/>
-      <div className="animate-slideInTop md:animate-slideInTopWithRotation flex flex-col items-center w-screen min-h-screen md:mt-5 md:mb-5">
+    <div className="absolute top-0 flex flex-col w-screen min-h-screen overflow-x-hidden">
+      <HeaderComp/>
+      <div className="animate-slideInTop md:animate-slideInTopWithRotation flex flex-col items-center w-screen min-h-screen md:mt-5 md:mb-18">
         <PostDisplayComp Post={post}/>
       </div>
+      <FooterComp/>
       <BackgroundComp bgURL = {post.thumbnail}/>
     </div>
   )

@@ -23,7 +23,7 @@ const PostSummaryComp = ({summary}: {summary: string}) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
         </div>
-        <p className={(!showSummary && ("opacity-0")) + " text-sm text-justify overflow-hidden transition-all duration-500 px-2 py-2"}>{summary}</p>
+        <p className={(!showSummary && ("opacity-0")) + " text-md text-justify overflow-hidden transition-all duration-500 px-2 py-2 tracking-wider"}>{summary}</p>
       </div>
     </label>
   );

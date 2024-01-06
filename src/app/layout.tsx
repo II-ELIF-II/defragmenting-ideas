@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { AuthProvider } from '@/components/ProviderComp'
+import type { Metadata } from 'next';
+import { Chakra_Petch } from 'next/font/google';
+import { AuthProvider } from '@/components/ProviderComp';
+import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] })
+const chakraPetch = Chakra_Petch({ subsets: ['latin'], weight: '400' })
 
 export const metadata: Metadata = {
   title: 'ELIFS PLAYGROUND',
@@ -15,18 +15,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  
   return (
-    
     <html lang="en" className="scroll-smooth snap-y select-none relative">
       <head>
         <meta name="google-site-verification" content="oVN-kcUbuE64IE6k9hdfy0Z7YzbpvK-VnhBzzwEt0FM" />
       </head>
-      <body className={`${inter.className} bg-neutral-950 text-neutral-50 overflow-x-hidden relative`}>
+      <body className={`${chakraPetch.className} bg-neutral-950 text-neutral-50 overflow-x-hidden relative`}>
         <AuthProvider>
           {children}
         </AuthProvider>
       </body>
     </html>
-  )
+  );
 }

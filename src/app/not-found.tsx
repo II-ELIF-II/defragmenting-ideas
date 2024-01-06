@@ -1,4 +1,4 @@
-import HeaderBarComp from '@/components/HeaderComps/HeaderBarComp';
+import HeaderBarComp from '@/components/HeaderComp';
 import BackgroundComp from '@/components/MiscComps/BackgroundComp';
 import ErrorCardComp from '@/components/MiscComps/CardComps/ErrorCardComp';
 

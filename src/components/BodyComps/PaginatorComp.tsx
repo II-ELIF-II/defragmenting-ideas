@@ -11,7 +11,7 @@ const PaginatorComp = ({Page, Pages}: {Page: number, Pages: number}) => {
   const disableNext = Number(Page) >= Number(Pages);
 
   const buttonNextAndPrevClass = "h-[4vh] px-2 flex justify-center items-center border-teal-400 disabled:border-neutral-50/10 text-teal-400 disabled:text-neutral-50/10 hover:bg-teal-700/30 disabled:hover:bg-neutral-700/30 ease-in-out duration-500"
-  const buttonPageClass = "h-[4vh] px-4 flex justify-center items-center border-t border-neutral-50/10 disabled:border-teal-400 disabled:text-teal-400 hover:bg-teal-700/30 ease-in-out duration-500";
+  const buttonPageClass = "text-lg h-[4vh] px-4 flex justify-center items-center border-t border-neutral-50/10 disabled:border-teal-400 disabled:text-teal-400 hover:bg-teal-700/30 ease-in-out duration-500";
 
   //Function: Builds an array of integers from A to B.
   //Purpose: Determines what and how many page buttons to display.

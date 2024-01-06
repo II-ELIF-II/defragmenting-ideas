@@ -45,7 +45,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-textarea-autosize": "^8.5.3",
-    "tailwindcss-animation-delay": "^1.2.0"
+    "tailwindcss-animation-delay": "^1.2.0",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "@types/node": "^20",

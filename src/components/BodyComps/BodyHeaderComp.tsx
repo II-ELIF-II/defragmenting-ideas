@@ -1,12 +1,14 @@
 "use client";
 
-import postSearchResultsParams from "@/types/postSearchResultsParams";
+import { scrollToElement, urlParamHandler, urlParamRemove } from "@/app/utilities";
 import { useRouter, useSearchParams } from "next/navigation";
-import { scrollToElement, sleep, urlParamHandler, urlParamRemove } from "@/app/utilities";
 import { FormEvent, useEffect, useState } from "react";
-import tagParams from "@/types/tagParams";
-import SearchTagComp from "./SearchTagComp";
+
 import ModalCardComp from "../MiscComps/CardComps/ModalCardComp";
+import SearchTagComp from "./SearchTagComp";
+
+import postSearchResultsParams from "@/types/postSearchResultsParams";
+import tagParams from "@/types/tagParams";
 
 const BodyHeaderComp = ({Params, Tag, Tags}: {Params: postSearchResultsParams, Tag: tagParams, Tags: Array<tagParams>}) => {
   
@@ -15,17 +17,43 @@ const BodyHeaderComp = ({Params, Tag, Tags}: {Params: postSearchResultsParams, T
   
   const [queryData, setQueryData] = useState(Params.query.toString());
   const [openSearchModal, setOpenSearchModal] = useState(false);
-  // const [viewAnimSearch, setViewAnimSearch] = useState(false);
-  const [tagData, setTagData] = useState(0);
+  const [tagData, setTagData] = useState(Tag?.id || 0);
 
   const handleQuerySubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    //Close the modal
     setOpenSearchModal(false);
+
     let url = '?' + searchParams;
-    if(queryData != '') url = urlParamHandler({path: url, param: 'query', value: queryData});
-    if(queryData == '' && searchParams.has('query')) url = urlParamRemove({path: url, param: 'query'});
-    if(tagData != 0) url = urlParamHandler({path: url, param: 'tag', value: tagData});
-    if(tagData == 0 && searchParams.has('tag')) url = urlParamRemove({path: url, param: 'tag'});
+    const hasQuery = searchParams.has('query'); 
+    const hasTag = searchParams.has('tag');
+
+    //Check if query and tag is same
+    if(hasTag && tagData === Number(searchParams.get('tag')) 
+    && hasQuery && queryData === searchParams.get('query')) 
+      return; //Do nothing
+
+    //Check if only tag but is same
+    if(hasTag && !hasQuery && tagData === Number(searchParams.get('tag'))) {
+      return; //Do nothing
+    }
+
+    //Check if only query but is same
+    if(!hasTag && hasQuery && queryData === searchParams.get('query'))
+      return; //Do nothing
+
+    //Check if query is already a param
+    if(queryData !== '') url = urlParamHandler({path: url, param: 'query', value: queryData});
+    //Remove query param if no query is provided
+    if(hasQuery && queryData == '') url = urlParamRemove({path: url, param: 'query'});
+
+    //Check if tag is already a param
+    if(tagData !== 0) url = urlParamHandler({path: url, param: 'tag', value: tagData});
+    //Remove tag param if no tag is selected
+    if(hasTag && tagData == 0 ) url = urlParamRemove({path: url, param: 'tag'});
+
+    //Do a search
     router.push(url, {scroll: false});
   };
 
@@ -41,21 +69,20 @@ const BodyHeaderComp = ({Params, Tag, Tags}: {Params: postSearchResultsParams, T
         <p className="text-sm">Input Query: </p>
 
         <form onSubmit={(e) => handleQuerySubmit(e)} className="flex flex-col md:flex-row [&>*]:py-1 [&>*]:ease-in-out [&>*]:duration-500">
-          <div className="w-full px-2 flex gap-2 bg-neutral-700/40 hover:bg-neutral-600/50 focus-within:bg-teal-700/50 focus-within:hover:bg-teal-700/50">
-            <input type="text" placeholder="Looking for something?" value={queryData} maxLength={81} onChange={(e) => setQueryData(e.target.value)} className="grow bg-transparent outline-none"/>
-            { queryData && <button type="button" onClick={() => setQueryData('')} className="rotate-0 hover:rotate-180">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+          <div className="w-full flex bg-neutral-700/40 hover:bg-neutral-600/50 focus-within:bg-teal-700/50 focus-within:hover:bg-teal-700/50">
+            <input type="text" placeholder="Looking for something?" value={queryData} maxLength={81} onChange={(e) => setQueryData(e.target.value)} className="px-2 grow bg-transparent outline-none"/>
+            { queryData && <button type="button" onClick={() => setQueryData('')} className="mr-3 opacity-80 h-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-full">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button> }
           </div>
-          <input type="submit" value="Search" className="px-8 bg-teal-600 hover:bg-teal-400 active:bg-teal-700 mt-2 md:mt-0"/>
+          <input type="submit" value="Search" className="px-8 bg-teal-700 hover:bg-teal-600 active:bg-teal-800 mt-2 md:mt-0 cursor-pointer"/>
         </form>
 
         <p className="text-sm">Tags: </p>
         <div className="flex flex-wrap gap-2 max-h-56 overflow-x-auto">
-          <SearchTagComp Tag={{id: 0, name: 'None'}} SelectedTag={Tag} setTagData={setTagData}/>
-          { Tags.map((tTag: tagParams) => (<SearchTagComp key={tTag.id} Tag={tTag} SelectedTag={Tag} setTagData={setTagData}/>)) }
+          { Tags.map((tag: tagParams) => (<SearchTagComp key={tag.id} Tag={tag} tagData={tagData} setTagData={setTagData}/>)) }
         </div>
       </ModalCardComp>
 

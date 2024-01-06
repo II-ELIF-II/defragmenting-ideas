@@ -1,5 +1,7 @@
+import '../../postEditor.css';
+
 import PostEditorComp from "@/components/AdminComps/PostEditorComp";
-import HeaderBarComp from "@/components/HeaderComps/HeaderBarComp";
+import HeaderComp from "@/components/HeaderComp";
 import BackgroundComp from "@/components/MiscComps/BackgroundComp";
 import { getPost } from "@/lib/getPost";
 import { getTags } from "@/lib/getTags";
@@ -38,7 +40,7 @@ const EditorPost = async(Params: any) => {
 
   return (
     <div className="min-h-screen w-screen flex flex-col">
-      <HeaderBarComp/>
+      <HeaderComp/>
       <PostEditorComp setPost={Post} tags={tags}/>
       <BackgroundComp/>
     </div>

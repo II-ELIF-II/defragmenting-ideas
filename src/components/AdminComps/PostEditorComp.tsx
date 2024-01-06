@@ -143,15 +143,15 @@ console.log(i);
             </div>}
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60 border-b border-solid border-teal-400">Title</p>
-              <input required type="text" maxLength={81} placeholder="Input Title Here" value={newPost.title} onChange={(e) => setNewPost({...newPost, title: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none"/>
+              <input required type="text" maxLength={81} placeholder="Input Title Here" value={newPost.title} onChange={(e) => setNewPost({...newPost, title: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none tracking-wider"/>
             </div>
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60 border-b border-solid border-teal-400">Thumbnail URL</p>
-              <input required type="url" maxLength={255} placeholder="Input Thumbnail URL Here" value={newPost.thumbnail} onChange={(e) => setNewPost({...newPost, thumbnail: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none"/>
+              <input required type="url" maxLength={255} placeholder="Input Thumbnail URL Here" value={newPost.thumbnail} onChange={(e) => setNewPost({...newPost, thumbnail: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none tracking-wider"/>
             </div>
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60 border-b border-solid border-teal-400">Summary</p>
-              <ReactTextareaAutosize required minRows={3} maxLength={255} placeholder="Input Summary Here" value={newPost.summary} onChange={(e) => setNewPost({...newPost, summary: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none"/>
+              <ReactTextareaAutosize required minRows={3} maxLength={255} placeholder="Input Summary Here" value={newPost.summary} onChange={(e) => setNewPost({...newPost, summary: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none tracking-wider"/>
             </div>
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60 border-b border-solid border-teal-400">Content</p>
@@ -159,7 +159,7 @@ console.log(i);
               {editor && <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
                 <PostEditorFloatingToolbarComp editor={editor}/>
               </BubbleMenu>}
-              <EditorContent required editor={editor} className="px-4 md:px-0 py-1 whitespace-pre-wrap"/>
+              <EditorContent required editor={editor} className="px-4 md:px-0 py-1 whitespace-pre-wrap tracking-wider"/>
               <p className="px-2 py-1 bg-neutral-800/60 text-sm text-neutral-400">Size&#58; {editor.getHTML().length}&#47;{sizeContentLimit} &#124; Characters&#58; {editor.storage.characterCount.characters()}&#47;{editorLimit} &#124; Words&#58; {editor.storage.characterCount.words()}</p>
             </div>
             <div className="flex flex-col">

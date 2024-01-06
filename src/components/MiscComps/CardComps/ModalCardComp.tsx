@@ -2,6 +2,7 @@
 
 import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import CardHeader from "./Parts/CardHeader";
+import CardSidebarWhite from "./Parts/CardSidebarWhite";
 
 const ModalCardComp = ({children, TextMain, TextSide, IsOpen, setIsOpen}: {children: ReactNode, TextMain: string, TextSide: string, IsOpen: boolean, setIsOpen: Dispatch<SetStateAction<boolean>>}) => {
 
@@ -9,9 +10,7 @@ const ModalCardComp = ({children, TextMain, TextSide, IsOpen, setIsOpen}: {child
     <div onClick={() => setIsOpen(false)} className={(IsOpen ? 'animate-fadeIn pointer-events-auto' : 'opacity-0 pointer-events-none') + " absolute flex bg-gradient-to-t from-neutral-950/70 via-neutral-950/30 to-neutral-950/70 top-0 w-screen h-screen z-50 ease-in-out duration-1000 transition-all"}>
       <div onClick={(e) => e.stopPropagation()} className={(IsOpen ? 'animate-openWindow' : 'animate-closeWindow') + ' px-2 max-w-sm md:max-w-2xl flex m-auto bg-neutral-950 border border-solid border-teal-400 drop-shadow-glow'}>
         <div className='flex flex-row overflow-hidden py-2'>
-          <div className='flex pr-2 animate-pulse'>
-            <p className='w-full py-2 [writing-mode:vertical-lr] -scale-100 bg-neutral-50/80 text-neutral-950 font-bold uppercase text-right text-sm md:text-lg'>{TextSide}</p>
-          </div>
+          <CardSidebarWhite TextSide={TextSide}/>
           <div className='flex [&>*]:flex flex-col gap-2'>
             <div className='grow h-fit justify-between bg-teal-500 pr-3'>
               <CardHeader TextMain={TextMain}/>

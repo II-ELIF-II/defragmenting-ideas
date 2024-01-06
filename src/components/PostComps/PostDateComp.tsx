@@ -2,12 +2,12 @@
 
 import { displayDateAsString, displayTimeAsString } from "@/app/utilities";
 
-const PostDateComp = ({cDate, uDate}: {cDate: Date, uDate: Date}) => {
+const PostDateComp = ({cDate, uDate}: {cDate: Date, uDate?: Date}) => {
 
-  const Updated = (cDate.toString() !== uDate.toString());
+  const Updated = uDate && (cDate.toString() !== uDate.toString());
 
   return(
-    <div className="flex flex-col md:flex-row gap-1 md:gap-3 text-sm mt-3">
+    <div className="flex flex-col md:flex-row gap-1 md:gap-3 text-sm tracking-wider">
       <div>
         <p className="text-xs text-teal-400">Created on:</p>
         <p className="">{displayTimeAsString(cDate) + " | " + displayDateAsString(cDate)}</p>
