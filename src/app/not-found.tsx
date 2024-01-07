@@ -9,7 +9,7 @@ const NotFound = () => {
       <div className="flex min-h-screen w-full">
         <ErrorCardComp ErrorMain={'404 page not found'} ErrorMessage={'The page or content you requested may have been moved, removed, renamed, or is temporarily unavailable.'}/>
       </div>
-      <BackgroundComp />
+      <BackgroundComp/>
     </div>
   );
 };

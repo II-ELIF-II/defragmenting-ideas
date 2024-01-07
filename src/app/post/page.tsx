@@ -1,5 +1,3 @@
-import '../postEditor.css';
-
 import { getEnvironment } from "@/app/utilities";
 import { notFound } from 'next/navigation';
 import { getPost } from "@/lib/getPost";
@@ -57,9 +55,6 @@ const Post = async(Params: any) => {
   post.updatedAt = new Date(post.updatedAt);
   post.PostTag = tags;
 
-  if(!post)
-    return notFound();
-
   return (
     <div className="absolute top-0 flex flex-col w-screen min-h-screen overflow-x-hidden">
       <HeaderComp/>
@@ -67,9 +62,9 @@ const Post = async(Params: any) => {
         <PostDisplayComp Post={post}/>
       </div>
       <FooterComp/>
-      <BackgroundComp bgURL = {post.thumbnail}/>
+      <BackgroundComp BackgroundURL = {post.thumbnail}/>
     </div>
-  )
-}
+  );
+};
 
 export default Post;

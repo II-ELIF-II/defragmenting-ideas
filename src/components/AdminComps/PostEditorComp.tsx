@@ -42,10 +42,10 @@ import PostEditorFloatingToolbarComp from "./PostEditorFloatingToolbarComp";
 import PostDisplayComp from "../PostComps/PostDisplayComp";
 import AdminTagComp from "./AdminTagComp";
 
+import { managePost } from "@/lib/admin/postManagePost";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { managePost } from "@/lib/admin/postManagePost";
 
 const PostEditorComp = ({setPost, tags}: {setPost: postParams, tags: tagParams[]}) => {
   
@@ -119,6 +119,7 @@ console.log(i);
     },
     onUpdate({ editor }) {
       setNewPost({...newPost, content: editor.getHTML()});
+      console.log(editor.getJSON())
     },
   });
 
@@ -172,7 +173,7 @@ console.log(i);
               <p className="px-2 py-1 bg-neutral-700/60 border-b border-solid border-teal-400">Summary</p>
               <ReactTextareaAutosize required minRows={3} maxLength={255} placeholder="Input Summary Here" value={newPost.summary} onChange={(e) => setNewPost({...newPost, summary: e.target.value})} className="px-4 md:px-0 py-1 bg-transparent text-sm focus:outline-none tracking-wider"/>
             </div>
-            <div className="flex flex-col">
+            <div id="FormattedContent" className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60 border-b border-solid border-teal-400">Content</p>
               <PostEditorStaticToolBarComp editor={editor}/>
               {editor && <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>

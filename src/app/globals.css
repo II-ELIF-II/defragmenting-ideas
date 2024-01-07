@@ -3,6 +3,241 @@
 @tailwind utilities;
 
 @layer base {
+  
+  #FormattedContent {
+    
+    pre code {
+      background: transparent;
+      position: relative;
+      display: inline-block;
+      overflow-y: auto;
+      padding: 0.5rem;
+      font-size: theme('fontSize.xs');
+    }
+  
+    pre:before {
+      color: theme('colors.neutral.50 / 50%');
+      font-family: 'Inter';
+  
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.5rem;
+  
+      content: 'Code:';
+      position: absolute;
+      margin-top: -28px;
+    }
+  
+    code {
+      background: theme('colors.neutral.700 / 40%');
+      padding: 0.2rem 0.3rem;
+      border-radius: theme('borderRadius.DEFAULT');
+      cursor: auto;
+      user-select: text;
+      font-size: theme('fontSize.sm');
+    }
+  
+    mark {
+      color: theme('colors.neutral.50');
+      padding: 1px 2px;
+      border-radius: theme('borderRadius.DEFAULT');
+      background-color: theme('colors.teal.700/50%');
+    }
+  
+    hr {
+      margin-top: 0.375rem;
+      margin-bottom: 0.375rem;
+      border: 0;
+      border-bottom: 1px dashed theme('colors.teal.400 / 50%');
+    }
+  
+    ul {
+      list-style-type: square;
+      margin-left: 2rem;
+    }
+  
+    ol {
+      list-style-type: decimal;
+      margin-left: 2rem;
+    }
+  
+    a {
+      position: relative;
+      color: theme('colors.teal.400');
+      margin-right: 12px;
+      cursor: pointer;
+    }
+  
+    a:after {
+      height: 12px;
+      width: 12px;
+      margin-top: -4px;
+      margin-left: 1px;
+      position: absolute;
+      content: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z" fill="rgba(45,212,191,1)"></path></svg>');
+    }
+  
+    blockquote {
+      background: theme('colors.neutral.800 / 40%');
+      border-left: 10px solid theme('colors.neutral.800 / 70%');
+      quotes: "\201C""\201D""\2018""\2019";
+  
+      margin-top: 0.375rem;
+      margin-bottom: 0.375rem;
+  
+      padding: 0.5rem;
+  
+      user-select: text;
+    }
+  
+    blockquote:before {
+      color: theme('colors.neutral.50 / 50%');
+      border: 1px solid theme('colors.neutral.600 / 60%');
+      background: theme('colors.neutral.50 / 5%');
+  
+      padding-top: 0.1rem;
+      padding-bottom: 0.1rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+  
+      content: 'Quote:';
+    }
+  
+    blockquote p {
+      margin-top: 0.2rem;
+      padding-left: 1rem;
+      overflow-wrap: break-word;
+    }
+  
+    p {
+      overflow-wrap: break-word;
+    }
+  
+    img {
+      z-index: -5;
+      pointer-events: none;
+      border-top: 1px solid theme('colors.teal.400');
+      border-bottom: 1px solid theme('colors.teal.400');
+      box-shadow: 0 0 15px 5px theme('colors.teal.400/30%');
+      margin: 15px 0;
+    }
+  
+    pre {
+      background: theme('colors.neutral.800 / 40%');
+  
+      margin-top: 0.375rem;
+      margin-bottom: 0.375rem;
+  
+      cursor: auto;
+      user-select: text;
+      overflow-y: auto;
+      
+      border-top: 25px solid theme('colors.neutral.800 / 70%');
+
+      /* Text Highlighting */
+      .hljs {
+        display: block;
+      }
+      
+      .hljs .hljs-keyword,
+      .hljs .hljs-literal,
+      .hljs .hljs-symbol,
+      .hljs .hljs-name {
+        color: #569CD6;
+      }
+      .hljs .hljs-link {
+        color: #569CD6;
+        text-decoration: underline;
+      }
+      
+      .hljs .hljs-built_in,
+      .hljs .hljs-type {
+        color: #4EC9B0;
+      }
+      
+      .hljs .hljs-number,
+      .hljs .hljs-class {
+        color: #B8D7A3;
+      }
+      
+      .hljs .hljs-string,
+      .hljs .hljs-meta-string {
+        color: #D69D85;
+      }
+      
+      .hljs .hljs-regexp,
+      .hljs .hljs-template-tag {
+        color: #9A5334;
+      }
+      
+      .hljs .hljs-subst,
+      .hljs .hljs-function,
+      .hljs .hljs-title,
+      .hljs .hljs-params,
+      .hljs .hljs-formula {
+        color: #DCDCDC;
+      }
+      
+      .hljs .hljs-comment,
+      .hljs .hljs-quote {
+        color: #57A64A;
+        font-style: italic;
+      }
+      
+      .hljs .hljs-doctag {
+        color: #608B4E;
+      }
+      
+      .hljs .hljs-meta,
+      .hljs .hljs-meta-keyword,
+      .hljs .hljs-tag {
+        color: #9B9B9B;
+      }
+      
+      .hljs .hljs-variable,
+      .hljs .hljs-template-variable {
+        color: #BD63C5;
+      }
+      
+      .hljs .hljs-attr,
+      .hljs .hljs-attribute,
+      .hljs .hljs-builtin-name {
+        color: #9CDCFE;
+      }
+      
+      .hljs .hljs-section {
+        color: gold;
+      }
+      
+      .hljs .hljs-emphasis {
+        font-style: italic;
+      }
+      
+      .hljs .hljs-strong {
+        font-weight: bold;
+      }
+      
+      .hljs .hljs-bullet,
+      .hljs .hljs-selector-tag,
+      .hljs .hljs-selector-id,
+      .hljs .hljs-selector-class,
+      .hljs .hljs-selector-attr,
+      .hljs .hljs-selector-pseudo {
+        color: #D7BA7D;
+      }
+      
+      .hljs .hljs-addition {
+        background-color: #144212;
+        display: inline-block;
+        width: 100%;
+      }
+      
+      .hljs .hljs-deletion {
+        background-color: #600;
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
 }
 
 
@@ -38,6 +273,10 @@
 
   .clip-message-tail{
     clip-path: polygon(50% 0%, 0% 100%, 100% 0);
+  }
+
+  .clip-diamond{
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   }
 
   /* ===== Scrollbar CSS ===== */

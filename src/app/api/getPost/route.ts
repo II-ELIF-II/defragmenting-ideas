@@ -14,6 +14,10 @@ export const GET = async (req: any) => {
       }),
       prisma.tag.findMany({
         take: 3,
+        select: {
+          id: true,
+          name: true,
+        },
         where: {
           PostTag: {
             some: {

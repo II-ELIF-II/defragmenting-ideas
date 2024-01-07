@@ -1,16 +1,14 @@
-import '../../postEditor.css';
-
 import PostEditorComp from "@/components/AdminComps/PostEditorComp";
-import HeaderComp from "@/components/HeaderComp";
 import BackgroundComp from "@/components/MiscComps/BackgroundComp";
+import HeaderComp from "@/components/HeaderComp";
+
 import { getPost } from "@/lib/getPost";
 import { getTags } from "@/lib/getTags";
+
 import postParams from "@/types/postParams";
 import tagParams from "@/types/tagParams";
 
-
 // import hljs from 'highlight.js';
-
 
 const EditorPost = async(Params: any) => {
   const {params, searchParams} = Params;

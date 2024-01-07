@@ -35,15 +35,39 @@ const config: Config = {
       dropShadow: {
         'lgCustom': '5px 10px 10px rgba(0, 0, 0, 0.4)',
         'xlCustom': '5px 10px 10px rgba(0, 0, 0, 0.6)',
-        glowXS: [
+        glowNeutralDimXXS: [
+          "0 0px 2px rgba(250, 250, 250, 0.23)",
+          "0 0px 8px rgba(250, 250, 250, 0.15)"
+        ],
+        glowNeutralXXS: [
+          "0 0px 2px rgba(250, 250, 250, 0.35)",
+          "0 0px 8px rgba(250, 250, 250, 0.2)"
+        ],
+        glowNeutralXS: [
+          "0 0px 5px rgba(250, 250, 250, 0.35)",
+          "0 0px 16px rgba(250, 250, 250, 0.2)"
+        ],
+        glowNeutralSM: [
+          "0 0px 10px rgba(250, 250, 250, 0.35)",
+          "0 0px 32px rgba(250, 250, 250, 0.2)"
+        ],
+        glowNeutral: [
+          "0 0px 20px rgba(250, 250, 250, 0.35)",
+          "0 0px 65px rgba(250, 250, 250, 0.2)"
+        ],
+        glowTealXXS: [
+          "0 0px 2px rgba(13, 148, 136, 0.35)",
+          "0 0px 8px rgba(13, 148, 136, 0.2)"
+        ],
+        glowTealXS: [
           "0 0px 5px rgba(13, 148, 136, 0.35)",
           "0 0px 16px rgba(13, 148, 136, 0.2)"
         ],
-        glowSM: [
+        glowTealSM: [
           "0 0px 10px rgba(13, 148, 136, 0.35)",
           "0 0px 32px rgba(13, 148, 136, 0.2)"
         ],
-        glow: [
+        glowTeal: [
           "0 0px 20px rgba(13, 148, 136, 0.35)",
           "0 0px 65px rgba(13, 148, 136, 0.2)"
         ],
@@ -80,15 +104,15 @@ const config: Config = {
         },
         slideInFromLeft: {
           '0%': {transform: 'translateX(-100%)', opacity: '0'},
-          '100%': {transform: 'translateX(0%)', opacity: '1'}
+          '100%': {transform: 'translateX(0%)'}
         },
         slideInFromRight: {
           '0%': {transform: 'translateX(100%)', opacity: '0'},
-          '100%': {transform: 'translateX(0%)', opacity: '1'}
+          '100%': {transform: 'translateX(0%)'}
         },
         slideInTop: {
           '0%': {transform: 'translateY(-100%)', opacity: '0'},
-          '100%': {transform: 'translateY(0%)', opacity: '1'}
+          '100%': {transform: 'translateY(0%)'}
         },
         slideInFromTopWithRotation: {
           '0%': {
@@ -96,25 +120,24 @@ const config: Config = {
             opacity: '0'
           },
           '100%': {
-            transform: 'translateY(0%) rotateZ(0deg)', 
-            opacity: '1'
+            transform: 'translateY(0%) rotateZ(0deg)'
           }
         },
         slideInFromBottom: {
           '0%': {transform: 'translateY(100%)', opacity: '0'},
-          '100%': {transform: 'translateY(0%)', opacity: '1'}
+          '100%': {transform: 'translateY(0%)'}
         },
         windowOpen: {
           '0%': {transform: 'scaleX(1%) scaleY(1%)', opacity: '0'},
           '49%': {transform: 'scaleX(1%) scaleY(1%)', opacity: '0'},
-          '50%': {transform: 'scaleX(1%) scaleY(1%)', opacity: '1'},
-          '65%': {transform: 'scaleX(100%) scaleY(1%)', opacity: '1'},
-          '100%': {transform: 'scaleX(100%) scaleY(100%)', opacity: '1'}
+          '50%': {transform: 'scaleX(1%) scaleY(1%)'},
+          '65%': {transform: 'scaleX(100%) scaleY(1%)'},
+          '100%': {transform: 'scaleX(100%) scaleY(100%)'}
         },
         windowClose: {
-          '0%': {transform: 'scaleX(100%) scaleY(100%)', opacity: '1'},
-          '25%': {transform: 'scaleX(100%) scaleY(1%)', opacity: '1'},
-          '50%': {transform: 'scaleX(1%) scaleY(1%)', opacity: '1'},
+          '0%': {transform: 'scaleX(100%) scaleY(100%)'},
+          '25%': {transform: 'scaleX(100%) scaleY(1%)'},
+          '50%': {transform: 'scaleX(1%) scaleY(1%)'},
           '51%': {transform: 'scaleX(1%) scaleY(1%)', opacity: '0'},
           '100%': {transform: 'scaleX(1%) scaleY(1%)', opacity: '0'}
         },
@@ -125,6 +148,11 @@ const config: Config = {
         fadeOut: {
           from: {opacity: '1'},
           to: {opacity: '0'}
+        },
+        typewriterCursor: {
+          '0%': {opacity: '0'},
+          '50%': {opacity: '1'},
+          '100%': {opacity: '0'}
         }
       },
       animation: {
@@ -140,6 +168,7 @@ const config: Config = {
         closeWindow: 'windowClose 1s ease-in-out',
         fadeIn: 'fadeIn 1s ease-in-out',
         fadeOut: 'fadeOut 1s ease-in-out',
+        typewriterCursor: 'typewriterCursor 1s infinite',
       }
     },
   },

@@ -1,6 +1,5 @@
 "use client"
 
-import { StopPropagation } from "@/app/utilities";
 import { useState } from "react";
 
 export default function DigitalResumeItem() {

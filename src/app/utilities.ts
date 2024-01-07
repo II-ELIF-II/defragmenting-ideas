@@ -1,7 +1,3 @@
-export const StopPropagation = (e: React.MouseEvent) => {
-  e.stopPropagation()
-};
-
 export const getEnvironment = () => {
   let url =
     process.env.NODE_ENV === "development"
@@ -91,6 +87,16 @@ export const displayDateAsString = (dateTime: Date) => {
 
 export const getTimezone = () => {
   return Intl.DateTimeFormat().resolvedOptions().timeZone;
+}
+
+export const getRandomString = (length: number) => {
+  const chars ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let str = '';
+  const charLength = chars.length;
+  for ( let i = 0; i < length; i++ ) {
+    str += chars.charAt(Math.floor(Math.random() * charLength));
+  }
+  return str;
 }
 
 // INSERT INTO Post(id, title, thumbnail, summary, content, updatedAt) VALUES (7, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula e", "https://i.imgur.com/sDBLZmY.png", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.", CURRENT_TIMESTAMP(3));
