@@ -11,12 +11,12 @@ const FooterProfileComp = () => {
 
   return(
     <div className=" flex flex-col md:flex-row gap-4">
-      <div className="flex flex-col md:flex-row items-center md:items-start">
+      {/* <div className="flex flex-col md:flex-row items-center md:items-start">
         <div className="m-6 flex flex-col items-center rotate-45 h-24 w-24 overflow-hidden border border-teal-400 drop-shadow-glowTealXS hover:drop-shadow-glowTealSM duration-500 ease-in-out">
           <img src="/profile.png" alt="Profile Picture" width={96} height={96} draggable={false} className="-rotate-45 scale-150 pt-2 pl-2"/>
         </div>
-      </div>
-      <div className="flex flex-col md:-ml-10">
+      </div> md:-ml-10*/}
+      <div className="flex flex-col ">
         <FooterHeaderComp Text={'About Me:'}/>
         <p className="indent-12 text-justify pt-2 opacity-80 tracking-wider md:px-8">
           {`Hello there! My names`}

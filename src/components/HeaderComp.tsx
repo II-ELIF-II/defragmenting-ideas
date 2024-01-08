@@ -16,7 +16,7 @@ const HeaderComp = () => {
   const { data: session, status } = useSession();
 
   return(
-    <div className="absolute w-full flex [&>*]:flex flex-col md:flex-row justify-evenly md:justify-between h-[12vh] md:h-[6vh] items-center px-4 z-20 bg-neutral-950/90 md:bg-neutral-950/60 md:backdrop-blur">
+    <div className="absolute w-full flex [&>*]:flex flex-col md:flex-row justify-evenly md:justify-between h-24 md:h-12 items-center px-4 z-20 bg-neutral-950/90 md:bg-neutral-950/60 md:backdrop-blur">
       <HeaderLogoComp LogoSize="h-6" TextStyle="font-semibold tracking-widest"/>
       <div className="flex-row space-x-4 h-full animate-slideInRight">
         {headerURLs.map((link: headerURLParams) => (<HeaderURLComp key={link.label} {...link}/>))}

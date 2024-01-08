@@ -75,7 +75,8 @@ const PostListComp = ({SearchParams, Posts, Pages, Tags}: {SearchParams: postLis
   };
 
   return(
-    <div className="w-full flex flex-col grow overflow-hidden md:snap-start">
+    <div className="relative w-full flex flex-col grow border-t border-teal-400">
+      
       <ModalCardComp TextMain="Search Directory" TextSide="Search" IsOpen={openSearchModal} setIsOpen={setOpenSearchModal}>
         <p className="text-sm">Input Query: </p>
 
@@ -96,8 +97,9 @@ const PostListComp = ({SearchParams, Posts, Pages, Tags}: {SearchParams: postLis
           { Tags.map((tag: tagParams) => (<SearchTagComp key={tag.id} Tag={tag} CurrentTag={currentTag} setCurrentTag={setCurrentTag}/>)) }
         </div>
       </ModalCardComp>
+
       <PostListHeaderComp setOpenSearchModal={setOpenSearchModal}/>
-      <ul className="flex flex-col md:flex-row grow h-full -mt-[12vh] md:mt-0 z-10 overflow-hidden">
+      <ul className="flex flex-col xl:flex-row grow h-full overflow-hidden z-10">
         { (Posts.length != 0) ? Posts.map((post: postSummaryParams, index: number) => (<PostListCardComp key={post.id} Post={post} Index={index}/>)) : <div className="md:absolute flex w-screen h-screen z-50 pointer-events-none"><ErrorCardComp ErrorMain={errorTitle} ErrorMessage={errorMessage}/></div> }
         { fillerCards }
       </ul>

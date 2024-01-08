@@ -19,7 +19,7 @@ const TagComp = ({Tag}: {Tag: tagParams}) => {
   }
 
   return(
-    <button onClick={(e) => handleTagClick({e: e, param:'tag', value: Tag.id}) } className="group/tag flex place-items-center rounded overflow-hidden text-sm cursor-pointer drop-shadow-lgCustom [&>*]:ease-in-out [&>*]:duration-500">
+    <button onClick={(e) => handleTagClick({e: e, param:'tag', value: Tag.id}) } className="group/tag flex place-items-center rounded overflow-hidden text-sm cursor-pointer drop-shadow-lgCustom md:hover:drop-shadow-glowTealXXS ease-in-out duration-500 [&>*]:ease-in-out [&>*]:duration-500">
       <TagIconComp/>
       <TagNameComp>{Tag.name}</TagNameComp>
     </button>

@@ -243,40 +243,16 @@
 
 @layer utilities {
 
-  .clip-right-slash {
-    clip-path: polygon(65% 0, 100% 0, 80% 100%, 45% 100%);
+  .clip-featured-thumbnail {
+    clip-path: polygon(65% 0, 100% 0%, 80% 100%, 45% 100%);
   }
 
-  .clip-right-slash-deeper{
-    clip-path: polygon(60% 0, 64% 0, 44% 100%, 40% 100%);
+  .clip-featured-thumbnail-small {
+    clip-path: polygon(100% 0, 50% 0, 0 100%, 100% 100%);
   }
 
-  .clip-left-triangle {
-    clip-path: polygon(0 0, 0% 100%, 100% 0);
-  }
-
-  .clip-left-slash-large{
-    clip-path: polygon(0 20%, 20% 0, 80% 0, 0 80%);
-  }
-
-  .clip-left-slash-small{
-    clip-path: polygon(0 40%, 40% 0, 60% 0, 0 60%);
-  }
-
-  .clip-right-slash-symmetrical{
-    clip-path: polygon(100% 0, 25% 100%, 0% 100%, 75% 0);
-  }
-
-  .clip-profile-poly{
-    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
-  }
-
-  .clip-message-tail{
-    clip-path: polygon(50% 0%, 0% 100%, 100% 0);
-  }
-
-  .clip-diamond{
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  .clip-featured-thumbnail-accent {
+    clip-path: polygon(64% 0, 61% 0, 41% 100%, 44% 100%);
   }
 
   /* ===== Scrollbar CSS ===== */

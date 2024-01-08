@@ -15,8 +15,8 @@ const AdminPanelComp = ({postResults, postQuery, tagResults}: {postResults: admi
   const [manageWindow, setManageWindow] = useState<panels>(panels.posts);
   
   return(
-    <div className="min-h-screen flex flex-col pt-[12vh] md:pt-[6vh]">
-      <ul className="w-full flex flex-row gap-2 h-[8vh] md:h-[4vh] items-center px-4 z-20 bg-neutral-800/40 md:backdrop-blur text-sm">
+    <div className="min-h-screen flex flex-col pt-24 md:pt-12">
+      <ul className="w-full flex flex-row gap-2 h-[8vh] md:h-10 items-center px-4 z-20 bg-neutral-800/40 md:backdrop-blur text-sm">
         <li>
           <input type="radio" id="managePosts" name="windowManager" className="hidden peer" defaultChecked/>
           <label htmlFor="managePosts" onClick={() => setManageWindow(panels.posts)} className="hover:text-teal-400 peer-checked:text-teal-400 ease-in-out duration-500 cursor-pointer">Manage Posts</label>

@@ -10,8 +10,8 @@ const PaginatorComp = ({URLPath, URLParam, Page, Pages}: {URLPath :string, URLPa
   const disablePrev = Number(Page) <= 1; 
   const disableNext = Number(Page) >= Number(Pages);
 
-  const buttonNextAndPrevClass = "h-[4vh] px-2 flex justify-center items-center border-teal-400 disabled:border-neutral-50/10 text-teal-400 disabled:text-neutral-50/10 hover:bg-teal-700/30 disabled:hover:bg-neutral-700/30 ease-in-out duration-500"
-  const buttonPageClass = "text-lg h-[4vh] px-4 flex justify-center items-center border-t border-neutral-50/10 disabled:border-teal-400 disabled:text-teal-400 hover:bg-teal-700/30 ease-in-out duration-500";
+  const buttonNextAndPrevClass = "h-10 px-2 aspect-square flex justify-center items-center border-teal-400 disabled:border-neutral-50/10 text-teal-400 disabled:text-neutral-50/10 hover:bg-teal-700/30 disabled:hover:bg-neutral-700/30 ease-in-out duration-500"
+  const buttonPageClass = "text-lg h-10 px-4 aspect-square flex justify-center items-center border-t border-neutral-50/10 disabled:border-teal-400 disabled:text-teal-400 hover:bg-teal-700/30 ease-in-out duration-500";
 
   //Function: Builds an array of integers from A to B.
   //Purpose: Determines what and how many page buttons to display.
@@ -40,7 +40,7 @@ const PaginatorComp = ({URLPath, URLParam, Page, Pages}: {URLPath :string, URLPa
     router.push(urlParamHandler({path: URLPath + '?' + searchParams, param: URLParam, value: 1}), {scroll: false});
 
   return(
-    <div className="relative w-full h-[6vh] flex justify-center items-center">
+    <div className="relative w-full h-14 flex justify-center items-center overflow-hidden">
       <div className="flex justify-center items-center z-10 animate-slideInBottom">
         
         <button disabled={disablePrev} onClick={() => router.push(urlParamHandler({path: URLPath + '?' + searchParams, param: URLParam, value: 1}) , {scroll: false}) } className={buttonNextAndPrevClass + " border-t"}>

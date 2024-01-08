@@ -9,7 +9,7 @@ const AdminPostCardComp = (post: adminPanelPostParams) => {
   const router = useRouter();
 
   return(
-    <div onClick={() => router.push(`/post?id=${post.id}`)} className="relative group cursor-pointer bg-neutral-950 border border-solid border-teal-600 md:drop-shadow-glow overflow-hidden aspect-square md:aspect-auto">
+    <div onClick={() => router.push(`/post?id=${post.id}`)} className="relative group cursor-pointer bg-neutral-950 border border-solid border-teal-600 md:drop-shadow-glowTealSM overflow-hidden aspect-square md:aspect-auto">
 
       <img src={post.thumbnail} alt="TEMP" className="absolute top-0 h-full w-full object-cover"/>
       <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-b to-neutral-950 from-transparent pointer-events-none"/>

@@ -9,6 +9,10 @@ const config: Config = {
   theme: {
     
     extend: {
+      screens: {
+        '3xl': '1921px',
+        '4xl': '2561px'
+      },
       animationDelay: {
         'm100': "-100ms !important",
         'm200': "-200ms !important",

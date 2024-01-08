@@ -1,21 +1,21 @@
 'use client';
 
-const PostCardBackground = ({TextURL, Index}: {TextURL: string, Index: number}) => {
+const PostCardBackground = ({Title, ImageURL, Index}: {Title: string, ImageURL: string, Index: number}) => {
 
-  const delay = ['md:animation-delay-1000', 'md:animation-delay-3000', 'md:animation-delay-5000', 'md:animation-delay-7000'];
+  const delay = ['xl:animation-delay-1000', 'xl:animation-delay-3000', 'xl:animation-delay-5000', 'xl:animation-delay-7000'];
 
-  if(TextURL !== '') {
+  if(ImageURL !== '') {
     return (
-      <div className="group-hover:animate-cameraMoves absolute h-full">
-        <img src={TextURL} alt="TEMP" loading="lazy" draggable="false" className="object-cover h-screen md:h-full grow scale-110 group-hover:scale-125 grayscale-[70%] group-hover:grayscale-0 ease-in-out duration-500"/>
+      <div className="absolute group-hover:animate-cameraMoves h-full pointer-events-none">
+        <img src={ImageURL} alt="Filler_Thumbnail" loading="lazy" draggable="false" className="object-cover h-screen xl:h-full grow scale-110 group-hover:scale-125 grayscale-[70%] group-hover:grayscale-0 ease-in-out duration-500"/>
       </div> 
     )
   }
   else {
     return(
-      <div className="absolute h-full flex items-center text-neutral-600/30 bg-neutral-900 bg-diagonal-stripes [&>*]:ease-in-out [&>*]:duration-500">
-        <img src="/glitchBackground.gif" alt="TEMP" loading="lazy" draggable="false" className=" animation relative object-cover h-screen md:h-full opacity-[2.5%] backdrop-blur"/>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className={delay[Index] + " animate-cameraMoves absolute h-screen md:h-full w-full px-20 drop-shadow-glowXS"}>
+      <div className="absolute h-full flex items-center text-neutral-600/30 bg-neutral-900 bg-diagonal-stripes pointer-events-none [&>*]:ease-in-out [&>*]:duration-500">
+        <img src="/glitchBackground.gif" alt={Title + " thumbnail"} loading="lazy" draggable="false" className=" animation relative object-cover h-screen xl:h-full opacity-[2.5%] backdrop-blur"/>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className={delay[Index] + " animate-cameraMoves absolute h-screen xl:h-full w-full px-20 drop-shadow-glowXS"}>
           <circle cx="11" cy="8" r="1"/>
           <circle cx="11" cy="16" r="1"/>
           <circle cx="11" cy="24" r="1"/>

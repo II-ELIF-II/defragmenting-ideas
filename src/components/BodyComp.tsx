@@ -18,11 +18,11 @@ const BodyComp = async({SearchParams}: {SearchParams: postListSearchParams}) => 
   
   return (
     <main className="relative flex flex-col min-h-screen h-fit overflow-y-clip">
-      <div id="Primary" className="relative h-screen flex flex-col overflow-hidden animate-openWindow">
+      <div id="FeaturesPost" className="relative h-screen flex flex-col overflow-hidden">
         <FeaturedPost FeaturedPost={featuredPost}/>
         <BackgroundComp BackgroundURL={featuredPost.thumbnail}/>
       </div>
-      <div id="PostList" className="relative min-h-screen h-fit flex flex-col overflow-y-clip">
+      <div id="PostList" className="relative min-h-screen h-fit flex flex-col overflow-y-clip bg-neutral-900 drop-shadow-glowTealXS">
         <PostListComp SearchParams={SearchParams} Posts={posts} Pages={pages} Tags={tags}/>
         <BackgroundComp/>
       </div>

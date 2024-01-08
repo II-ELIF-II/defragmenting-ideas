@@ -46,6 +46,10 @@ import { managePost } from "@/lib/admin/postManagePost";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import FeaturedPost from "../BodyComps/FeaturedPost";
+import postTagParams from "@/types/postTagParams";
+import PostListCardComp from "../BodyComps/PostListComps/PostListCardComp";
+import BackgroundComp from "../MiscComps/BackgroundComp";
 
 const PostEditorComp = ({setPost, tags}: {setPost: postParams, tags: tagParams[]}) => {
   
@@ -196,6 +200,31 @@ console.log(i);
       </div>
       <div className="flex flex-col items-center w-screen min-h-screen my-5">
         <PostDisplayComp Post={newPost}/>
+      </div>
+      <div className="relative flex flex-col w-screen h-screen my-5 border-t border-b border-teal-400">
+        <FeaturedPost FeaturedPost={{
+          id: newPost.id,
+          title: newPost.title,
+          thumbnail: newPost.thumbnail,
+          summary: newPost.summary,
+          createdAt: newPost.createdAt.toISOString(),
+          updatedAt: newPost.updatedAt.toISOString(),
+          PostTag: new Array<postTagParams>,
+          }}/>
+        <BackgroundComp BackgroundURL={newPost.thumbnail}/>
+      </div>
+      <div className="relative flex flex-col w-screen h-screen my-5 border-t border-b border-teal-400">
+        <ul className="flex flex-col xl:flex-row grow h-full mx-auto overflow-hidden w-full justify-center z-10 active:pointer-events-none">
+          <PostListCardComp Post={{
+          id: newPost.id,
+          title: newPost.title,
+          thumbnail: newPost.thumbnail,
+          summary: newPost.summary,
+          createdAt: newPost.createdAt.toISOString(),
+          updatedAt: newPost.updatedAt.toISOString(),
+          PostTag: new Array<postTagParams>,
+          }} Index={0}/>
+        </ul>
       </div>
     </>
   );
