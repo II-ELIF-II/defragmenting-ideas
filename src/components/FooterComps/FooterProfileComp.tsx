@@ -12,7 +12,7 @@ const FooterProfileComp = () => {
   return(
     <div className=" flex flex-col md:flex-row gap-4">
       <div className="flex flex-col md:flex-row items-center md:items-start">
-        <div className="m-6 flex flex-col items-center rotate-45 h-24 w-24 overflow-hidden border border-teal-400 drop-shadow-glowTealXS hover:drop-shadow-glowNeutralXS duration-500 ease-in-out">
+        <div className="m-6 flex flex-col items-center rotate-45 h-24 w-24 overflow-hidden border border-teal-400 drop-shadow-glowTealXS hover:drop-shadow-glowTealSM duration-500 ease-in-out">
           <img src="/profile.png" alt="Profile Picture" width={96} height={96} draggable={false} className="-rotate-45 scale-150 pt-2 pl-2"/>
         </div>
       </div>

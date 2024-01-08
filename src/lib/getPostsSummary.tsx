@@ -1,8 +1,8 @@
 import { getEnvironment } from "@/app/utilities";
-import postSearchParams from "@/types/postSearchParams";
+import postListSearchParams from "@/types/postListSearchParams";
 
-export const getPostsSummary = async(searchParams: postSearchParams) => {
-  const res = await fetch(getEnvironment().concat(`/api/getPostsSummary?page=${searchParams.page}&query=${searchParams.query}&tag=${searchParams.tag}`),{
+export const getPostsSummary = async(SearchParams: postListSearchParams) => {
+  const res = await fetch(getEnvironment().concat(`/api/getPostsSummary?page=${SearchParams.page}&query=${SearchParams.query}&tag=${SearchParams.tag}`),{
     cache: "no-store",
   });
   if(!res.ok){

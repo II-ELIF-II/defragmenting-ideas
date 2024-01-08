@@ -4,7 +4,7 @@ import PostCardGradientComp from "./PostListCardComps/PostCardGradientComp";
 import PostCardSummaryComp from "./PostListCardComps/PostCardSummaryComp";
 import PostCardHeaderComp from "./PostListCardComps/PostCardHeaderComp";
 import PostCardBackground from "./PostListCardComps/PostCardBackground";
-import TagComp from "../MiscComps/TagComp";
+import TagComp from "../../MiscComps/TagComp";
 
 import postSummaryParams from "@/types/postSummaryParams";
 import postTagParams from "@/types/postTagParams";

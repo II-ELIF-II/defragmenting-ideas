@@ -3,10 +3,10 @@
 import postParams from "@/types/postParams";
 import tagParams from "@/types/tagParams";
 import { Dispatch, SetStateAction } from "react";
-import TagIconComp from "../MiscComps/TagComps/TagIconComp";
-import TagNameComp from "../MiscComps/TagComps/TagNameComp";
+import TagIconComp from "../../MiscComps/TagComps/TagIconComp";
+import TagNameComp from "../../MiscComps/TagComps/TagNameComp";
 
-const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :postParams, setNewPost: Dispatch<SetStateAction<postParams>>}) => {
+const PostEditorTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :postParams, setNewPost: Dispatch<SetStateAction<postParams>>}) => {
 
   const checkInTagArray = () => {
     let match = false;
@@ -50,4 +50,4 @@ const AdminTagComp = ({tag, newPost, setNewPost}: {tag: tagParams, newPost :post
   )
 };
 
-export default AdminTagComp;
+export default PostEditorTagComp;

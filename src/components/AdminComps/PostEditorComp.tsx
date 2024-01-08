@@ -37,10 +37,10 @@ import managePostPayload from "@/types/payload/managePostPayload";
 import postParams from "@/types/postParams";
 import tagParams from "@/types/tagParams";
 
-import PostEditorStaticToolBarComp from "@/components/AdminComps/PostEditorStaticToolBarComp";
-import PostEditorFloatingToolbarComp from "./PostEditorFloatingToolbarComp";
+import PostEditorFloatingToolbarComp from "./PostEditorComps/PostEditorFloatingToolbarComp";
+import PostEditorStaticToolBarComp from "./PostEditorComps/PostEditorStaticToolBarComp";
+import PostEditorTagComp from "./PostEditorComps/PostEditorTagComp";
 import PostDisplayComp from "../PostComps/PostDisplayComp";
-import AdminTagComp from "./AdminTagComp";
 
 import { managePost } from "@/lib/admin/postManagePost";
 import { useSession } from "next-auth/react";
@@ -185,7 +185,7 @@ console.log(i);
             <div className="flex flex-col">
               <p className="px-2 py-1 bg-neutral-700/60 border-b border-solid border-teal-400">Tags &#91; 3 Max &#93;</p>
               <div className="grid grid-cols-4 gap-3 p-2">
-              {tags.map((tag: tagParams) => (<AdminTagComp key={tag.id} tag={tag} newPost={newPost} setNewPost={setNewPost}/>))}
+              {tags.map((tag: tagParams) => (<PostEditorTagComp key={tag.id} tag={tag} newPost={newPost} setNewPost={setNewPost}/>))}
             </div>
             </div>
             <div className="flex flex-col">

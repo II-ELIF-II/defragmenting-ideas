@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import tagParams from "@/types/tagParams";
-import TagManagerTagComp from "./TagManagerTagComp";
+import TagManagerTagComp from "./TagManagerComps/TagManagerTagComp";
 import manageTagPayload from "@/types/payload/manageTagPayload";
 import { manangeTag } from "@/lib/admin/postManageTag";
 

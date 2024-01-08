@@ -43,7 +43,7 @@ export const GET = async (req: any) => {
 
     const pages = Math.ceil(count / 4);
 
-    return NextResponse.json({page, pages, posts}, {status: 200});
+    return NextResponse.json({pages, posts}, {status: 200});
   } catch (e) {
     console.log(e);
     return NextResponse.json({ message: "Something went wrong!" }, {status: 500});

@@ -1,7 +1,7 @@
 "use client";
 
 import adminPanelPostParams from "@/types/admin/adminPanelPostParams";
-import PostDateComp from "../PostComps/PostDateComp";
+import PostDateComp from "../../PostComps/PostDateComp";
 import { useRouter } from "next/navigation";
 
 const AdminPostCardComp = (post: adminPanelPostParams) => {
