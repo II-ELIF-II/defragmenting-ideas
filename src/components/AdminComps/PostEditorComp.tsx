@@ -201,7 +201,7 @@ console.log(i);
       <div className="flex flex-col items-center w-screen min-h-screen my-5">
         <PostDisplayComp Post={newPost}/>
       </div>
-      <div className="relative flex flex-col w-screen h-screen my-5 border-t border-b border-teal-400">
+      {newPost.id && <div className="relative flex flex-col w-screen h-screen my-5 border-t border-b border-teal-400">
         <FeaturedPost FeaturedPost={{
           id: newPost.id,
           title: newPost.title,
@@ -212,7 +212,7 @@ console.log(i);
           PostTag: new Array<postTagParams>,
           }}/>
         <BackgroundComp BackgroundURL={newPost.thumbnail}/>
-      </div>
+      </div>}
       <div className="relative flex flex-col w-screen h-screen my-5 border-t border-b border-teal-400">
         <ul className="flex flex-col xl:flex-row grow h-full mx-auto overflow-hidden w-full justify-center z-10 active:pointer-events-none">
           <PostListCardComp Post={{
